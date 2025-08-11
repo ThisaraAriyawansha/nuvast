@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="favicon.png">
+  <link rel="shortcut icon" href="green_n.png">
 
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -14,8 +14,14 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="publicsite/css/tiny-slider.css" rel="stylesheet">
 		<link href="publicsite/css/style.css" rel="stylesheet">
-		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+		<title>NUVAST Furnitures</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
 	</head>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        </style>
 
 	<body>
 
@@ -30,8 +36,8 @@
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-								<h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
-								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+                                <h1 style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">NUVAST</h1>
+								<p class="mb-4">Discover exquisite furniture crafted for elegance and comfort. Transform your space with our timeless designs and superior quality</p>
 								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>
