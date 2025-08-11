@@ -2,196 +2,164 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Loading - NovaLink Computers</title>
+    <title>Loading - Nuvast Furniture</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
         
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background-color: black;
-            color: #fff;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+            color: #3b5d50;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column;
+            font-family: 'Inter', sans-serif;
             overflow: hidden;
             user-select: none;
         }
-
-        #words, #final-text {
-            font-size: 2.5rem;
-            letter-spacing: 3px;
-            white-space: nowrap;
-            min-height: 3rem;
-            transition: opacity 0.5s ease;
+        
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-
-        #words {
-            font-family: 'Orbitron', monospace;
+        
+        .dots-container {
+            display: flex;
+            gap: clamp(8px, 2vw, 16px);
+            margin-bottom: 40px;
+            opacity: 1;
+            transition: opacity 0.8s ease;
+            justify-content: center;
+            align-items: center;
         }
-
-        #final-text {
-            font-family: 'Share Tech Mono', monospace;
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #3b5d50;
+            opacity: 0.2;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .hidden {
-            visibility: hidden;
+        
+        .dot.active {
+            opacity: 1;
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(59, 93, 80, 0.3);
+        }
+        
+        .brand-text {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 300;
+            letter-spacing: clamp(2px, 0.5vw, 4px);
+            color: #3b5d50;
             opacity: 0;
+            transform: translateY(20px);
+            transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-align: center;
         }
-
-        /* Fade-in animation for final text */
-        .decipher {
-            animation: fadeIn 2s forwards;
+        
+        .brand-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .subtitle {
+            font-size: clamp(0.7rem, 2vw, 1rem);
+            font-weight: 400;
+            letter-spacing: clamp(1px, 0.2vw, 2px);
+            color: #3b5d50;
             opacity: 0;
+            margin-top: 8px;
+            text-transform: uppercase;
+            transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s;
+            text-align: center;
         }
-
-        @keyframes fadeIn {
+        
+        .subtitle.show {
+            opacity: 0.7;
+        }
+        
+        .dots-container.hide {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
             to {
                 opacity: 1;
+                transform: translateY(0);
             }
-        }
-
-        /* Fade-out animation for words */
-        .fade-out {
-            animation: fadeOut 0.5s forwards;
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-            }
-        }
-
-        /* Punchy effect for final text */
-        .punch {
-            animation: punch 0.5s ease-in-out;
-        }
-
-        @keyframes punch {
-            0% {
-                transform: scale(1);
-                color: #fff;
-                text-shadow: 0 0 10px #fff, 0 0 20px rgba(255, 255, 255, 0.8);
-            }
-            50% {
-                transform: scale(1.2);
-                color: #006affff;
-                text-shadow: 0 0 15px #e2ebe8ff, 0 0 30px rgba(229, 239, 239, 0.8);
-            }
-            100% {
-                transform: scale(1);
-                color: #fff;
-                text-shadow: 0 0 10px #fff, 0 0 20px rgba(255, 255, 255, 0.8);
-            }
-        }
-
-        /* Blinking cursor effect for final-text during decipher */
-        #final-text.decipher::after {
-            content: "|";
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-            from, to { opacity: 1; }
-            50% { opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <div id="words"></div>
-    <div id="final-text" class="hidden"></div>
-
+    <div class="loading-container">
+        <div class="dots-container" id="dotsContainer">
+            <div class="dot" id="dot1"></div>
+            <div class="dot" id="dot2"></div>
+            <div class="dot" id="dot3"></div>
+            <div class="dot" id="dot4"></div>
+            <div class="dot" id="dot5"></div>
+        </div>
+        
+        <div class="brand-text" id="brandText">NUVAST</div>
+        <div class="subtitle" id="subtitle">Furniture</div>
+    </div>
+    
     <script>
-        const words = ["Initializing", "Configuring", "Optimizing"];
-        const wordsEl = document.getElementById('words');
-        const finalTextEl = document.getElementById('final-text');
-        const finalText = "NovaLink Computers";
-
-        let currentWordIndex = 0;
-        let accumulatedText = "";
-
-        // Function to type out a word letter by letter
-        function typeWord(word, callback) {
-            let index = 0;
-            const interval = setInterval(() => {
-                accumulatedText = accumulatedText.slice(0, accumulatedText.length - index) + word.slice(0, index + 1);
-                wordsEl.textContent = accumulatedText;
-                index++;
-                if (index === word.length) {
-                    clearInterval(interval);
-                    accumulatedText += " "; // Add space after word
-                    setTimeout(callback, 800); // Wait before next word or final text
-                }
-            }, 150);
+        const dots = document.querySelectorAll('.dot');
+        const dotsContainer = document.getElementById('dotsContainer');
+        const brandText = document.getElementById('brandText');
+        const subtitle = document.getElementById('subtitle');
+        
+        let currentDot = 0;
+        let dotInterval;
+        
+        function animateDots() {
+            // Reset all dots
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Activate current dot
+            dots[currentDot].classList.add('active');
+            
+            // Move to next dot
+            currentDot = (currentDot + 1) % dots.length;
         }
-
-        // Function to decipher (scramble + reveal) text
-        function decipherText(text, element, callback) {
-            element.classList.remove('hidden');
-            element.textContent = "";
-
-            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-            let iteration = 0;
-            const revealInterval = setInterval(() => {
-                element.textContent = text
-                    .split("")
-                    .map((char, idx) => {
-                        if (idx < iteration) {
-                            return text[idx];
-                        }
-                        if (char === " ") return " "; // Keep spaces
-                        return letters[Math.floor(Math.random() * letters.length)];
-                    })
-                    .join("");
-
-                iteration += 1/3;
-
-                if (iteration >= text.length) {
-                    clearInterval(revealInterval);
-                    element.textContent = text;
-                    // Add glitch effect
-                    setTimeout(() => {
-                        element.style.textShadow = "0 0 15px #fff, 0 0 30px rgba(255, 255, 255, 0.8)";
-                        setTimeout(() => {
-                            element.style.textShadow = "0 0 10px #fff, 0 0 20px rgba(255, 255, 255, 0.8)";
-                            // Trigger punchy effect
-                            element.classList.remove('decipher'); // Remove cursor
-                            element.classList.add('punch');
-                            setTimeout(callback, 500); // Match punch duration
-                        }, 100);
-                    }, 200);
-                }
-            }, 50);
-        }
-
-        // Show words one by one, accumulating them, then fade out and decipher text
-        function startSequence() {
-            if (currentWordIndex < words.length) {
-                typeWord(words[currentWordIndex], () => {
-                    currentWordIndex++;
-                    if (currentWordIndex < words.length) {
-                        startSequence(); // Move to next word
-                    } else {
-                        // Fade out words before showing final text
-                        wordsEl.classList.add('fade-out');
-                        setTimeout(() => {
-                            wordsEl.classList.add('hidden');
-                            wordsEl.textContent = ""; // Clear words element
-                            decipherText(finalText, finalTextEl, () => {
-                                setTimeout(() => {
-                                    window.location.href = "{{ route('home') }}";
-                                }, 1000); // Redirect after punch effect
-                            });
-                        }, 500); // Match fade-out duration
-                    }
-                });
-            }
-        }
-
-        startSequence();
+        
+        // Start dot animation
+        dotInterval = setInterval(animateDots, 500);
+        
+        // Show brand name after 2.5 seconds
+        setTimeout(() => {
+            // Stop dot animation and hide dots
+            clearInterval(dotInterval);
+            dotsContainer.classList.add('hide');
+            
+            // Show brand text and subtitle
+            setTimeout(() => {
+                brandText.classList.add('show');
+                subtitle.classList.add('show');
+            }, 400);
+            
+            // Redirect after showing brand (uncomment when ready to use)
+            setTimeout(() => {
+                window.location.href = "{{ route('home') }}";
+            }, 2600);
+            
+        }, 3000);
     </script>
 </body>
 </html>
