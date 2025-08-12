@@ -159,7 +159,7 @@
                 window.location.href = "{{ route('home') }}";
             }, 2600);
             
-        }, 3000);
+        }, 3050);
     </script>
 </body>
 </html>

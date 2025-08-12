@@ -83,6 +83,7 @@ Route::get('/get-chatbot-products', [HomeController::class, 'getChatbotProducts'
 
 Route::get('/home', [HomeController::class, 'homeShow'])->name('home');
 Route::get('/aboutus', [PageController::class, 'aboutusShow'])->name('aboutUs');
+Route::get('/services', [PageController::class, 'services'])->name('services');
 Route::get('/blog', [PageController::class, 'blogShow'])->name('blog');
 Route::get('/singleBlog', [PageController::class, 'blogSingleShow'])->name('blog.show');
 Route::get('/myAcc', [MyAccountController::class, 'myAccShow'])->name('myAcc');

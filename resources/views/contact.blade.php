@@ -1,23 +1,23 @@
-<!DOCTYPE html>
-<html lang="zxx" dir="ltr">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow" />
-    <title>NovaLink Computers | Best Computers for you</title>
-    <meta name="description" content="NovaLink Computers offer the best computers available at the market">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/n_logo_remove_new.png" />
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/font.awesome.css" />
-    <link rel="stylesheet" href="assets/css/pe-icon-7-stroke.css" />
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/venobox.css">
-    <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="green_n.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+
+		<!-- Bootstrap CSS -->
+		<link href="publicsite/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="publicsite/css/tiny-slider.css" rel="stylesheet">
+		<link href="publicsite/css/style.css" rel="stylesheet">
+		<title>NUVAST Furnitures</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 
     <style>
         .custom-alert {
@@ -48,52 +48,86 @@
         .custom-alert.error {
             background-color: #dc3545;
         }
+
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+            /* Hero section animations */
+
+
+            .intro-excerpt {
+                opacity: 0;
+                transform: translateY(50px);
+                animation: fadeInUp 1s ease-out forwards;
+                animation-delay: 0.2s;
+            }
+
+            .hero-img-wrap img {
+                opacity: 0;
+                transform: translateX(50px);
+                animation: slideInRight 1s ease-out forwards;
+                animation-delay: 0.5s;
+            }
+
+            /* Keyframes for animations */
+            @keyframes fadeInUp {
+                0% {
+                    opacity: 0;
+                    transform: translateY(50px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes slideInRight {
+                0% {
+                    opacity: 0;
+                    transform: translateX(50px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            /* Button hover animations */
+            .btn-secondary, .btn-white-outline {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .btn-secondary:hover, .btn-white-outline:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
     </style>
 </head>
 <body>
     <div class="main-wrapper">
         @include('layouts.nav-2')
 
-        <div class="product-area py-[200px] dark-blue-bg relative" 
-            style="background:url(assets/images/banner/01__kv_rog_flow_x16.jpg) no-repeat; background-position:center; background-size:cover; background-attachment: fixed; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
+            <div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+                                <h1 style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Contact</h1>
+								<p class="mb-4">We’re here to help. Whether you have questions, feedback, or need design advice — let’s connect.</p>
+								<p><a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-secondary me-2">Shop Now</a><a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-white-outline">Explore</a></p>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="hero-img-wrap">
+								<img src="publicsite/images/Aquila_SOfa_Made_In_Melbourne_Australia_1.png" class="img-fluid">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> 
+
+
             
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-black opacity-70 z-0" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;"></div>
 
-            <div class="container h-100 relative z-10">
-                <div class="row justify-content-center align-items-center h-100">
-                    <div class="col-12 text-center">
-                        <h2 class="text-xl lg:text-4xl font-light text-white mb-2" 
-                            style="font-family: 'Orbitron', sans-serif;">
-                            Contact NovaLink Computers
-                        </h2>
-                        <p class="text-white text-sm" style="font-family: 'Orbitron', sans-serif;">Reach out for expert tech support, Apple product inquiries, or personalized solutions in Sri Lanka</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- breadcrumb-area start -->
-
-        <nav style="display: flex; align-items: center; padding: 16px 24px;    max-width: 1200px; margin: 10px auto;" aria-label="Breadcrumb">
-            <ol style="display: inline-flex; align-items: center; margin: 0; padding: 0; list-style: none; flex-wrap: wrap;">
-                <li style="display: inline-flex; align-items: center;">
-                    <a href="/home" style="display: inline-flex; align-items: center; font-size: 14px; font-family: 'Orbitron', sans-serif; font-weight: 500; color: #4b5563; text-decoration: none; transition: color 0.3s ease, transform 0.2s ease; padding: 6px 10px; border-radius: 6px;">
-                        <svg style="width: 18px; height: 18px; margin-right: 8px; fill: none; stroke: #6b7280; stroke-width: 2;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                        </svg>
-                        Home
-                    </a>
-                </li>
-
-                <li style="display: flex; align-items: center; margin: 0 6px;" aria-current="page">
-                    <svg style="width: 16px; height: 16px; color: #9ca3af; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                    <span style="margin-left: 8px; font-size: 14px; font-weight: 600; color: #374151; padding: 6px 10px; border-radius: 6px; font-family: 'Orbitron', sans-serif;">Contact Us</span>
-                </li>
-            </ol>
-        </nav>
 
 
 
@@ -155,48 +189,7 @@
                 </div>
                 
                 <!-- Contact Info Row (Below on all screens) -->
-                <div class="row mt-5">
-                    <div class="col-12">
-                        <div class="contact-info bg-light p-4 rounded">
-                            <div class="row text-center">
-                                <div class="col-md-4 mb-3 mb-md-0">
-                                    <div class="single-contact">
-                                        <div class="icon-box mb-2">
-                                            <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
-                                        </div>
-                                        <div class="info-box">
-                                            <h5 class="title" style="font-family: 'Orbitron', sans-serif;">Address</h5>
-                                            <p class="mb-0" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">NovaLink Computers,<br>No. 12/B, Galle Road,<br>Matara</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3 mb-md-0">
-                                    <div class="single-contact">
-                                        <div class="icon-box mb-2">
-                                            <i class="fas fa-phone-alt fa-2x text-primary"></i>
-                                        </div>
-                                        <div class="info-box">
-                                            <h5 class="title" style="font-family: 'Orbitron', sans-serif;">Phone No</h5>
-                                            <p class="mb-0" ><a href="tel:0769417154" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: black;">0769417154</a></p>
-                                            <p class="mb-0"><a href="tel:+94412223454" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: black;">0412223454</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="single-contact">
-                                        <div class="icon-box mb-2">
-                                            <i class="fas fa-envelope fa-2x text-primary"></i>
-                                        </div>
-                                        <div class="info-box">
-                                            <h5 class="title" style="font-family: 'Orbitron', sans-serif;">Email</h5>
-                                            <p class="mb-0"><a href="mailto:novaLinkcomputers@gmail.com" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: black;">novaLinkcomputers@gmail.com</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
 
@@ -205,6 +198,75 @@
             <span class="close-btn" id="close-alert">&times;</span>
             <span id="alert-message"></span>
         </div>
+
+<div class="untree_co-section">
+      <div class="container">
+
+        <div class="block">
+          <div class="row justify-content-center">
+
+
+            <div class="col-md-8 col-lg-8 pb-4">
+
+
+              <div class="row ">
+                <div class="col-lg-4">
+                  <div  class="service no-shadow align-items-center link horizontal d-flex active" data-aos="fade-left" data-aos-delay="0">
+                    <div class="service-icon color-1 mb-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                      </svg>
+                    </div> <!-- /.icon -->
+                    <div class="service-contents">
+                      <p>43 Raymouth Rd. Baltemoer, London 3910</p>
+                    </div> <!-- /.service-contents-->
+                  </div> <!-- /.service -->
+                </div>
+
+                <div class="col-lg-4">
+                  <div  class="service no-shadow align-items-center link horizontal d-flex active" data-aos="fade-left" data-aos-delay="0">
+                    <div class="service-icon color-1 mb-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                      </svg>
+                    </div> <!-- /.icon -->
+                    <div class="service-contents">
+                      <p>info@yourdomain.com</p>
+                    </div> <!-- /.service-contents-->
+                  </div> <!-- /.service -->
+                </div>
+
+                <div class="col-lg-4">
+                  <div  class="service no-shadow align-items-center link horizontal d-flex active" data-aos="fade-left" data-aos-delay="0">
+                    <div class="service-icon color-1 mb-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                      </svg>
+                    </div> <!-- /.icon -->
+                    <div class="service-contents">
+                      <p>+1 294 3925 3939</p>
+                    </div> <!-- /.service-contents-->
+                  </div> <!-- /.service -->
+                </div>
+              </div>
+
+              
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+
         @include('layouts.footer2')
     </div>
     <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
@@ -279,3 +341,9 @@
     </script>
 </body>
 </html>
+
+
+
+		<script src="publicsite/js/bootstrap.bundle.min.js"></script>
+		<script src="publicsite/js/tiny-slider.js"></script>
+		<script src="publicsite/js/custom.js"></script>

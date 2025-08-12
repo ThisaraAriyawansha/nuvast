@@ -70,11 +70,7 @@
             }
 
         </style>
-
 	<body>
-
-		<!-- Start Header/Navigation -->
-		<!-- Start Header/Navigation -->
 		@include('layouts.nav-2')
 		<!-- End Header/Navigation -->
 
@@ -84,143 +80,174 @@
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-                                <h1 style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Blog</h1>
-								<p class="mb-4">Insights, trends, and design inspiration from the world of modern living.</p>
+                                <h1 style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Services</h1>
+								<p class="mb-4"> From design consultation to delivery, NUVAST offers tailored services to make your space truly yours.</p>
 								<p><a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-secondary me-2">Shop Now</a><a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>
 						<div class="col-lg-7">
 							<div class="hero-img-wrap">
-								<img src="publicsite/images/Taylor1.png" class="img-fluid">
+								<img src="publicsite/images/0039168_SSDSLILI_62e69_2b43b45a-03d7-4859-8e61-1e0de531490c.png" class="img-fluid">
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		<!-- End Header/Navigation -->
-
-
+		<!-- End Hero Section -->
 
 		
 
-		<!-- Start Blog Section -->
-		<div class="blog-section">
+		<!-- Start Why Choose Us Section -->
+		<div class="why-choose-section">
 			<div class="container">
 				
+				
+				<div class="row my-5">
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="images/truck.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Fast &amp; Free Shipping</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="images/bag.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Easy to Shop</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="images/support.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>24/7 Support</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="images/return.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Hassle Free Returns</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="images/truck.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Fast &amp; Free Shipping</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="images/bag.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Easy to Shop</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="images/support.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>24/7 Support</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+					<div class="col-6 col-md-6 col-lg-3 mb-4">
+						<div class="feature">
+							<div class="icon">
+								<img src="images/return.svg" alt="Image" class="imf-fluid">
+							</div>
+							<h3>Hassle Free Returns</h3>
+							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+						</div>
+					</div>
+
+				</div>
+			
+			</div>
+		</div>
+		<!-- End Why Choose Us Section -->
+
+		<!-- Start Product Section -->
+		<div class="product-section pt-0">
+			<div class="container">
 				<div class="row">
 
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">First Time Home Owner Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
+					<!-- Start Column 1 -->
+					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+						<h2 class="mb-4 section-title">Crafted with excellent material.</h2>
+						<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. </p>
+						<p><a href="#" class="btn">Explore</a></p>
+					</div> 
+					<!-- End Column 1 -->
 
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
+					<!-- Start Column 2 -->
+					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+						<a class="product-item" href="#">
+							<img src="images/product-1.png" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Nordic Chair</h3>
+							<strong class="product-price">$50.00</strong>
 
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
+							<span class="icon-cross">
+								<img src="images/cross.svg" class="img-fluid">
+							</span>
+						</a>
+					</div> 
+					<!-- End Column 2 -->
 
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">First Time Home Owner Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
+					<!-- Start Column 3 -->
+					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+						<a class="product-item" href="#">
+							<img src="images/product-2.png" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Kruzo Aero Chair</h3>
+							<strong class="product-price">$78.00</strong>
 
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
-								</div>
-							</div>
-						</div>
+							<span class="icon-cross">
+								<img src="images/cross.svg" class="img-fluid">
+							</span>
+						</a>
 					</div>
+					<!-- End Column 3 -->
 
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
+					<!-- Start Column 4 -->
+					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+						<a class="product-item" href="#">
+							<img src="images/product-3.png" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Ergonomic Chair</h3>
+							<strong class="product-price">$43.00</strong>
 
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">First Time Home Owner Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
-								</div>
-							</div>
-						</div>
+							<span class="icon-cross">
+								<img src="images/cross.svg" class="img-fluid">
+							</span>
+						</a>
 					</div>
-
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
+					<!-- End Column 4 -->
 
 				</div>
 			</div>
 		</div>
-		<!-- End Blog Section -->	
+		<!-- End Product Section -->
 
 		
 
@@ -326,6 +353,7 @@
 
 		<!-- Start Footer Section -->
 		 @include('layouts.footer2')
+
 		<!-- End Footer Section -->	
 
 
