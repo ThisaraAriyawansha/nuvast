@@ -78,53 +78,50 @@
                     </fieldset>
 
                     <!-- Type -->
-                    <fieldset class="type">
-                        <div class="body-title">Select Type</div>
-                        <div class="select flex-grow">
-                            <select id="type" name="type">
-                                <option value="">Select a Type</option>
-                                <option value="LAPTOPS">LAPTOPS</option>
-                                <option value="ASUS ROG">ASUS ROG</option>
-                                <option value="APPLE PRODUCTS">APPLE PRODUCTS</option>
-                                <option value="GAMING CONSOLE">GAMING CONSOLE</option>
-                                <option value="PROCESSOR">PROCESSOR</option>
-                                <option value="MOTHERBOARD">MOTHERBOARD</option>
-                                <option value="RAM">RAM</option>
-                                <option value="GRAPHIC CARDS">GRAPHIC CARDS</option>
-                                <option value="CASINGS">CASINGS</option>
-                                <option value="POWER SUPPLY">POWER SUPPLY</option>
-                                <option value="SSD NVME">SSD NVME</option>
-                                <option value="HARD DISK">HARD DISK</option>
-                                <option value="FANS">FANS</option>
-                                <option value="MONITORS">MONITORS</option>
-                                <option value="ANTIVIRUS SOFTWARE">ANTIVIRUS SOFTWARE</option>
-                                <option value="KEYBOARDS">KEYBOARDS</option>
-                                <option value="MOUSE">MOUSE</option>
-                                <option value="MOUSE PAD">MOUSE PAD</option>
-                                <option value="HEADSET">HEADSET</option>
-                                <option value="SPEAKERS">SPEAKERS</option>
-                                <option value="UPS">UPS</option>
-                                <option value="TABLES">TABLES</option>
-                                <option value="THERMAL PASTE">THERMAL PASTE</option>
-                                <option value="COMMERCIAL SOLUTIONS">COMMERCIAL SOLUTIONS</option>
-                                <option value="COOLING & LIGHTING">COOLING & LIGHTING</option>
-                                <option value="STORAGE & NAS">STORAGE & NAS</option>
-                                <option value="MONITORS & ACCESSORIES">MONITORS & ACCESSORIES</option>
-                                <option value="OPTICAL DRIVERS & PRINTERS">OPTICAL DRIVERS & PRINTERS</option>
-                                <option value="SPEAKERS & HEADPHONES">SPEAKERS & HEADPHONES</option>
-                                <option value="KEYBOARDS, MOUSE & GAMEPADS">KEYBOARDS, MOUSE & GAMEPADS</option>
-                                <option value="GRAPHICS TABLET / TAB">GRAPHICS TABLET / TAB</option>
-                                <option value="DESKTOP WORKSTATIONS">DESKTOP WORKSTATIONS</option>
-                                <option value="GAMING DESKTOPS">GAMING DESKTOPS</option>
-                                <option value="BUDGET DESKTOP COMPUTERS">BUDGET DESKTOP COMPUTERS</option>
-                                <option value="CHAIRS">CHAIRS</option>
-                                <option value="CABLES">CABLES</option>
-                                <option value="LIVE STREAMING & RECORDING">LIVE STREAMING & RECORDING</option>
-                                <option value="EXPANSION CARDS & NETWORKING">EXPANSION CARDS & NETWORKING</option>
-                                <option value="GIFT VOUCHER">GIFT VOUCHER</option>
+                    <fieldset class="type" >
+                        <div class="body-title" >Select Furniture Category</div>
+                        <div class="select flex-grow" >
+                            <select id="type" name="type" >
+                                <option value="">Select a Category</option>
+                                <option value="SOFAS">Sofas</option>
+                                <option value="ARMCHAIRS">Armchairs</option>
+                                <option value="DINING_TABLES">Dining Tables</option>
+                                <option value="DINING_CHAIRS">Dining Chairs</option>
+                                <option value="COFFEE_TABLES">Coffee Tables</option>
+                                <option value="SIDE_TABLES">Side Tables</option>
+                                <option value="BEDS">Beds</option>
+                                <option value="WARDROBES">Wardrobes</option>
+                                <option value="DRESSERS">Dressers</option>
+                                <option value="BOOKCASES">Bookcases</option>
+                                <option value="TV_STANDS">TV Stands</option>
+                                <option value="CONSOLE_TABLES">Console Tables</option>
+                                <option value="OFFICE_DESKS">Office Desks</option>
+                                <option value="OFFICE_CHAIRS">Office Chairs</option>
+                                <option value="BAR_STOOLS">Bar Stools</option>
+                                <option value="BENCHES">Benches</option>
+                                <option value="LOUNGE_CHAIRS">Lounge Chairs</option>
+                                <option value="RECLINERS">Recliners</option>
+                                <option value="FUTONS">Futons</option>
+                                <option value="DAYBEDS">Daybeds</option>
+                                <option value="NIGHTSTANDS">Nightstands</option>
+                                <option value="CABINETS">Cabinets</option>
+                                <option value="SHELVING_UNITS">Shelving Units</option>
+                                <option value="ENTERTAINMENT_CENTERS">Entertainment Centers</option>
+                                <option value="ACCENT_CHAIRS">Accent Chairs</option>
+                                <option value="OUTDOOR_FURNITURE">Outdoor Furniture</option>
+                                <option value="KIDS_FURNITURE">Kids Furniture</option>
+                                <option value="STORAGE_SOLUTIONS">Storage Solutions</option>
+                                <option value="HOME_OFFICE">Home Office</option>
+                                <option value="LIGHTING_FIXTURES">Lighting Fixtures</option>
+                                <option value="MIRRORS">Mirrors</option>
+                                <option value="RUGS">Rugs</option>
+                                <option value="DECORATIVE_PILLOWS">Decorative Pillows</option>
+                                <option value="CURTAINS">Curtains</option>
                             </select>
                         </div>
-                    </fieldset><br/>
+                    </fieldset>
+                    
+                    <br/>
 
                     <fieldset class="tags">
                         <div class="body-title">Select Tags Type</div>

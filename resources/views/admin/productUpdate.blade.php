@@ -106,53 +106,50 @@
                     </fieldset>
 
                     <!-- Type -->
-                    <fieldset class="type">
-                        <div class="body-title">Select Type</div>
-                        <div class="select flex-grow">
-                            <select id="type" name="type">
-                                <option value="">Select a Type</option>
-                                <option value="LAPTOPS" {{ $product->type == 'LAPTOPS' ? 'selected' : '' }}>LAPTOPS</option>
-                                <option value="ASUS ROG" {{ $product->type == 'ASUS ROG' ? 'selected' : '' }}>ASUS ROG</option>
-                                <option value="APPLE PRODUCTS" {{ $product->type == 'APPLE PRODUCTS' ? 'selected' : '' }}>APPLE PRODUCTS</option>
-                                <option value="GAMING CONSOLE" {{ $product->type == 'GAMING CONSOLE' ? 'selected' : '' }}>GAMING CONSOLE</option>
-                                <option value="PROCESSOR" {{ $product->type == 'PROCESSOR' ? 'selected' : '' }}>PROCESSOR</option>
-                                <option value="MOTHERBOARD" {{ $product->type == 'MOTHERBOARD' ? 'selected' : '' }}>MOTHERBOARD</option>
-                                <option value="RAM" {{ $product->type == 'RAM' ? 'selected' : '' }}>RAM</option>
-                                <option value="GRAPHIC CARDS" {{ $product->type == 'GRAPHIC CARDS' ? 'selected' : '' }}>GRAPHIC CARDS</option>
-                                <option value="CASINGS" {{ $product->type == 'CASINGS' ? 'selected' : '' }}>CASINGS</option>
-                                <option value="POWER SUPPLY" {{ $product->type == 'POWER SUPPLY' ? 'selected' : '' }}>POWER SUPPLY</option>
-                                <option value="SSD NVME" {{ $product->type == 'SSD NVME' ? 'selected' : '' }}>SSD NVME</option>
-                                <option value="HARD DISK" {{ $product->type == 'HARD DISK' ? 'selected' : '' }}>HARD DISK</option>
-                                <option value="FANS" {{ $product->type == 'FANS' ? 'selected' : '' }}>FANS</option>
-                                <option value="MONITORS" {{ $product->type == 'MONITORS' ? 'selected' : '' }}>MONITORS</option>
-                                <option value="ANTIVIRUS SOFTWARE" {{ $product->type == 'ANTIVIRUS SOFTWARE' ? 'selected' : '' }}>ANTIVIRUS SOFTWARE</option>
-                                <option value="KEYBOARDS" {{ $product->type == 'KEYBOARDS' ? 'selected' : '' }}>KEYBOARDS</option>
-                                <option value="MOUSE" {{ $product->type == 'MOUSE' ? 'selected' : '' }}>MOUSE</option>
-                                <option value="MOUSE PAD" {{ $product->type == 'MOUSE PAD' ? 'selected' : '' }}>MOUSE PAD</option>
-                                <option value="HEADSET" {{ $product->type == 'HEADSET' ? 'selected' : '' }}>HEADSET</option>
-                                <option value="SPEAKERS" {{ $product->type == 'SPEAKERS' ? 'selected' : '' }}>SPEAKERS</option>
-                                <option value="UPS" {{ $product->type == 'UPS' ? 'selected' : '' }}>UPS</option>
-                                <option value="TABLES" {{ $product->type == 'TABLES' ? 'selected' : '' }}>TABLES</option>
-                                <option value="THERMAL PASTE" {{ $product->type == 'THERMAL PASTE' ? 'selected' : '' }}>THERMAL PASTE</option>
-                                <option value="COOLING & LIGHTING" {{ $product->type == 'COOLING & LIGHTING' ? 'selected' : '' }}>COOLING & LIGHTING</option>
-                                <option value="COMMERCIAL SOLUTIONS" {{ $product->type == 'COMMERCIAL SOLUTIONS' ? 'selected' : '' }}>COMMERCIAL SOLUTIONS</option>
-                                <option value="STORAGE & NAS" {{ $product->type == 'STORAGE & NAS' ? 'selected' : '' }}>STORAGE & NAS</option>
-                                <option value="MONITORS & ACCESSORIES" {{ $product->type == 'MONITORS & ACCESSORIES' ? 'selected' : '' }}>MONITORS & ACCESSORIES</option>
-                                <option value="OPTICAL DRIVERS & PRINTERS" {{ $product->type == 'OPTICAL DRIVERS & PRINTERS' ? 'selected' : '' }}>OPTICAL DRIVERS & PRINTERS</option>
-                                <option value="SPEAKERS & HEADPHONES" {{ $product->type == 'SPEAKERS & HEADPHONES' ? 'selected' : '' }}>SPEAKERS & HEADPHONES</option>
-                                <option value="KEYBOARDS, MOUSE & GAMEPADS" {{ $product->type == 'KEYBOARDS, MOUSE & GAMEPADS' ? 'selected' : '' }}>KEYBOARDS, MOUSE & GAMEPADS</option>
-                                <option value="GRAPHICS TABLET / TAB" {{ $product->type == 'GRAPHICS TABLET / TAB' ? 'selected' : '' }}>GRAPHICS TABLET / TAB</option>
-                                <option value="DESKTOP WORKSTATIONS" {{ $product->type == 'DESKTOP WORKSTATIONS' ? 'selected' : '' }}>DESKTOP WORKSTATIONS</option>
-                                <option value="GAMING DESKTOPS" {{ $product->type == 'GAMING DESKTOPS' ? 'selected' : '' }}>GAMING DESKTOPS</option>
-                                <option value="BUDGET DESKTOP COMPUTERS" {{ $product->type == 'BUDGET DESKTOP COMPUTERS' ? 'selected' : '' }}>BUDGET DESKTOP COMPUTERS</option>
-                                <option value="CHAIRS" {{ $product->type == 'CHAIRS' ? 'selected' : '' }}>CHAIRS</option>
-                                <option value="CABLES" {{ $product->type == 'CABLES' ? 'selected' : '' }}>CABLES</option>
-                                <option value="LIVE STREAMING & RECORDING" {{ $product->type == 'LIVE STREAMING & RECORDING' ? 'selected' : '' }}>LIVE STREAMING & RECORDING</option>
-                                <option value="EXPANSION CARDS & NETWORKING" {{ $product->type == 'EXPANSION CARDS & NETWORKING' ? 'selected' : '' }}>EXPANSION CARDS & NETWORKING</option>
-                                <option value="GIFT VOUCHER" {{ $product->type == 'GIFT VOUCHER' ? 'selected' : '' }}>GIFT VOUCHER</option>
+                    <fieldset class="type" >
+                        <div class="body-title" >Select Furniture Category</div>
+                        <div class="select flex-grow" >
+                            <select id="type" name="type" >
+                                <option value="">Select a Category</option>
+                                <option value="SOFAS" {{ $product->type == 'SOFAS' ? 'selected' : '' }}>Sofas</option>
+                                <option value="ARMCHAIRS" {{ $product->type == 'ARMCHAIRS' ? 'selected' : '' }}>Armchairs</option>
+                                <option value="DINING_TABLES" {{ $product->type == 'DINING_TABLES' ? 'selected' : '' }}>Dining Tables</option>
+                                <option value="DINING_CHAIRS" {{ $product->type == 'DINING_CHAIRS' ? 'selected' : '' }}>Dining Chairs</option>
+                                <option value="COFFEE_TABLES" {{ $product->type == 'COFFEE_TABLES' ? 'selected' : '' }}>Coffee Tables</option>
+                                <option value="SIDE_TABLES" {{ $product->type == 'SIDE_TABLES' ? 'selected' : '' }}>Side Tables</option>
+                                <option value="BEDS" {{ $product->type == 'BEDS' ? 'selected' : '' }}>Beds</option>
+                                <option value="WARDROBES" {{ $product->type == 'WARDROBES' ? 'selected' : '' }}>Wardrobes</option>
+                                <option value="DRESSERS" {{ $product->type == 'DRESSERS' ? 'selected' : '' }}>Dressers</option>
+                                <option value="BOOKCASES" {{ $product->type == 'BOOKCASES' ? 'selected' : '' }}>Bookcases</option>
+                                <option value="TV_STANDS" {{ $product->type == 'TV_STANDS' ? 'selected' : '' }}>TV Stands</option>
+                                <option value="CONSOLE_TABLES" {{ $product->type == 'CONSOLE_TABLES' ? 'selected' : '' }}>Console Tables</option>
+                                <option value="OFFICE_DESKS" {{ $product->type == 'OFFICE_DESKS' ? 'selected' : '' }}>Office Desks</option>
+                                <option value="OFFICE_CHAIRS" {{ $product->type == 'OFFICE_CHAIRS' ? 'selected' : '' }}>Office Chairs</option>
+                                <option value="BAR_STOOLS" {{ $product->type == 'BAR_STOOLS' ? 'selected' : '' }}>Bar Stools</option>
+                                <option value="BENCHES" {{ $product->type == 'BENCHES' ? 'selected' : '' }}>Benches</option>
+                                <option value="LOUNGE_CHAIRS" {{ $product->type == 'LOUNGE_CHAIRS' ? 'selected' : '' }}>Lounge Chairs</option>
+                                <option value="RECLINERS" {{ $product->type == 'RECLINERS' ? 'selected' : '' }}>Recliners</option>
+                                <option value="FUTONS" {{ $product->type == 'FUTONS' ? 'selected' : '' }}>Futons</option>
+                                <option value="DAYBEDS" {{ $product->type == 'DAYBEDS' ? 'selected' : '' }}>Daybeds</option>
+                                <option value="NIGHTSTANDS" {{ $product->type == 'NIGHTSTANDS' ? 'selected' : '' }}>Nightstands</option>
+                                <option value="CABINETS" {{ $product->type == 'CABINETS' ? 'selected' : '' }}>Cabinets</option>
+                                <option value="SHELVING_UNITS" {{ $product->type == 'SHELVING_UNITS' ? 'selected' : '' }}>Shelving Units</option>
+                                <option value="ENTERTAINMENT_CENTERS" {{ $product->type == 'ENTERTAINMENT_CENTERS' ? 'selected' : '' }}>Entertainment Centers</option>
+                                <option value="ACCENT_CHAIRS" {{ $product->type == 'ACCENT_CHAIRS' ? 'selected' : '' }}>Accent Chairs</option>
+                                <option value="OUTDOOR_FURNITURE" {{ $product->type == 'OUTDOOR_FURNITURE' ? 'selected' : '' }}>Outdoor Furniture</option>
+                                <option value="KIDS_FURNITURE" {{ $product->type == 'KIDS_FURNITURE' ? 'selected' : '' }}>Kids Furniture</option>
+                                <option value="STORAGE_SOLUTIONS" {{ $product->type == 'STORAGE_SOLUTIONS' ? 'selected' : '' }}>Storage Solutions</option>
+                                <option value="HOME_OFFICE" {{ $product->type == 'HOME_OFFICE' ? 'selected' : '' }}>Home Office</option>
+                                <option value="LIGHTING_FIXTURES" {{ $product->type == 'LIGHTING_FIXTURES' ? 'selected' : '' }}>Lighting Fixtures</option>
+                                <option value="MIRRORS" {{ $product->type == 'MIRRORS' ? 'selected' : '' }}>Mirrors</option>
+                                <option value="RUGS" {{ $product->type == 'RUGS' ? 'selected' : '' }}>Rugs</option>
+                                <option value="DECORATIVE_PILLOWS" {{ $product->type == 'DECORATIVE_PILLOWS' ? 'selected' : '' }}>Decorative Pillows</option>
+                                <option value="CURTAINS" {{ $product->type == 'CURTAINS' ? 'selected' : '' }}>Curtains</option>
                             </select>
                         </div>
-                    </fieldset><br/>
+                    </fieldset>
+                    
+                    <br/>
 
                     <!-- Tags -->
                     <fieldset class="tags">
