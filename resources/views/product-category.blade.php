@@ -102,129 +102,119 @@
 			</div>
 		<!-- End Hero Section -->
 
-		
-
 		<div class="untree_co-section product-section before-footer-section">
-		    <div class="container">
-		      	<div class="row">
+			<div class="container">
+				<div class="row">
+					@foreach($products as $product)
+						<!-- Product Column -->
+						<div class="col-12 col-md-4 col-lg-3 mb-5 d-flex">
+							<a class="product-item w-100 d-flex flex-column" href="#" style="text-decoration: none; color: inherit;">
+								<!-- Image container with fixed aspect ratio -->
+								<div class="product-image-container" style="height: 200px; overflow: hidden;">
+									@if($product->images->isNotEmpty())
+										<img src="{{ asset($product->images->first()->image_path) }}" 
+											class="img-fluid product-thumbnail w-100 h-100 object-fit-cover" 
+											alt="{{ $product->name }}">
+									@else
+										<img src="{{ $product['image'] }}" 
+											class="img-fluid product-thumbnail w-100 h-100 object-fit-cover" 
+											alt="Default product image">
+									@endif
+								</div>
+								
+								<!-- Product info with fixed height -->
+								<div class="product-info p-3 flex-grow-1 d-flex flex-column" style="height: 120px;">
+									<h3 class="product-title mb-2" style="font-size: 1rem; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+										{{ $product->name }}
+									</h3>
+									
+									<div class="mt-auto">
+										@if($product->discounted_price < $product->retail_price)
+											<div>
+												<strong class="product-price" style="font-size: 1.1rem;">${{ number_format($product->discounted_price, 2) }}</strong>
+												<span class="original-price text-muted" style="font-size: 0.9rem;"><del>${{ number_format($product->retail_price, 2) }}</del></span>
+											</div>
+										@else
+											<strong class="product-price" style="font-size: 1.1rem;">${{ number_format($product->retail_price, 2) }}</strong>
+										@endif
+									</div>
+								</div>
 
-		      		<!-- Start Column 1 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-3.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
+								<!-- Add to cart button -->
+								<div class="p-2 text-center">
+									<span class="icon-cross">
+										<img src="{{ asset('images/cross.svg') }}" class="img-fluid" alt="Add to cart" style="width: 20px;">
+									</span>
+								</div>
+							</a>
+						</div>
+					@endforeach
+				</div>
+				
+				<!-- Pagination Links -->
+				<div class="row" style="display: flex; justify-content: center; margin: 20px 0;">
+					<div class="col-12" style="display: flex; justify-content: center;">
+						<nav>
+							<ul style="display: flex; list-style: none; padding: 0; margin: 0; gap: 8px; font-family: 'Inter', sans-serif; align-items: center;">
+								<!-- Previous Button -->
+								@if ($products->onFirstPage())
+									<li>
+										<span style="color: #cccccc; padding: 8px; font-size: 14px; opacity: 0.5; cursor: not-allowed;">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<path d="M15 18l-6-6 6-6"/>
+											</svg>
+										</span>
+									</li>
+								@else
+									<li>
+										<a href="{{ $products->previousPageUrl() }}" style="color: #3b5d50; text-decoration: none; padding: 8px; font-size: 14px; border-radius: 4px; transition: background-color 0.3s, color 0.3s;" onmouseover="this.style.backgroundColor='#3b5d50'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#3b5d50';">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<path d="M15 18l-6-6 6-6"/>
+											</svg>
+										</a>
+									</li>
+								@endif
 
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 1 -->
-						
-					<!-- Start Column 2 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-1.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
+								<!-- Page Numbers -->
+								@foreach ($products->links()->elements[0] as $page => $url)
+									<li>
+										@if ($page == $products->currentPage())
+											<span style="background-color: #3b5d50; color: white; padding: 8px 12px; border-radius: 4px; font-size: 14px; font-weight: 500;">{{ $page }}</span>
+										@elseif ($page === '...')
+											<span style="color: #3b5d50; padding: 8px 12px; font-size: 14px;">{{ $page }}</span>
+										@else
+											<a href="{{ $url }}" style="color: #3b5d50; text-decoration: none; padding: 8px 12px; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, color 0.3s;" onmouseover="this.style.backgroundColor='#3b5d50'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#3b5d50';">{{ $page }}</a>
+										@endif
+									</li>
+								@endforeach
 
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 2 -->
-
-					<!-- Start Column 3 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-2.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Kruzo Aero Chair</h3>
-							<strong class="product-price">$78.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
+								<!-- Next Button -->
+								@if ($products->hasMorePages())
+									<li>
+										<a href="{{ $products->nextPageUrl() }}" style="color: #3b5d50; text-decoration: none; padding: 8px; font-size: 14px; border-radius: 4px; transition: background-color 0.3s, color 0.3s;" onmouseover="this.style.backgroundColor='#3b5d50'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#3b5d50';">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<path d="M9 18l6-6-6-6"/>
+											</svg>
+										</a>
+									</li>
+								@else
+									<li>
+										<span style="color: #cccccc; padding: 8px; font-size: 14px; opacity: 0.5; cursor: not-allowed;">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<path d="M9 18l6-6-6-6"/>
+											</svg>
+										</span>
+									</li>
+								@endif
+							</ul>
+						</nav>
 					</div>
-					<!-- End Column 3 -->
-
-					<!-- Start Column 4 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-3.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Ergonomic Chair</h3>
-							<strong class="product-price">$43.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div>
-					<!-- End Column 4 -->
-
-
-					<!-- Start Column 1 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-3.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 1 -->
-						
-					<!-- Start Column 2 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-1.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Nordic Chair</h3>
-							<strong class="product-price">$50.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div> 
-					<!-- End Column 2 -->
-
-					<!-- Start Column 3 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-2.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Kruzo Aero Chair</h3>
-							<strong class="product-price">$78.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div>
-					<!-- End Column 3 -->
-
-					<!-- Start Column 4 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
-							<img src="images/product-3.png" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Ergonomic Chair</h3>
-							<strong class="product-price">$43.00</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div>
-					<!-- End Column 4 -->
-
-		      	</div>
-		    </div>
+				</div>
+			</div>
 		</div>
 
+		
+		<!-- End Product Section -->	
 
 		<!-- Start Footer Section -->
 		 @include('layouts.footer2')
