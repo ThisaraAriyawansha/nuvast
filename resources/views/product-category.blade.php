@@ -112,7 +112,7 @@
 								<!-- Image container with fixed aspect ratio -->
 								<div class="product-image-container" style="height: 200px; overflow: hidden;">
 									@if($product->images->isNotEmpty())
-										<img src="{{ asset($product->images->first()->image_path) }}" 
+										<img src="{{ $product['image'] }}" 
 											class="img-fluid product-thumbnail w-100 h-100 object-fit-cover" 
 											alt="{{ $product->name }}">
 									@else
@@ -131,8 +131,8 @@
 									<div class="mt-auto">
 										@if($product->discounted_price < $product->retail_price)
 											<div>
-												<strong class="product-price" style="font-size: 1.1rem;">${{ number_format($product->discounted_price, 2) }}</strong>
-												<span class="original-price text-muted" style="font-size: 0.9rem;"><del>${{ number_format($product->retail_price, 2) }}</del></span>
+												<strong class="product-price" style="font-size: 1.1rem;">Rs. {{ number_format($product->discounted_price, 2) }}</strong>
+												<span class="original-price text-muted" style="font-size: 0.9rem;"><del>Rs. {{ number_format($product->retail_price, 2) }}</del></span>
 											</div>
 										@else
 											<strong class="product-price" style="font-size: 1.1rem;">${{ number_format($product->retail_price, 2) }}</strong>
@@ -141,11 +141,16 @@
 								</div>
 
 								<!-- Add to cart button -->
-								<div class="p-2 text-center">
-									<span class="icon-cross">
-										<img src="{{ asset('images/cross.svg') }}" class="img-fluid" alt="Add to cart" style="width: 20px;">
-									</span>
-								</div>
+<div class="p-2 text-center" 
+     style="cursor: pointer;"
+     data-bs-toggle="modal" 
+     data-bs-target="#exampleModal-Cart" 
+     onclick="addToCartProduct({{ $product['id'] }});">
+    <span class="icon-cross">
+        <img src="{{ asset('images/cross.svg') }}" class="img-fluid" alt="Add to cart" style="width: 20px;">
+    </span>
+</div>
+
 							</a>
 						</div>
 					@endforeach
@@ -213,7 +218,7 @@
 			</div>
 		</div>
 
-		
+		 @include('layouts.modals')
 		<!-- End Product Section -->	
 
 		<!-- Start Footer Section -->
@@ -227,3 +232,68 @@
 	</body>
 
 </html>
+
+
+
+<script>
+
+function addToCartProduct(prodID) {
+    // Fetch product details from API
+    fetch(`/api/product/${prodID}`)
+        .then(response => response.json())
+        .then(product => {
+            // Fetch product quantity from API before adding to cart
+            fetch(`/product-quantity/${prodID}`)
+                .then(response => response.json())
+                .then(data => {
+                    const availableQty = data.qty;
+
+                    if (availableQty <= 0) {
+                        alert('This product is out of stock.');
+                        return;
+                    }
+
+                    // Check if product already exists in cart
+                    const existingCartItem = cart.find(item => item.id == prodID);
+
+                    if (existingCartItem) {
+                        // If product exists, check available stock before incrementing quantity
+                        if (existingCartItem.quantity < availableQty) {
+                            existingCartItem.quantity += 1;
+                        } else {
+                            alert('Only ' + availableQty + ' items available in stock.');
+                            return;
+                        }
+                    } else {
+                        // If product doesn't exist, add it with quantity 1
+                        cart.push({
+                            id: product.id,
+                            name: product.name,
+                            price: product.discounted_price,
+                            image: product.image,
+                            quantity: 1
+                        });
+                    }
+
+                    // Update cart count in UI
+                    updateCartCount();
+
+                    // Show success message
+                    updateCartModal(product);
+
+                    // Save cart to localStorage
+                    saveCartToStorage();
+
+                    // Log cart for debugging
+                    console.log('Current cart:', cart);
+
+                    // Update cart modal
+                    displayCartItems();
+                })
+                .catch(error => console.error('Error fetching product quantity:', error));
+        })
+        .catch(error => console.error('Error fetching product details:', error));
+}
+
+
+</script>
