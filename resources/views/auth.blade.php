@@ -30,8 +30,8 @@
 
     <style>
         :root {
-            --primary: #000000ff;
-            --primary-dark: #151516ff;
+            --primary: #3b5d50;
+            --primary-dark: #3b5d50;
         }
         body {
             font-family: 'Orbitron', sans-serif;
@@ -44,8 +44,7 @@
             box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
         }
         .auth-image {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('assets/images/auth/hero-image.fit_lim.v1738941897.webp');
+            background: url('assets/images/auth/photo-1695457264650-c0bd2202fb5e.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -78,7 +77,7 @@
             padding: 0.75rem 1rem;
         }
         .form-input:focus {
-            border-color: var(--primary);
+            border-color: #3b5d50;
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
         .btn-primary {
@@ -100,12 +99,12 @@
 <body>
 @include('layouts.nav-2')
 
-    <div class="h-[12dvh]"></div>
+    <div class="h-[1dvh]"></div>
 
         <nav style="display: flex; align-items: center; padding: 1px 4px;    max-width: 1200px; margin: 10px auto;" aria-label="Breadcrumb">
             <ol style="display: inline-flex; align-items: center; margin: 0; padding: 0; list-style: none; flex-wrap: wrap;">
                 <li style="display: inline-flex; align-items: center;">
-                    <a href="/home" style="display: inline-flex; align-items: center; font-size: 14px; font-family: 'Orbitron', sans-serif; font-weight: 500; color: #4b5563; text-decoration: none; transition: color 0.3s ease, transform 0.2s ease; padding: 6px 10px; border-radius: 6px;">
+                    <a href="/home" style="display: inline-flex; align-items: center; font-size: 14px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px; color: #4b5563; text-decoration: none; transition: color 0.3s ease, transform 0.2s ease; padding: 6px 10px; border-radius: 6px;">
                         <svg style="width: 18px; height: 18px; margin-right: 8px; fill: none; stroke: #6b7280; stroke-width: 2;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
@@ -117,7 +116,7 @@
                     <svg style="width: 16px; height: 16px; color: #9ca3af; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                     </svg>
-                    <span style="margin-left: 8px; font-size: 14px; font-weight: 600; color: #374151; padding: 6px 10px; border-radius: 6px; font-family: 'Orbitron', sans-serif;">Login</span>
+                    <span style="margin-left: 8px; font-size: 14px; font-weight: 600; color: #374151; padding: 6px 10px; border-radius: 6px; font-family: 'Inter', sans-serif; letter-spacing: 1px;">Login</span>
                 </li>
             </ol>
         </nav>
@@ -129,36 +128,39 @@
             <!-- Left Side - Image -->
             <div class="auth-image hidden lg:flex flex-col justify-between p-10 text-white">
                 <div>
-                    <h2 class="text-3xl font-bold mb-4 text-white" style="font-family: 'Orbitron', sans-serif;">NovaLink Computers</h2>
-                    <p class="text-lg" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">Premium computing solutions for professionals and enthusiasts</p>
+                    <h2 class="text-3xl font-bold mb-4 text-white" style="font-family: 'Inter', sans-serif; font-weight: 400; letter-spacing: 1px;">NUVAST Furnitures</h2>
+                    <p class="text-lg text-white" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
+                        Elegant and modern furniture crafted for comfort and style
+                    </p>
                 </div>
                 <div class="flex space-x-6">
                     <div>
-                        <div class="w-12 h-12 bg-black bg-opacity-20 rounded-full flex items-center justify-center mb-2">
-                            <i class="fas fa-bolt text-xl"></i>
+                        <div class="w-12 h-12 bg-[#3b5d50] bg-opacity-20 rounded-full flex items-center justify-center mb-2">
+                            <i class="fas fa-couch text-xl"></i> <!-- Sofa Icon -->
                         </div>
-                        <p style="font-family: 'Orbitron', sans-serif;">High Performance</p>
+                        <p  class="text-white" style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Stylish Designs</p>
                     </div>
                     <div>
-                        <div class="w-12 h-12 bg-black bg-opacity-20 rounded-full flex items-center justify-center mb-2">
-                            <i class="fas fa-shield-alt text-xl"></i>
+                        <div class="w-12 h-12 bg-[#3b5d50] bg-opacity-20 rounded-full flex items-center justify-center mb-2">
+                            <i class="fas fa-tree text-xl"></i> <!-- Wooden/eco-friendly Icon -->
                         </div>
-                        <p style="font-family: 'Orbitron', sans-serif;">Reliable Hardware</p>
+                        <p class="text-white" style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Quality Craftsmanship</p>
                     </div>
                 </div>
             </div>
+
 
             <!-- Right Side - Form -->
             <div class="p-8 lg:p-12">
                 <div x-data="{ tab: 'login' }">
                     <!-- Tab buttons -->
                     <div class="auth-tabs flex mb-8">
-                        <button @click="tab = 'login'"  style="font-family: 'Orbitron', sans-serif;"
+                        <button @click="tab = 'login'"  style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;"
                                 :class="tab === 'login' ? 'active' : 'text-gray-500 hover:text-gray-700'"
                                 class="auth-tab">
                             Login
                         </button>
-                        <button @click="tab = 'register'"  style="font-family: 'Orbitron', sans-serif;"
+                        <button @click="tab = 'register'"  style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;"
                                 :class="tab === 'register' ? 'active' : 'text-gray-500 hover:text-gray-700'"
                                 class="auth-tab">
                             Register
@@ -174,7 +176,7 @@
 
                     <!-- Login Form -->
                     <div x-show="tab === 'login'" x-transition>
-                        <h3 class="text-2xl font-bold mb-6 text-gray-800" style="font-family: 'Orbitron', sans-serif;">Welcome Back</h3>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800" style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Welcome Back</h3>
                         @if(session('customer_id'))
                             <script>window.location.href = "{{ route('customer.dashboard') }}";</script>
                         @else
@@ -192,7 +194,7 @@
                                 </div>
                                 
                                 <button type="submit" 
-                                        class="btn-primary w-full text-white py-3 px-4 rounded-lg font-medium mt-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
+                                        class="btn-primary w-full text-white py-3 px-4 rounded-lg font-medium mt-4 bg-[#3b5d50]" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
                                     LOGIN
                                 </button>
                             </form>
@@ -201,7 +203,7 @@
 
                     <!-- Register Form -->
                     <div x-show="tab === 'register'" x-transition>
-                        <h3 class="text-2xl font-bold mb-6 text-gray-800" style="font-family: 'Orbitron', sans-serif;">Create Account</h3>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800" style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Create Account</h3>
                         <form action="{{ route('customer.register') }}" method="POST" class="space-y-4">
                             @csrf
                             <div>
@@ -243,22 +245,30 @@
                                 @error('user-email') <div class="text-red-500 text-sm mt-1">{{ $message }}</div> @enderror
                             </div>
                             <button type="submit" 
-                                    class="btn-primary w-full text-white py-3 px-4 rounded-lg font-medium mt-4" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
+                                    class="btn-primary w-full text-white py-3 px-4 rounded-lg font-medium mt-4 bg-[#3b5d50]" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
                                 REGISTER
                             </button>
                         </form>
-                        <div class="mt-6 text-center text-sm text-gray-600" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
-                            By registering, you agree to our
-                            <a href="#" class="font-medium text-blue-600 hover:text-blue-500" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">Terms of Service</a>
-                            and
-                            <a href="#" class="font-medium text-blue-600 hover:text-blue-500" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">Privacy Policy</a>.
-                        </div>
+                            <div class="mt-6 text-center text-sm text-gray-600" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
+                                By registering, you agree to our
+                                <a href="#" class="font-medium text-blue-600 hover:text-blue-500" 
+                                style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none;">
+                                Terms of Service
+                                </a>
+                                and
+                                <a href="#" class="font-medium text-blue-600 hover:text-blue-500" 
+                                style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none;">
+                                Privacy Policy
+                                </a>.
+                            </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<br/><br/><br/><br/>
 
 @include('layouts.footer2')
 
