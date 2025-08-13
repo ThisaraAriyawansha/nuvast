@@ -9,6 +9,7 @@
 
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
+    <script src="assets/js/tailwind-cdn.js"></script>
 
 		<!-- Bootstrap CSS -->
 		<link href="publicsite/css/bootstrap.min.css" rel="stylesheet">
@@ -108,7 +109,7 @@
 					@foreach($products as $product)
 						<!-- Product Column -->
 						<div class="col-12 col-md-4 col-lg-3 mb-5 d-flex">
-							<a class="product-item w-100 d-flex flex-column" href="#" style="text-decoration: none; color: inherit;">
+							<div class="product-item w-100 d-flex flex-column"  style="text-decoration: none; color: inherit;">
 								<!-- Image container with fixed aspect ratio -->
 								<div class="product-image-container" style="height: 200px; overflow: hidden;">
 									@if($product->images->isNotEmpty())
@@ -141,17 +142,17 @@
 								</div>
 
 								<!-- Add to cart button -->
-<div class="p-2 text-center" 
-     style="cursor: pointer;"
-     data-bs-toggle="modal" 
-     data-bs-target="#exampleModal-Cart" 
-     onclick="addToCartProduct({{ $product['id'] }});">
-    <span class="icon-cross">
-        <img src="{{ asset('images/cross.svg') }}" class="img-fluid" alt="Add to cart" style="width: 20px;">
-    </span>
-</div>
+								<div class="p-2 text-center" 
+									style="cursor: pointer;"
+									data-bs-toggle="modal" 
+									data-bs-target="#exampleModal-Cart" 
+									onclick="addToCartProduct({{ $product['id'] }});">
+									<span class="icon-cross">
+										<img src="{{ asset('images/cross.svg') }}" class="img-fluid" alt="Add to cart" style="width: 20px;">
+									</span>
+								</div>
 
-							</a>
+							</div>
 						</div>
 					@endforeach
 				</div>
