@@ -7,9 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow" />
     <!-- Favicon -->
-    <title>NovaLink Computers | Dashboard</title>
-    <meta name="description" content="NovaLink Computers offer the best computers available at the market">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/n_logo_remove_new.png" />
     <!-- CSS -->
     <script src="assets/js/tailwind-cdn.js"></script>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -22,13 +19,23 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     
+
+    	<link href="publicsite/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="publicsite/css/tiny-slider.css" rel="stylesheet">
+		<link href="publicsite/css/style.css" rel="stylesheet">
+		<title>NUVAST Furnitures</title>
+		<link rel="shortcut icon" href="green_n.png">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <style>
         /* Modern Typography */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         :root {
-            --primary-color: #000000ff;
-            --primary-hover: #353535ff;
+            --primary-color: #3b5d50;
+            --primary-hover: #294f40ff;
             --success-color: #10b981;
             --warning-color: #f59e0b;
             --danger-color: #ef4444;
@@ -497,7 +504,7 @@
 <body>
     <div class="main-wrapper flex flex-col min-h-dvh">
         @include('layouts.nav-2')
-        <div class="h-[13dvh]"></div>
+        <div class="h-[1dvh]"></div>
 
 
         <!-- Account Page Area -->
@@ -529,11 +536,7 @@
                                             <i class="pe-7s-home me-2"></i>Dashboard
                                         </button>
 
-                                        <button onclick="handleNavClick()" class="nav-link" id="nav-bidding-tab" data-bs-toggle="tab"
-                                            data-bs-target="#nav-bidding" type="button" role="tab"
-                                            aria-controls="nav-bidding" aria-selected="false">
-                                            <i class="pe-7s-hammer me-2"></i>My Bids
-                                        </button>
+
 
                                         <button onclick="handleNavClick()" class="nav-link" id="nav-orders-tab" data-bs-toggle="tab"
                                             data-bs-target="#nav-orders" type="button" role="tab"
@@ -619,12 +622,6 @@
                                                                 <i class="pe-7s-bag me-2" style="font-size: 16px;"></i>View Recent Orders
                                                             </a>
 
-                                                            <!-- Check Active Bids (Triggers Bids Tab) -->
-                                                            <a href="#nav-bidding"
-                                                            onclick="handleNavClick(); document.getElementById('nav-bidding-tab').click();"
-                                                            style="padding: 6px 12px; font-size: 13px; border: 1px solid black; background: transparent; color: black; border-radius: 4px; text-decoration: none; display: inline-flex; align-items: center;">
-                                                                <i class="pe-7s-hammer me-2" style="font-size: 16px;"></i>Check Active Bids
-                                                            </a>
 
                                                             <!-- Update Profile (Triggers Account Details Tab) -->
                                                             <a href="#nav-details"
@@ -642,69 +639,7 @@
                                     </div>
 
                                     <!-- Bidding Tab -->
-                                    <div class="tab-pane fade" id="nav-bidding" role="tabpanel"
-                                        aria-labelledby="nav-bidding-tab">
-                                        <div class="page-header">
-                                            <h2 class="page-title">My Bids</h2>
-                                            <p class="welcome-text">Track your bidding activity and manage active bids</p>
-                                        </div>
-                                        
-                                        <div class="data-table">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Product</th>
-                                                            <th>Your Bid</th>
-                                                            <th>Highest Bid</th>
-                                                            <th>Status</th>
-                                                            <th>Expires</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($bids as $bid)
-                                                            @php
-                                                                $highestBid = \App\Models\Bid::where('product_id', $bid->product_id)->max('bid_amount');
-                                                                $status = $bid->bid_amount == $highestBid ? 'Highest Bid' : 'Outbid';
-                                                                $badgeClass = $status == 'Highest Bid' ? 'bg-success' : 'bg-warning';
-                                                                $dealExpired = \Carbon\Carbon::parse($bid->product->deal_end)->isPast();
-                                                            @endphp
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="product-info">
-                                                                        <img src="{{ asset($bid->product->image) }}"
-                                                                            alt="{{ $bid->product->name }}" class="product-image">
-                                                                        <span class="product-name">{{ $bid->product->name }}</span>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="fw-semibold">Rs.{{ number_format($bid->bid_amount, 2) }}</td>
-                                                                <td class="fw-semibold">Rs.{{ number_format($highestBid, 2) }}</td>
-                                                                <td><span class="badge {{ $badgeClass }}">{{ $status }}</span></td>
-                                                                <td>{{ \Carbon\Carbon::parse($bid->product->deal_end)->format('M d, Y') }}</td>
-                                                                <td>
-                                                                    @if ($dealExpired && $status == 'Highest Bid')
-                                                                        <a href="{{ url('bidPay?product_id=' . $bid->product->id . '&product_name=' . urlencode($bid->product->name) . '&highest_bid=' . $highestBid) }}"
-                                                                            class="btn-modern btn-modern-sm">
-                                                                            Pay Now
-                                                                        </a>
-                                                                    @elseif (!$dealExpired)
-                                                                        <a href="{{ url('biddings?product-id=' . $bid->product->id) }}"
-                                                                        style="padding: 4px 8px; font-size: 12px; border: 1px solid black; background: transparent; color: black; border-radius: 4px; text-decoration: none; display: inline-block;">
-                                                                        Update Bid
-                                                                        </a>
-
-                                                                    @else
-                                                                        <span class="badge bg-secondary">Bidding Closed</span>
-                                                                    @endif
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
 
                                     <!-- Orders Tab -->
                                     <div class="tab-pane fade" id="nav-orders" role="tabpanel"
@@ -857,7 +792,6 @@
         <div class="flex-grow"></div>
         
         <!-- footer -->
-        @include('layouts.footer2')
     </div>
 
     <!-- Order Details Modals -->
@@ -870,7 +804,7 @@
                     <h5 class="modal-title" id="bitOrderModalLabel{{ $payment->id }}">
                         <i class="pe-7s-note me-2"></i>Order Details #{{ $payment->id }}
                     </h5>
-                <button type="button" data-bs-dismiss="modal" style="padding: 8px 16px; background: black; color: white; border: 1px solid white; border-radius: 6px; font-size: 14px; display: inline-flex; align-items: center;">
+                <button type="button" data-bs-dismiss="modal" style="padding: 8px 16px; background: #3b5d50; color: white; border: 1px solid white; border-radius: 6px; font-size: 14px; display: inline-flex; align-items: center;">
                     <i class="pe-7s-close me-2" style="color: white; font-size: 16px;"></i>
                 </button>
                             </div>
@@ -954,7 +888,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" data-bs-dismiss="modal" style="padding: 8px 16px; background: black; color: white; border: 1px solid white; border-radius: 6px; font-size: 14px; display: inline-flex; align-items: center;">
+                <button type="button" data-bs-dismiss="modal" style="padding: 8px 16px; background: #3b5d50; color: white; border: 1px solid white; border-radius: 6px; font-size: 14px; display: inline-flex; align-items: center;">
                     <i class="pe-7s-power me-2" style="color: white; font-size: 16px;"></i>Close
                 </button>
 
@@ -967,6 +901,9 @@
 
     <!-- Include existing modals -->
     @include('layouts.modals')
+
+    <br/><br/><br/>
+            @include('layouts.footer2')
 
     <!-- Global Vendor, plugins JS -->
     <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>

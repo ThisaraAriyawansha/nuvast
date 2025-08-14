@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Bid;
 use App\Models\Customer;
 use App\Models\BitOrder;
 use App\Models\Payment;
@@ -36,9 +35,7 @@ class CustomerDashboardController extends Controller
             });
     
         $customerId = session('customer_id', null);
-        $bids = Bid::with('product')
-            ->where('customer_id', $customerId)
-            ->get();
+
     
         // Retrieve customer from session
         $customer = Customer::find(Session::get('customer_id'));
@@ -51,7 +48,6 @@ class CustomerDashboardController extends Controller
         // Pass the data to the 'dashboard' view
         return view('dashboard', [
             'products' => $products,
-            'bids' => $bids,
             'customer' => $customer,
             'payments' => $payments, // Add payments to the view
         ]);
