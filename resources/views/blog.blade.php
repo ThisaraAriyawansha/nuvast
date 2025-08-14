@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
   <link rel="shortcut icon" href="green_n.png">
-
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
 
-    <script src="assets/js/tailwind-cdn.js"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link href="publicsite/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="publicsite/css/tiny-slider.css" rel="stylesheet">
+  <link href="publicsite/css/style.css" rel="stylesheet">
+  
+  <title>NUVAST Furnitures - Blog</title>
+  
+  <style>
 
-
-		<!-- Bootstrap CSS -->
-		<link href="publicsite/css/bootstrap.min.css" rel="stylesheet">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-		<link href="publicsite/css/tiny-slider.css" rel="stylesheet">
-		<link href="publicsite/css/style.css" rel="stylesheet">
-		<title>NUVAST Furnitures</title>
-	</head>
-        <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
         
             /* Hero section animations */
@@ -72,269 +73,253 @@
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             }
 
-        </style>
-
-	<body>
-
-		<!-- Start Header/Navigation -->
-		<!-- Start Header/Navigation -->
-		@include('layouts.nav-2')
-		<!-- End Header/Navigation -->
-
-		<!-- Start Hero Section -->
-			<div class="hero">
-				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-                                <h1 style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Blog</h1>
-								<p class="mb-4">Insights, trends, and design inspiration from the world of modern living.</p>
-								<p><a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-secondary me-2">Shop Now</a><a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-white-outline">Explore</a></p>
-							</div>
-						</div>
-						<div class="col-lg-7">
-							<div class="hero-img-wrap">
-								<img src="publicsite/images/Taylor1.png" class="img-fluid">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		<!-- End Header/Navigation -->
 
 
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #34495e;
+      --accent-color: #3498db;
+      --text-color: #333;
+      --light-gray: #f8f9fa;
+      --medium-gray: #e9ecef;
+      --dark-gray: #6c757d;
+      --white: #ffffff;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    /* Blog Section Enhancements */
+    .blog-section {
+      padding: 5rem 0;
+      background-color: var(--light-gray);
+    }
+    
+    .blog-section .container {
+      max-width: 1200px;
+    }
+    
+    .post-entry {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+    
+    .post-entry:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .post-thumbnail {
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .post-thumbnail img {
+      transition: transform 0.5s ease;
+    }
+    
+    .post-entry:hover .post-thumbnail img {
+      transform: scale(1.03);
+    }
+    
+    .post-content-entry {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .post-content-entry h3 a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    
+    .post-content-entry h3 a:hover {
+      color: var(--accent-color);
+    }
+    
+    .meta {
+      font-size: 0.85rem;
+      color: var(--dark-gray);
+      margin-bottom: 1rem;
+    }
+    
+    .meta a {
+      color: var(--dark-gray);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .meta a:hover {
+      color: var(--accent-color);
+    }
+    
+    .blog-description {
+      color: var(--secondary-color);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .blog-tags {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--medium-gray);
+    }
+    
+    .tags-label {
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+      margin-right: 0.5rem;
+    }
+    
+    .tag-list {
+      display: inline-flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .tag-item {
+      margin-right: 0.5rem;
+    }
+    
+    .tag-item a {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background-color: var(--light-gray);
+      color: var(--secondary-color);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .tag-item a:hover {
+      background-color: var(--accent-color);
+      color: var(--white);
+    }
+    
+    .no-posts {
+      text-align: center;
+      padding: 3rem;
+      width: 100%;
+    }
+    
+    .no-posts-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.7;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .blog-section {
+        padding: 3rem 0;
+      }
+      
+      .post-entry {
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
 
-		
+<body>
+  <!-- Start Header/Navigation -->
+  @include('layouts.nav-2')
+  <!-- End Header/Navigation -->
 
-		<!-- Start Blog Section -->
-		<div class="blog-section">
-			<div class="container">
-				
-				<div class="row">
+  <!-- Start Hero Section -->
+  <div class="hero">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-5">
+          <div class="intro-excerpt">
+            <h1 style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Blog</h1>
+            <p class="mb-4">Insights, trends, and design inspiration from the world of modern living.</p>
+            <p>
+              <a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-secondary me-2">Shop Now</a>
+              <a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-white-outline">Explore</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="hero-img-wrap">
+            <img src="publicsite/images/Taylor1.png" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Header/Navigation -->
 
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">First Time Home Owner Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
+  <!-- Start Blog Section -->
+  <div class="blog-section">
+    <div class="container">
+      <div class="row">
+        @forelse ($blogs as $blog)
+        <div class="col-12 col-sm-6 col-md-4 mb-5">
+          <div class="post-entry h-100 d-flex flex-column">
+            <a href="{{ route('blog.show')}}" class="post-thumbnail">
+              <div class="image-container" style="height: 250px; overflow: hidden;">
+                <img src="{{ $blog['image'] }}" alt="{{ $blog['title'] }}" 
+                  class="img-fluid w-100 h-100 object-fit-cover">
+              </div>
+            </a>
+            <div class="post-content-entry flex-grow-1 p-4 d-flex flex-column">
+              <h3 class="mb-3" style="font-size: 1.25rem; font-weight: 600;">
+                <a href="{{ route('blog.show')}}">{{ $blog['title'] }}</a>
+              </h3>
+              <div class="meta mb-3">
+                <span class="text-muted" style="font-size: 0.85rem;">
+                  by <a href="{{ route('blog.show')}}">Admin</a> on <a href="#">{{ $blog['date'] }}</a>
+                </span>
+              </div>
+              <p class="blog-description">
+                {{ Str::limit($blog['description'], 150, '...') }}
+              </p>
+              <div class="blog-tags">
+                <span class="tags-label">Tags:</span>
+                <ul class="tag-list">
+                  @foreach ($blog['tag'] as $tag)
+                    <li class="tag-item"><a href="#">{{ $tag }}</a></li>
+                  @endforeach
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        @empty
+          <div class="col-12">
+            <div class="no-posts">
+              <div class="no-posts-icon">📝</div>
+              <p>No blog posts available at the moment.</p>
+            </div>
+          </div>
+        @endforelse
+      </div>
+    </div>
+  </div>
+  <!-- End Blog Section -->  
 
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
+  <!-- Start Footer Section -->
+  @include('layouts.footer2')
+  <!-- End Footer Section -->  
 
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">First Time Home Owner Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">First Time Home Owner Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-sm-6 col-md-4 mb-5">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
-								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<!-- End Blog Section -->	
-
-		
-
-		<!-- Start Testimonial Slider -->
-		<div class="testimonial-section before-footer-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7 mx-auto text-center">
-						<h2 class="section-title">Testimonials</h2>
-					</div>
-				</div>
-
-				<div class="row justify-content-center">
-					<div class="col-lg-12">
-						<div class="testimonial-slider-wrap text-center">
-
-							<div id="testimonial-nav">
-								<span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
-								<span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
-							</div>
-
-							<div class="testimonial-slider">
-								
-								<div class="item">
-									<div class="row justify-content-center">
-										<div class="col-lg-8 mx-auto">
-
-											<div class="testimonial-block text-center">
-												<blockquote class="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-												</blockquote>
-
-												<div class="author-info">
-													<div class="author-pic">
-														<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-													</div>
-													<h3 class="font-weight-bold">Maria Jones</h3>
-													<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-								<!-- END item -->
-
-								<div class="item">
-									<div class="row justify-content-center">
-										<div class="col-lg-8 mx-auto">
-
-											<div class="testimonial-block text-center">
-												<blockquote class="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-												</blockquote>
-
-												<div class="author-info">
-													<div class="author-pic">
-														<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-													</div>
-													<h3 class="font-weight-bold">Maria Jones</h3>
-													<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-								<!-- END item -->
-
-								<div class="item">
-									<div class="row justify-content-center">
-										<div class="col-lg-8 mx-auto">
-
-											<div class="testimonial-block text-center">
-												<blockquote class="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-												</blockquote>
-
-												<div class="author-info">
-													<div class="author-pic">
-														<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-													</div>
-													<h3 class="font-weight-bold">Maria Jones</h3>
-													<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-								<!-- END item -->
-
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Testimonial Slider -->
-
-		
-
-		<!-- Start Footer Section -->
-		 @include('layouts.footer2')
-		<!-- End Footer Section -->	
-
-
-		<script src="publicsite/js/bootstrap.bundle.min.js"></script>
-		<script src="publicsite/js/tiny-slider.js"></script>
-		<script src="publicsite/js/custom.js"></script>
-	</body>
-
+  <script src="publicsite/js/bootstrap.bundle.min.js"></script>
+  <script src="publicsite/js/tiny-slider.js"></script>
+  <script src="publicsite/js/custom.js"></script>
+</body>
 </html>
