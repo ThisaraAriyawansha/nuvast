@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow" />
 		<title>NUVAST Furnitures</title>
-    <meta name="description" content="NovaLink Computers offer the best computers available at the market">
   <link rel="shortcut icon" href="green_n.png">
     <!-- CSS -->
     <script src="assets/js/tailwind-cdn.js"></script>

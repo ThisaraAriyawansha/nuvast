@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow" />
     <!-- Favicon -->
-    <title>NovaLink Computers | Your Cart</title>
-    <meta name="description" content="NovaLink Computers offer the best computers available at the market">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/n_logo_remove_new.png" />
+		<title>NUVAST Furnitures</title>
+    <meta name="description" content="NUVAST Furnitures">
+  <link rel="shortcut icon" href="green_n.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">    <!-- CSS
     ============================================ -->
     <script src="assets/js/tailwind-cdn.js"></script>
@@ -43,6 +43,9 @@
         .cart-container {
             max-width: 1200px;
             margin: 0 auto;
+            	font-family: 'Inter', sans-serif;
+				 font-weight: 300; letter-spacing: 1px;
+				line-height: 1.7;
         }
         
         .cart-table {
@@ -170,9 +173,9 @@
         .checkout-btn {
             width: 100%;
             padding: 12px;
-            background-color: #000000ff;
+            background-color: #3b5d50;
             color: white;
-            border: none;
+            border: 1px solid #3b5d50;
             border-radius: 6px;
             font-weight: 500;
             cursor: pointer;
@@ -181,7 +184,8 @@
         }
         
         .checkout-btn:hover {
-            background-color: #292a2cff;
+            background-color: #ffffffff;
+            color: #3b5d50;
         }
         
         .empty-cart {
@@ -233,7 +237,7 @@
         <nav style="display: flex; align-items: center; padding: 16px 24px;    max-width: 1200px; margin: 10px auto;" aria-label="Breadcrumb">
             <ol style="display: inline-flex; align-items: center; margin: 0; padding: 0; list-style: none; flex-wrap: wrap;">
                 <li style="display: inline-flex; align-items: center;">
-                    <a href="/home" style="display: inline-flex; align-items: center; font-size: 14px; font-family: 'Orbitron', sans-serif; font-weight: 500; color: #4b5563; text-decoration: none; transition: color 0.3s ease, transform 0.2s ease; padding: 6px 10px; border-radius: 6px;">
+                    <a href="/home" style="display: inline-flex; align-items: center; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px; color: #4b5563; text-decoration: none; transition: color 0.3s ease, transform 0.2s ease; padding: 6px 10px; border-radius: 6px;">
                         <svg style="width: 18px; height: 18px; margin-right: 8px; fill: none; stroke: #6b7280; stroke-width: 2;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
@@ -245,7 +249,7 @@
                     <svg style="width: 16px; height: 16px; color: #9ca3af; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
                     </svg>
-                    <span style="margin-left: 8px; font-size: 14px; font-weight: 600; color: #374151; padding: 6px 10px; border-radius: 6px; font-family: 'Orbitron', sans-serif;">Cart</span>
+                    <span style="margin-left: 8px; font-size: 14px; font-weight: 600; color: #374151; padding: 6px 10px; border-radius: 6px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 1px;">Cart</span>
                 </li>
             </ol>
         </nav>
@@ -301,7 +305,7 @@
                         </div>
                         
                         <input type="hidden" name="cartData" id="cartDataInput">
-                        <button type="submit" class="checkout-btn" style="font-family: 'Orbitron', sans-serif;"> Checkout</button>
+                        <button type="submit" class="checkout-btn" style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;"> Checkout</button>
                     </div>
                 </div>
             </form>
@@ -358,10 +362,13 @@
 
                 row.innerHTML = `
                     <td class="product-thumbnail" data-label="Product">
-                        <a href="singleProduct?product-id=${item.id}" class="flex items-center">
-                            <img src="${item.image}" alt="${item.name}" class="mr-4" >
-                            <span class="product-name" style=" color: black; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">${item.name}</span>
-                        </a>
+                    <a href="singleProduct?product-id=${item.id}" 
+                    class="flex items-center" 
+                    style="text-decoration: none;">
+                        <img src="${item.image}" alt="${item.name}" class="mr-4">
+                        <span class="product-name" style="color: black; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">${item.name}</span>
+                    </a>
+
                     </td>
                     <td class="product-price" data-label="Price">
                         <span class="amount" style=" color: black; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">${item.price}</span>
