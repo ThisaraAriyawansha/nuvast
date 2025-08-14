@@ -21,7 +21,27 @@
         <li><a href="{{ route('blog.show') }}" class="{{ request()->routeIs('blog.show') ? 'active' : '' }}">Blog</a></li>
         <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact us</a></li>
         <li><a href="{{ route('myAcc') }}" class="icon-link {{ request()->routeIs('myAcc') ? 'active' : '' }}"><img src="images/user.svg" alt="User" class="icon"></a></li>
-        <li><a href="{{ route('cart') }}" class="icon-link {{ request()->routeIs('cart') ? 'active' : '' }}"><img src="images/cart.svg" alt="Cart" class="icon"></a></li>
+        <li style="position: relative; display: inline-block;">
+            <a href="{{ route('cart') }}" class="icon-link {{ request()->routeIs('cart') ? 'active' : '' }}" style="position: relative;">
+                <img src="images/cart.svg" alt="Cart" class="icon" >
+                <span id="cart-badge" style="
+                    position: absolute;
+                    top: -8px;
+                    right: 4px;
+                    background: #ff4444;
+                    color: white;
+                    border-radius: 50%;
+                    width: 18px;
+                    height: 18px;
+                    font-size: 11px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+                ">0</span>
+            </a>
+        </li>
       </ul>
     </div>
   </div>

@@ -27,6 +27,15 @@
     <link rel="stylesheet" href="assets/css/style.min.css"> -->
     <!-- Tailwind CSS -->
     
+
+
+    		<link href="publicsite/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="publicsite/css/tiny-slider.css" rel="stylesheet">
+		<link href="publicsite/css/style.css" rel="stylesheet">
+		<title>NUVAST Furnitures</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- Custom Styles -->
     <style>
 
@@ -218,7 +227,7 @@
     <div class="main-wrapper">
         @include('layouts.nav-2')
 
-        <div class="h-[10dvh]"></div>
+        <div class="h-[1dvh]"></div>
         
 
         <nav style="display: flex; align-items: center; padding: 16px 24px;    max-width: 1200px; margin: 10px auto;" aria-label="Breadcrumb">
@@ -298,6 +307,7 @@
             </form>
         </div>
 
+        <br/><br/><br/><br/>
         @include('layouts.footer2')
     </div>
 

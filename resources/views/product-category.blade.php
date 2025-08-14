@@ -136,7 +136,7 @@
 												<span class="original-price text-muted" style="font-size: 0.9rem;"><del>Rs. {{ number_format($product->retail_price, 2) }}</del></span>
 											</div>
 										@else
-											<strong class="product-price" style="font-size: 1.1rem;">${{ number_format($product->retail_price, 2) }}</strong>
+											<strong class="product-price" style="font-size: 1.1rem;">Rs. {{ number_format($product->retail_price, 2) }}</strong>
 										@endif
 									</div>
 								</div>
