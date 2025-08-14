@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="green_n.png">
 
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -18,6 +17,7 @@
 		<link href="publicsite/css/tiny-slider.css" rel="stylesheet">
 		<link href="publicsite/css/style.css" rel="stylesheet">
 		<title>NUVAST Furnitures</title>
+		<link rel="shortcut icon" href="green_n.png">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 

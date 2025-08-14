@@ -74,14 +74,14 @@
                 <p><strong>Total Amount:</strong> {{ $total }}</p>
             </div>
             
-            <p>If you have any questions regarding your invoice or purchase, please don't hesitate to contact our support team at novaLinkcomputers@gmail.com or call +94 (76) 941-7154.</p>
+            <p>If you have any questions regarding your invoice or purchase, please don't hesitate to contact our support team at NUVASTFurnitures@gmail.com or call +94 (76) 941-7154.</p>
             
             <p>We appreciate your business!</p>
-            <p>Best regards,<br>NovaLink Computers Team</p>
+            <p>Best regards,<br>NUVAST Furnitures Team</p>
         </div>
         <div class="footer">
-            <p>NovaLink Computers - Computer Arcade & Technologies (PVT) Ltd</p>
-            <p>+94 (76) 941-7154 | www.novaLinkcomputers.lk</p>
+            <p>NUVAST Furnitures </p>
+            <p>+94 (76) 941-7154 | www.NUVAST Furnitures.lk</p>
         </div>
     </div>
 </body>

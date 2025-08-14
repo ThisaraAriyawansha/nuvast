@@ -30,7 +30,7 @@
 
         /* Header Section */
         .email-header {
-            background-color: #003366; /* Dark Blue */
+            background-color: #3b5d50; /* Dark Blue */
             color: white;
             padding: 40px 20px;
             text-align: center;
@@ -55,7 +55,7 @@
 
         .email-body .highlight {
             font-weight: bold;
-            color: #003366;
+            color: #3b5d50;
         }
 
         .cta-button {
@@ -63,7 +63,7 @@
             padding: 12px 30px;
             font-size: 16px;
             color: white;
-            background-color: #003366;
+            background-color: #3b5d50;
             text-decoration: none;
             border-radius: 4px;
             text-align: center;
@@ -72,7 +72,7 @@
         }
 
         .cta-button:hover {
-            background-color: #0056b3;
+            background-color: #1c342bff;
         }
 
         /* Table Styling */
@@ -90,7 +90,7 @@
 
         th {
             background-color: #f1f1f1;
-            color: #003366;
+            color: #3b5d50;
             font-weight: bold;
         }
 
@@ -101,7 +101,7 @@
         .total-amount {
             font-size: 18px;
             font-weight: 600;
-            color: #003366;
+            color: #3b5d50;
             text-align: right;
             margin-top: 20px;
         }
@@ -110,14 +110,14 @@
         .additional-info {
             background-color: #f9f9f9;
             padding: 20px;
-            border-left: 4px solid #003366;
+            border-left: 4px solid #3b5d50;
             margin-top: 30px;
         }
 
         .additional-info h3 {
             font-size: 18px;
             margin-bottom: 10px;
-            color: #003366;
+            color: #3b5d50;
         }
 
         .additional-info p {
@@ -184,7 +184,7 @@
     <!-- Body Section -->
     <div class="email-body">
         <p>Dear {{ $customer->fname }} {{ $customer->lname }},</p>
-        <p>Thank you for your order. Here are your order details:</p>
+        <p>Thank you for your order with <strong>NUVAST Furnitures</strong>. Here are the details of your recent purchase:</p>
         
         <!-- Order Details Table -->
         <table>
@@ -206,28 +206,32 @@
             </tbody>
         </table>
 
-        <p class="total-amount">Total Amount: Rs.{{ number_format($totalAmount, 2) }}</p>
+        <p class="total-amount"><strong>Total Amount:</strong> Rs.{{ number_format($totalAmount, 2) }}</p>
 
-        <p>Thank you for shopping with us!</p>
-        <p>If you have any questions or need assistance, don't hesitate to <a href="mailto:novaLinkcomputers@gmail.com" style="color: #000000ff; text-decoration: none;">contact our support team</a> anytime.</p>
+        <p>We are excited to deliver your furniture and hope it transforms your space beautifully!</p>
+        <p>If you have any questions or need assistance, feel free to <a href="mailto:nuvastfurnitures@gmail.com" style="color: #000000; text-decoration: none;">contact our support team</a> anytime.</p>
 
         <!-- Call to Action Button -->
-        <a href="https://novaLinkcomputers.com/" class="cta-button">Visit Our Website</a>
+        <a href="https://nuvastfurnitures.com/" class="cta-button" 
+           style="display:inline-block; padding: 10px 20px; background-color:#3b5d50; color:white; text-decoration:none; border-radius:5px; margin-top:10px;">
+           Visit Our Website
+        </a>
     </div>
 
     <!-- Additional Info Section -->
     <div class="additional-info">
         <h3>Next Steps</h3>
-        <p><strong>Account Activation:</strong> Your account is now active! You can log in anytime using your credentials. If you haven't already, please complete your profile on our website.</p>
-        <p><strong>Explore Our Products:</strong> Check out our latest products and services on <a href="#" style="color: #000000ff; text-decoration: none;">NovaLink Computers</a>.</p>
-        <p><strong>Need Help?</strong> Our dedicated support team is available for any questions. <a href="mailto:novaLinkcomputers@gmail.com" style="color: #000000ff; text-decoration: none;">Contact Support</a></p>
+        <p><strong>Order Processing:</strong> Your order is being prepared with care. You will receive a shipping update soon.</p>
+        <p><strong>Explore Our Collection:</strong> Browse our latest sofas, beds, tables, and storage solutions at <a href="https://nuvastfurnitures.com/" style="color: #3b5d50; text-decoration: none;">NUVAST Furnitures</a>.</p>
+        <p><strong>Need Help?</strong> Our dedicated support team is available for any questions. <a href="mailto:nuvastfurnitures@gmail.com" style="color: #3b5d50; text-decoration: none;">Contact Support</a></p>
     </div>
 
     <!-- Footer Section -->
     <div class="email-footer">
-        <p>&copy; 2025 All Rights Reserved | NovaLink Computers</p>
+        <p>&copy; 2025 All Rights Reserved | NUVAST Furnitures</p>
     </div>
 </div>
+
 
 </body>
 </html>

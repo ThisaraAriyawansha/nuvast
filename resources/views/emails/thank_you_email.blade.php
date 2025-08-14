@@ -33,7 +33,7 @@
 
         /* Header Section */
         .email-header {
-            background-color: #003366; /* Dark Blue */
+            background-color: #3b5d50; /* Dark Blue */
             color: white;
             padding: 40px 20px;
             text-align: center;
@@ -58,7 +58,7 @@
 
         .email-body .highlight {
             font-weight: bold;
-            color: #003366;
+            color: #3b5d50;
         }
 
         .cta-button {
@@ -66,7 +66,7 @@
             padding: 12px 30px;
             font-size: 16px;
             color: white;
-            background-color: #003366;
+            background-color: #3b5d50;
             text-decoration: none;
             border-radius: 4px;
             text-align: center;
@@ -75,21 +75,21 @@
         }
 
         .cta-button:hover {
-            background-color: #0056b3;
+            background-color: #3b5d50;
         }
 
         /* Additional Info Section */
         .additional-info {
             background-color: #f9f9f9;
             padding: 20px;
-            border-left: 4px solid #003366;
+            border-left: 4px solid #3b5d50;
             margin-top: 30px;
         }
 
         .additional-info h3 {
             font-size: 18px;
             margin-bottom: 10px;
-            color: #003366;
+            color: #3b5d50;
         }
 
         .additional-info p {
@@ -134,36 +134,39 @@
 </head>
 <body>
 
-    <div class="email-container">
+<div class="email-container">
     <!-- Header Section -->
     <div class="email-header">
-        <h1>Thank You for Registering!</h1>
+        <h1>Welcome to NUVAST Furnitures!</h1>
     </div>
 
     <!-- Body Section -->
     <div class="email-body">
         <p>Dear {{ $username }},</p>
-        <p>Thank you for registering with <span class="highlight">NovaLink Computers</span>! We're thrilled to have you as part of our growing community. Our team is here to help you make the most out of your experience.</p>
-        <p>If you have any questions or need assistance, don't hesitate to <a href="mailto:novaLinkcomputers@gmail.com" style="color: #003366; text-decoration: none;">contact our support team</a> anytime.</p>
+        <p>Thank you for registering with <strong>NUVAST Furnitures</strong>! We're delighted to have you join our community of furniture enthusiasts. Explore our premium collection and transform your home into a space of comfort and style.</p>
+        <p>If you have any questions or need assistance, feel free to <a href="mailto:nuvastfurnitures@gmail.com" style="color: #3b5d50; text-decoration: none;">contact our support team</a> anytime.</p>
 
         <!-- Call to Action Button -->
-        <a href="https://novaLinkcomputers.com/" class="cta-button">Visit Our Website</a>
+        <a href="https://nuvastfurnitures.com/" class="cta-button" 
+           style="display:inline-block; padding: 10px 20px; background-color:#3b5d50; color:white; text-decoration:none; border-radius:5px; margin-top:10px;">
+           Visit Our Website
+        </a>
     </div>
 
     <!-- Additional Info Section -->
     <div class="additional-info">
         <h3>Next Steps</h3>
-        <p><strong>Account Activation:</strong> Your account is now active! You can log in anytime using your credentials. If you haven't already, please complete your profile on our website.</p>
-        <p><strong>Explore Our Products:</strong> Check out our latest products and services on <a href="https://novaLinkcomputers.com" style="color: #003366; text-decoration: none;">NovaLink Computers</a>.</p>
-        <p><strong>Need Help?</strong> Our dedicated support team is available for any questions. <a href="mailto:novaLinkcomputers@gmail.com" style="color: #003366; text-decoration: none;">Contact Support</a></p>
+        <p><strong>Account Activation:</strong> Your account is now active! You can log in anytime using your credentials. Complete your profile to enjoy a personalized shopping experience.</p>
+        <p><strong>Explore Our Collection:</strong> Browse our latest sofas, coffee tables, dining tables, beds, shelving units, and storage solutions at <a href="https://nuvastfurnitures.com/" style="color: #3b5d50; text-decoration: none;">NUVAST Furnitures</a>.</p>
+        <p><strong>Need Help?</strong> Our dedicated support team is always ready to assist you. <a href="mailto:nuvastfurnitures@gmail.com" style="color: #3b5d50; text-decoration: none;">Contact Support</a></p>
     </div>
 
     <!-- Footer Section -->
     <div class="email-footer">
-        <p>&copy; 2025 All Rights Reserved | NovaLink Computers.</p>
+        <p>&copy; 2025 All Rights Reserved | NUVAST Furnitures.</p>
     </div>
 </div>
 
-
 </body>
+
 </html>
