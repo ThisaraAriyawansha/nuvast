@@ -35,7 +35,7 @@ class HomeController extends Controller
             });
     
         // Fetch the latest 2 blogs
-        $blogs = Blog::latest()->take(2)->get()->map(function ($blog) {
+        $blogs = Blog::latest()->take(3)->get()->map(function ($blog) {
             return [
                 'id' => $blog->id,
                 'image' => asset($blog->image),
