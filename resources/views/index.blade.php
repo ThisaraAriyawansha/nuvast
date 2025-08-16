@@ -135,12 +135,12 @@
 								
 								<!-- Product info -->
 								<div class="product-info p-3 flex-grow-1 d-flex flex-column" style="height: 120px;">
-<a href="singleProduct?product-id={{ $product['id'] }}" style="text-decoration: none; color: inherit;">
-    <h3 class="product-title mb-2" 
-        style="font-size: 1rem; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-        {{ $product['name'] }}
-    </h3>
-</a>
+									<a href="singleProduct?product-id={{ $product['id'] }}" style="text-decoration: none; color: inherit;">
+										<h3 class="product-title mb-2" 
+											style="font-size: 1rem; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+											{{ $product['name'] }}
+										</h3>
+									</a>
 
 									
 									<div class="mt-auto">
