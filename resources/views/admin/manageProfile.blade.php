@@ -2,7 +2,7 @@
 
 <style>
     :root {
-        --black: #000000;
+        --black: #3b5d50;
         --white: #ffffff;
         --gray-100: #f8f9fa;
         --gray-200: #e9ecef;
@@ -47,10 +47,9 @@
         font-size: 1.75rem;
         font-weight: 700;
         color: var(--black);
-        font-family: 'Inter', sans-serif;
         margin: 0;
         letter-spacing: -0.5px;
-        font-size: 18px; font-family: 'Orbitron', sans-serif;
+        font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;
     }
 
     .last-updated {

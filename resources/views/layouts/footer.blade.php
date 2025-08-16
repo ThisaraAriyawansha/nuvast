@@ -2,7 +2,7 @@
 <!-- bottom-page -->
 <div class="bottom-page">
     <div class="footer-content">
-        <div class="footer-text">2025 © All Rights Reserved | NovaLink Computers</div>
+        <div class="footer-text">2025 © All Rights Reserved | NUVAST Furniture</div>
     </div>
 </div>
 <!-- /bottom-page -->
@@ -31,7 +31,7 @@
 <style>
 /* Footer Styles */
 .bottom-page {
-    background-color: #000;
+    background-color: #3b5d50;
     padding: 1.5rem 0;
     margin-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);

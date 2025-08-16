@@ -112,9 +112,9 @@
 .view-btn,
 .update-btn {
     background-color: white;   /* White background */
-    color: black;              /* Black text */
+    color: #3b5d50;              /* Black text */
     padding: 8px 12px;
-    border: 1px solid black;   /* Black border */
+    border: 1px solid #3b5d50;   /* Black border */
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
@@ -124,7 +124,7 @@
 .view-more-btn:hover,
 .view-btn:hover,
 .update-btn:hover {
-    background-color: black;
+    background-color: #3b5d50;
     color: white;
     opacity: 1;
 }
@@ -228,13 +228,13 @@
 }
 
 .search-input:focus {
-    border-color: #000000ff;
-    box-shadow: 0 0 5px rgba(28, 28, 28, 0.5);
+    border-color: #3b5d50;
+    box-shadow: 0 0 5px #3b5d50;
 }
 
 .search-button {
     padding: 10px 15px;
-    background: #000000ff;
+    background: #3b5d50;
     color: white;
     border: none;
     border-radius: 5px;
@@ -244,7 +244,7 @@
 }
 
 .search-button:hover {
-    background: #19191aff;
+    background: #3c5e51ff;
 }
 
 /* Responsive Design */
@@ -346,7 +346,7 @@
                     </div>
                 @endif
                 <div class="admin-header">
-                <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Orbitron', sans-serif;">Manage Products</h3>
+                <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Manage Products</h3>
                     <div class="last-updated">
                         Last updated: {{ now()->format('M j, Y g:i A') }}
                     </div>

@@ -81,7 +81,7 @@
 }
 
 .view-btn {
-    background-color: #000000ff; /* Blue color */
+    background-color: #3b5d50; /* Blue color */
     color: white;
     padding: 8px 12px;
     border: none;
@@ -122,7 +122,7 @@
 
 
 .update-btn {
-    background-color:rgba(0, 0, 0, 1); /* Green color */
+    background-color: #3b5d50; /* Green color */
     color: white;
     padding: 8px 12px;
     border: none;
@@ -237,7 +237,7 @@
 /* Upload Button */
 .upload-btn {
     padding: 10px 15px;
-    background: #000000ff;
+    background: #3b5d50;
     color: white;
     border: none;
     border-radius: 5px;
@@ -247,7 +247,7 @@
 }
 
 .upload-btn:hover {
-    background: #2e2f30ff;
+    background: #3b5d50;
 }
 
 /* Responsive - Stack on small screens */
@@ -289,10 +289,10 @@
 
 
     .wg-pagination li a:hover {
-        background-color: #333;    /* Darker shade on hover */
+        background-color: #3b5d50;    /* Darker shade on hover */
     }
     .wg-pagination li.active a {
-        background-color: #000000ff; /* Highlighted page */
+        background-color: #3b5d50; /* Highlighted page */
         color: black;
     }
 </style>
@@ -307,7 +307,7 @@
 
 
                 <div class="admin-header">
-                <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Orbitron', sans-serif;">Product Information</h3>
+                <h3 class="text-xl font-semibold" style="font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Product Information</h3>
                     <div class="last-updated">
                         Last updated: {{ now()->format('M j, Y g:i A') }}
                     </div>

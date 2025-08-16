@@ -30,7 +30,7 @@
             <div class="wg-box p-6 rounded-lg shadow">
 
                 <div class="admin-header">
-                <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Orbitron', sans-serif;">Add a New Product</h3>
+                <h3 class="text-xl font-semibold" style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Add a New Product</h3>
                     <div class="last-updated">
                         Last updated: {{ now()->format('M j, Y g:i A') }}
                     </div>
@@ -226,15 +226,15 @@
                         style="
                             display: block;
                             margin: 0 auto;
-                            background-color: black;
+                            background-color: #3b5d50;
                             color: white;
-                            border: 1px solid black;
+                            border: 1px solid #3b5d50;
                             padding: 10px 20px;
                             cursor: pointer;
                             transition: all 0.3s ease;
                         "
-                        onmouseover="this.style.backgroundColor='white'; this.style.color='black';"
-                        onmouseout="this.style.backgroundColor='black'; this.style.color='white';"
+                        onmouseover="this.style.backgroundColor='white'; this.style.color='#3b5d50';"
+                        onmouseout="this.style.backgroundColor='#3b5d50'; this.style.color='white';"
                     >
                         Save Product
                     </button>

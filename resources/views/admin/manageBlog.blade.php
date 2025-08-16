@@ -118,32 +118,32 @@
 
 .view-btn {
     background-color: white;
-    color: black;
+    color: #3b5d50;
     padding: 8px 12px;
-    border: 1px solid black;
+    border: 1px solid #3b5d50;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .view-btn:hover {
-    background-color: black;
+    background-color: #3b5d50;
     color: white;
 }
 
 
 .update-btn {
-    background-color:rgba(0, 0, 0, 1); /* Green color */
+    background-color:#3b5d50; /* Green color */
     color: white;
     padding: 8px 12px;
-    border: 1px solid black;
+    border: 1px solid #3b5d50;
     cursor: pointer;
     border-radius: 5px;
 }
 
 .update-btn:hover {
     background-color: white;
-    color: black;
+    color: #3b5d50;
 }
 
 .wg-table {
@@ -244,13 +244,13 @@
 }
 
 .search-input:focus {
-    border-color: #000000ff;
+    border-color: #3b5d50;
     box-shadow: 0 0 5px rgba(37, 38, 39, 0.5);
 }
 
 .search-button {
     padding: 10px 15px;
-    background: #000000ff;
+    background: #3b5d50;
     color: white;
     border: none;
     border-radius: 5px;
@@ -300,10 +300,10 @@
         gap: 1rem;
     }
     .wg-pagination li a:hover {
-        background-color: #333;    /* Darker shade on hover */
+        background-color: #3b5d50;    /* Darker shade on hover */
     }
     .wg-pagination li.active a {
-        background-color: #000000ff; /* Highlighted page */
+        background-color: #3b5d50; /* Highlighted page */
         color: black;
     }
 </style>
@@ -342,7 +342,7 @@
 
 
                 <div class="admin-header">
-                <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Orbitron', sans-serif;">Manage Blog</h3>
+                <h3 class="text-xl font-semibold" style="font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Manage Blog</h3>
                     <div class="last-updated">
                         Last updated: {{ now()->format('M j, Y g:i A') }}
                     </div>

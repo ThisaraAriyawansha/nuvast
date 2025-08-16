@@ -73,16 +73,16 @@
 
     .view-more-btn {
         background-color: #ffffffff; /* White background */
-        color: black;
+        color: #3b5d50;
         padding: 8px 12px;
-        border: 1px solid black;
+        border: 1px solid #3b5d50;
         cursor: pointer;
         border-radius: 5px;
         transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .view-more-btn:hover {
-        background-color: black;
+        background-color: #3b5d50;
         color: white;
     }
 
@@ -115,13 +115,13 @@
 }
 
 .search-input:focus {
-    border-color: #000000ff;
+    border-color: #3b5d50;
     box-shadow: 0 0 5px rgba(25, 26, 26, 0.5);
 }
 
 .search-button {
     padding: 10px 15px;
-    background: #000000ff;
+    background: #3b5d50;
     color: white;
     border: none;
     border-radius: 5px;
@@ -131,7 +131,7 @@
 }
 
 .search-button:hover {
-    background: #262626ff;
+    background: #3b5d50;
 }
 
 /* Responsive Design */
@@ -190,7 +190,7 @@
 
 
                 <div class="admin-header">
-                <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Orbitron', sans-serif;">Payment Details</h3>
+                <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Payment Details</h3>
                     <div class="last-updated">
                         Last updated: {{ now()->format('M j, Y g:i A') }}
                     </div>

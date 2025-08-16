@@ -2,8 +2,8 @@
 
 <style>
     :root {
-        --primary: #000000ff;
-        --primary-light: #000000ff;
+        --primary: #3b5d50;
+        --primary-light: #3b5d50;
         --gray-100: #f3f4f6;
         --gray-200: #e5e7eb;
         --gray-300: #d1d5db;
@@ -50,9 +50,8 @@
         font-size: 2rem; /* Larger heading */
         font-weight: 600;
         color: var(--gray-900);
-        font-family: 'Inter', sans-serif;
         margin: 0;
-        font-family: 'Orbitron', sans-serif;
+        font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;
     }
 
     .last-updated {
@@ -69,7 +68,7 @@
     .section-title {
         font-size: 1.75rem; /* Larger section titles */
         font-weight: 600;
-        color: var(--gray-900);
+        color: #3b5d50;
         margin-bottom: 1.5rem;
         position: relative;
         padding-bottom: 0.75rem;

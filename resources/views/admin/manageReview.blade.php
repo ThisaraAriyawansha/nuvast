@@ -379,7 +379,7 @@
 
 
                  <div class="admin-header">
-                <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Orbitron', sans-serif;">Manage Review</h3>
+                <h3 class="text-xl font-semibold" style="font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Manage Review</h3>
                     <div class="last-updated">
                         Last updated: {{ now()->format('M j, Y g:i A') }}
                     </div>

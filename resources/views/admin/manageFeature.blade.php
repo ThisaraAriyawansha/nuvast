@@ -85,7 +85,7 @@
 
     /* Style for the edit button */
 .edit-btn {
-    background-color: #000000ff; /* Green background */
+    background-color: #3b5d50; /* Green background */
     color: white; /* White text */
     border: none;
     padding: 8px 16px;
@@ -99,7 +99,7 @@
 }
 
 .edit-btn:hover {
-    background-color: #000000ff; /* Darker green on hover */
+    background-color: #3b5d50; /* Darker green on hover */
 }
 
 /* Style for the save button */
@@ -166,7 +166,7 @@
     padding: 20px;
     background: transparent;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px #e5ebe8ff;
 }
 
 /* Input and Button in One Row */
@@ -195,14 +195,13 @@
 }
 
 .input-container .input-field:focus {
-    border-color: #000000ff;
-    box-shadow: 0 0 5px rgba(56, 57, 58, 0.5);
+    border-color: #3b5d50;
 }
 
 /* Submit Button */
 .submit-btn {
     padding: 12px 15px;
-    background: #000000ff;
+    background: #3b5d50;
     color: white;
     border: none;
     border-radius: 5px;
@@ -252,10 +251,10 @@
     }
 
     .wg-pagination li a:hover {
-        background-color: #333;    /* Darker shade on hover */
+        background-color: #3b5d50;    /* Darker shade on hover */
     }
     .wg-pagination li.active a {
-        background-color: #000000ff; /* Highlighted page */
+        background-color: #3b5d50; /* Highlighted page */
         color: black;
     }
     
@@ -269,7 +268,7 @@
 
             <div class="wg-box">
                 <div class="admin-header">
-                    <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Orbitron', sans-serif;">Product Features</h3>
+                    <h3 class="text-xl font-semibold" style="font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Product Features</h3>
                         <div class="last-updated">
                             Last updated: {{ now()->format('M j, Y g:i A') }}
                         </div>

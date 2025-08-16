@@ -199,9 +199,10 @@ body {
     font-size: 1.75rem;
     font-weight: 700;
     margin: 0;
-    color: var(--black);
-    font-family: 'Orbitron', sans-serif;
-}
+    color: #3b5d50;
+    font-family: 'Inter', sans-serif;
+     font-weight: 500;
+      letter-spacing: 1px;}
 
 .last-updated {
     background: var(--white);
@@ -248,12 +249,12 @@ body {
 }
 
 .stat-icon.bg-light {
-    background: var(--gray-100);
-    color: var(--gray-900);
+    background: #3b5d50;
+    color: #3b5d50;
 }
 
 .stat-icon.bg-dark {
-    background: var(--gray-900);
+    background: #3b5d50;
     color: var(--white);
 }
 
@@ -275,7 +276,7 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     margin: 0;
-    color: var(--black);
+    color: #3b5d50;
 }
 
 /* Data Grid */
@@ -298,9 +299,10 @@ body {
     font-size: 1.9rem;
     font-weight: 600;
     margin-bottom: 1.25rem;
-    color: var(--black);
-        font-family: 'Orbitron', sans-serif;
-
+    color: #3b5d50;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
 
 .data-item {
@@ -332,7 +334,7 @@ body {
 }
 
 .data-badge {
-    background: var(--gray-900);
+    background: #3b5d50;
     color: var(--white);
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
@@ -350,7 +352,7 @@ body {
 .data-avatar {
     width: 3rem;
     height: 3rem;
-    background: var(--gray-900);
+    background: #3b5d50;
     border-radius: 50%;
     display: flex;
     align-items: center;

@@ -96,10 +96,10 @@
         }
 
      .wg-pagination li a:hover {
-        background-color: #333;    /* Darker shade on hover */
+        background-color: #3b5d50;    /* Darker shade on hover */
     }
     .wg-pagination li.active a {
-        background-color: #000000ff; /* Highlighted page */
+        background-color: #3b5d50; /* Highlighted page */
         color: black;
     } 
     
@@ -141,7 +141,7 @@
                 @endif
 
                 <div class="admin-header">
-                <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Orbitron', sans-serif;">Manage Customer</h3>
+                <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;;">Manage Customer</h3>
                     <div class="last-updated">
                         Last updated: {{ now()->format('M j, Y g:i A') }}
                     </div>

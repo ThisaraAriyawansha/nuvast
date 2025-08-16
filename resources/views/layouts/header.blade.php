@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - NovaLink Computers</title>
+    <title>Admin Dashboard - NUVAST Furniture</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-        <link rel="shortcut icon" type="image/x-icon" href="/n_logo_remove_new.png" />
+        <link rel="shortcut icon" type="image/x-icon" href="/green_n.png" />
 
 
     <meta name="author" content="themesflat.com">
@@ -35,16 +35,16 @@
 <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5; min-height: 100vh;">
 
     <!-- Navigation Bar -->
-    <nav style="background-color: #1a1a1a; box-shadow: 0 2px 10px rgba(0,0,0,0.3); position: fixed; width: 100%; top: 0; z-index: 1000;">
+    <nav style="background-color: #3b5d50; box-shadow: 0 2px 10px #3b5d50; position: fixed; width: 100%; top: 0; z-index: 1000;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="display: flex; justify-content: space-between; align-items: center; height: 70px; padding: 0 20px;">
                 
                 <!-- Logo/Brand -->
             <div style="display: flex; align-items: center; gap: 12px;">
                 <div style=" padding: 0px;  display: flex; align-items: center; justify-content: center;">
-                    <img src="/N_white.png" alt="Admin Icon" style="width: 60px; height: 60px; object-fit: contain;">
+                    <img src="/n_logo_white.png" alt="Admin Icon" style="width: 60px; height: 60px; object-fit: contain;">
                 </div>
-                <span style="color: white; font-weight: bold; font-size: 22px; font-family: 'Orbitron', sans-serif;">NovaLink</span>
+                <span style="color: white;  font-size: 22px; font-family: 'Inter', sans-serif; font-weight: 400; letter-spacing: 1px;">NUVAST</span>
             </div>
 
 
@@ -53,7 +53,7 @@
                 <div id="desktop-menu" style="display: flex; align-items: center; gap: 5px;">
                     
                     <a href="{{ route('dashboard') }}" style="display: flex; align-items: center; padding: 12px 16px; border-radius: 6px; color: #ccc; text-decoration: none; transition: all 0.3s ease;" 
-                       onmouseover="this.style.color='white'; this.style.backgroundColor='#333'; this.style.transform='translateY(-2px)';" 
+                       onmouseover="this.style.color='white'; this.style.backgroundColor='#2a433aff'; this.style.transform='translateY(-2px)';" 
                        onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent'; this.style.transform='translateY(0)';">
                         <i class="fas fa-home" style="margin-right: 8px;"></i>
                         Dashboard
@@ -62,30 +62,30 @@
                     <!-- Products Dropdown -->
                     <div style="position: relative; display: inline-block;" onmouseover="showDropdown('products-dropdown')" onmouseleave="hideDropdown('products-dropdown')">
                         <button style="display: flex; align-items: center; padding: 12px 16px; border-radius: 6px; color: #ccc; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 14px; transition: all 0.3s ease;" 
-                                onmouseover="this.style.color='white'; this.style.backgroundColor='#333';" 
+                                onmouseover="this.style.color='white'; this.style.backgroundColor='#2a433aff';" 
                                 onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent';">
                             <i class="fas fa-box" style="margin-right: 8px;"></i>
                             Products
                             <i class="fas fa-chevron-down" style="margin-left: 6px; font-size: 12px;"></i>
                         </button>
-                        <div id="products-dropdown" style="position: absolute; left: 0; top: 100%; margin-top: 5px; width: 200px; background-color: #2a2a2a; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease;">
+                        <div id="products-dropdown" style="position: absolute; left: 0; top: 100%; margin-top: 5px; width: 200px; background-color: #2a433aff; border-radius: 8px; box-shadow: 0 8px 25px #2a433aff; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease;">
                             <a href="{{ route('addProduct') }}" style="display: block; padding: 12px 16px; color: #ccc; text-decoration: none; border-radius: 8px 8px 0 0; transition: all 0.2s ease;" 
-                               onmouseover="this.style.color='white'; this.style.backgroundColor='#444';" 
+                               onmouseover="this.style.color='white'; this.style.backgroundColor='#22302bff';" 
                                onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent';">
                                 <i class="fas fa-plus" style="margin-right: 8px; width: 16px;"></i>Add New Product
                             </a>
                             <a href="{{ route('addImage') }}" style="display: block; padding: 12px 16px; color: #ccc; text-decoration: none; transition: all 0.2s ease;" 
-                               onmouseover="this.style.color='white'; this.style.backgroundColor='#444';" 
+                               onmouseover="this.style.color='white'; this.style.backgroundColor='#22302bff';" 
                                onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent';">
                                 <i class="fas fa-images" style="margin-right: 8px; width: 16px;"></i>Add Images
                             </a>
                             <a href="{{ route('addFeature') }}" style="display: block; padding: 12px 16px; color: #ccc; text-decoration: none; transition: all 0.2s ease;" 
-                               onmouseover="this.style.color='white'; this.style.backgroundColor='#444';" 
+                               onmouseover="this.style.color='white'; this.style.backgroundColor='#22302bff';" 
                                onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent';">
                                 <i class="fas fa-star" style="margin-right: 8px; width: 16px;"></i>Add Features
                             </a>
                             <a href="{{ route('manageProduct') }}" style="display: block; padding: 12px 16px; color: #ccc; text-decoration: none; border-radius: 0 0 8px 8px; transition: all 0.2s ease;" 
-                               onmouseover="this.style.color='white'; this.style.backgroundColor='#444';" 
+                               onmouseover="this.style.color='white'; this.style.backgroundColor='#22302bff';" 
                                onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent';">
                                 <i class="fas fa-cogs" style="margin-right: 8px; width: 16px;"></i>Manage Product
                             </a>
@@ -93,14 +93,14 @@
                     </div>
 
                     <a href="{{ route('manageCustomer') }}" style="display: flex; align-items: center; padding: 12px 16px; border-radius: 6px; color: #ccc; text-decoration: none; transition: all 0.3s ease;" 
-                       onmouseover="this.style.color='white'; this.style.backgroundColor='#333'; this.style.transform='translateY(-2px)';" 
+                       onmouseover="this.style.color='white'; this.style.backgroundColor='#2a433aff'; this.style.transform='translateY(-2px)';" 
                        onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent'; this.style.transform='translateY(0)';">
                         <i class="fas fa-users" style="margin-right: 8px;"></i>
                         Manage Customer
                     </a>
                     
                     <a href="{{ route('viewOrder') }}" style="display: flex; align-items: center; padding: 12px 16px; border-radius: 6px; color: #ccc; text-decoration: none; transition: all 0.3s ease;" 
-                       onmouseover="this.style.color='white'; this.style.backgroundColor='#333'; this.style.transform='translateY(-2px)';" 
+                       onmouseover="this.style.color='white'; this.style.backgroundColor='#2a433aff'; this.style.transform='translateY(-2px)';" 
                        onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent'; this.style.transform='translateY(0)';">
                         <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
                         View Order
@@ -109,42 +109,37 @@
                     <!-- Blog Dropdown -->
                     <div style="position: relative; display: inline-block;" onmouseover="showDropdown('blog-dropdown')" onmouseleave="hideDropdown('blog-dropdown')">
                         <button style="display: flex; align-items: center; padding: 12px 16px; border-radius: 6px; color: #ccc; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 14px; transition: all 0.3s ease;" 
-                                onmouseover="this.style.color='white'; this.style.backgroundColor='#333';" 
+                                onmouseover="this.style.color='white'; this.style.backgroundColor='#2a433aff';" 
                                 onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent';">
                             <i class="fas fa-blog" style="margin-right: 8px;"></i>
                             Blog
                             <i class="fas fa-chevron-down" style="margin-left: 6px; font-size: 12px;"></i>
                         </button>
-                        <div id="blog-dropdown" style="position: absolute; left: 0; top: 100%; margin-top: 5px; width: 180px; background-color: #2a2a2a; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease;">
+                        <div id="blog-dropdown" style="position: absolute; left: 0; top: 100%; margin-top: 5px; width: 180px; background-color: #2a433aff; border-radius: 8px; box-shadow: 0 8px 25px #2a433aff; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease;">
                             <a href="{{ route('addBlog') }}" style="display: block; padding: 12px 16px; color: #ccc; text-decoration: none; border-radius: 8px 8px 0 0; transition: all 0.2s ease;" 
-                               onmouseover="this.style.color='white'; this.style.backgroundColor='#444';" 
+                               onmouseover="this.style.color='white'; this.style.backgroundColor='#22302bff';" 
                                onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent';">
                                 <i class="fas fa-plus" style="margin-right: 8px; width: 16px;"></i>Add Blog
                             </a>
                             <a href="{{ route('manageBlog') }}" style="display: block; padding: 12px 16px; color: #ccc; text-decoration: none; border-radius: 0 0 8px 8px; transition: all 0.2s ease;" 
-                               onmouseover="this.style.color='white'; this.style.backgroundColor='#444';" 
+                               onmouseover="this.style.color='white'; this.style.backgroundColor='#22302bff';" 
                                onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent';">
                                 <i class="fas fa-edit" style="margin-right: 8px; width: 16px;"></i>Manage Blog
                             </a>
                         </div>
                     </div>
 
-                    <a href="{{ route('manageReview') }}" style="display: flex; align-items: center; padding: 12px 16px; border-radius: 6px; color: #ccc; text-decoration: none; transition: all 0.3s ease;" 
-                       onmouseover="this.style.color='white'; this.style.backgroundColor='#333'; this.style.transform='translateY(-2px)';" 
-                       onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent'; this.style.transform='translateY(0)';">
-                        <i class="fas fa-comments" style="margin-right: 8px;"></i>
-                        Manage Review
-                    </a>
+
 
                     <a href="{{ route('manageProfile') }}" style="display: flex; align-items: center; padding: 12px 16px; border-radius: 6px; color: #ccc; text-decoration: none; transition: all 0.3s ease;" 
-                       onmouseover="this.style.color='white'; this.style.backgroundColor='#333'; this.style.transform='translateY(-2px)';" 
+                       onmouseover="this.style.color='white'; this.style.backgroundColor='#2a433aff'; this.style.transform='translateY(-2px)';" 
                        onmouseout="this.style.color='#ccc'; this.style.backgroundColor='transparent'; this.style.transform='translateY(0)';">
                         <i class="fas fa-user-circle" style="margin-right: 8px;"></i>
                         Manage Profile
                     </a>
 
                     <a href="{{ route('logoutAdmin') }}" style="display: flex; align-items: center; padding: 12px 16px; border-radius: 6px; color: #ff6b6b; text-decoration: none; transition: all 0.3s ease;" 
-                       onmouseover="this.style.color='#ff5252'; this.style.backgroundColor='rgba(255,107,107,0.1)'; this.style.transform='translateY(-2px)';" 
+                       onmouseover="this.style.color='#ff5252'; this.style.backgroundColor='#2a433aff'; this.style.transform='translateY(-2px)';" 
                        onmouseout="this.style.color='#ff6b6b'; this.style.backgroundColor='transparent'; this.style.transform='translateY(0)';">
                         <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>
                         Log Out
