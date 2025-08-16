@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaLink Computers | Login</title>
-    <meta name="description" content="NovaLink Computers offer the best computers available at the market">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/n_logo_remove_new.png" />
+	<title>NUVAST Furnitures</title>
+	<link rel="shortcut icon" href="green_n.png">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <style>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -17,12 +16,12 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffffff;
+            color: #333333;
             padding: 2rem;
         }
 
@@ -32,10 +31,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.03;
+            opacity: 0.05;
             background-image: 
-                radial-gradient(circle at 25% 25%, #ffffff 2px, transparent 2px),
-                radial-gradient(circle at 75% 75%, #ffffff 1px, transparent 1px);
+                radial-gradient(circle at 25% 25%, #3b5d50 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, #3b5d50 1px, transparent 1px);
             background-size: 60px 60px, 40px 40px;
             background-position: 0 0, 30px 30px;
             z-index: 1;
@@ -44,16 +43,16 @@
         .login-container {
             position: relative;
             z-index: 10;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             border-radius: 24px;
             width: 100%;
             max-width: 1000px;
             min-height: 600px;
             box-shadow: 
-                0 20px 60px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.05);
+                0 20px 60px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(0, 0, 0, 0.05);
             animation: slideUp 0.8s ease-out;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -73,7 +72,7 @@
 
         /* Left Side - Logo Section */
         .logo-section {
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #3b5d50 0%, #2d4a40 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -119,13 +118,13 @@
             width: 120px;
             height: 120px;
             border-radius: 24px;
-            margin: 0 auto 2rem; /* This centers the logo horizontally */
-
+            margin: 0 auto 2rem;
+            background-color: white;
             transition: transform 0.3s ease;
             overflow: hidden;
-            display: flex; /* Add this */
-            justify-content: center; /* Add this */
-            align-items: center; /* Add this */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .logo img {
@@ -148,7 +147,7 @@
 
         .tagline {
             font-size: 16px;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
             font-weight: 400;
             max-width: 250px;
             line-height: 1.5;
@@ -176,13 +175,13 @@
         .login-title {
             font-size: 32px;
             font-weight: 700;
-            color: #ffffff;
+            color: #3b5d50;
             margin-bottom: 0.5rem;
             letter-spacing: -0.5px;
         }
 
         .login-subtitle {
-            color: rgba(255, 255, 255, 0.7);
+            color: #666666;
             font-size: 16px;
             font-weight: 400;
         }
@@ -193,13 +192,12 @@
 
         .form-label {
             display: block;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 600;
-            color: #ffffff;
+            color: #3b5d50;
             margin-bottom: 0.8rem;
             letter-spacing: 0.3px;
             text-transform: uppercase;
-            font-size: 12px;
         }
 
         .required {
@@ -214,10 +212,10 @@
         .form-input {
             width: 100%;
             padding: 18px 24px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(59, 93, 80, 0.3);
             border-radius: 16px;
-            color: #ffffff;
+            color: #333333;
             font-size: 16px;
             font-weight: 400;
             transition: all 0.3s ease;
@@ -225,13 +223,13 @@
         }
 
         .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(59, 93, 80, 0.5);
         }
 
         .form-input:focus {
-            border-color: #ffffff;
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+            border-color: #3b5d50;
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 0 0 4px rgba(59, 93, 80, 0.1);
             transform: translateY(-2px);
         }
 
@@ -246,7 +244,7 @@
             transform: translateY(-50%);
             background: none;
             border: none;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(59, 93, 80, 0.6);
             cursor: pointer;
             font-size: 20px;
             transition: all 0.3s ease;
@@ -255,8 +253,8 @@
         }
 
         .password-toggle:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.1);
+            color: #3b5d50;
+            background: rgba(59, 93, 80, 0.1);
         }
 
         .form-options {
@@ -275,21 +273,21 @@
             width: 20px;
             height: 20px;
             margin-right: 12px;
-            accent-color: #ffffff;
+            accent-color: #3b5d50;
             cursor: pointer;
         }
 
         .checkbox-label {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
+            color: #666666;
             cursor: pointer;
             user-select: none;
         }
 
         .login-button {
             width: 100%;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-            color: #000000;
+            background: linear-gradient(135deg, #3b5d50 0%, #2d4a40 100%);
+            color: #ffffff;
             border: none;
             padding: 20px;
             border-radius: 16px;
@@ -299,7 +297,7 @@
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(59, 93, 80, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -311,13 +309,13 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s ease;
         }
 
         .login-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 12px 30px rgba(59, 93, 80, 0.3);
         }
 
         .login-button:hover::before {
@@ -331,11 +329,11 @@
         .footer {
             margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(59, 93, 80, 0.1);
         }
 
         .footer-text {
-            color: rgba(255, 255, 255, 0.5);
+            color: #999999;
             font-size: 13px;
             text-align: center;
         }
@@ -398,7 +396,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
             animation: loading 1.5s infinite;
         }
 
@@ -416,18 +414,18 @@
         <div class="logo-section">
             <div class="logo-content">
                 <div class="logo">
-                    <img src="assets/images/N_white.png" alt="NovaLink Logo">
+                    <img src="green_n.png" alt="NovaLink Logo">
                 </div>
-                <div class="company-name" style="font-family: 'Orbitron', sans-serif; ">NovaLink</div>
+                <div class="company-name" style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">NUVAST</div>
                 <div class="decorative-line"></div>
-                <div class="tagline">Premium Computing Solutions for Modern Businesses</div>
+                <div class="tagline">Discover furniture crafted to blend modern design with everyday comfort, creating spaces you’ll love to live in.</div>
             </div>
         </div>
 
         <!-- Right Side - Form Section -->
         <div class="form-section">
             <div class="login-header">
-                <h1 class="login-title" style="font-family: 'Orbitron', sans-serif; font-size: 18px;">Welcome Back</h1>
+                <h1 class="login-title" style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Welcome Back</h1>
                 <p class="login-subtitle">Sign in to access your account</p>
             </div>
 
@@ -477,7 +475,7 @@
             </form>
 
             <div class="footer">
-                <p class="footer-text">2025 © All Rights Reserved | NovaLink Computer (Pvt) Ltd</p>
+                <p class="footer-text">2025 © All Rights Reserved | NUVAST Furniture</p>
             </div>
         </div>
     </div>
