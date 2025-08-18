@@ -21,10 +21,10 @@
     
     <style>
         :root {
-            --primary: #3b5d50;
-            --accent: #f9bf29;
+            --primary: #2d3748;
+            --accent: #3b5d50;
             --light-bg: #f8f9fa;
-            --text-dark: #2d3748;
+            --text-dark: #1a202c;
             --text-light: #718096;
         }
         
@@ -32,70 +32,65 @@
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
             background-color: white;
-            line-height: 1.6;
+            line-height: 1.5;
+            font-weight: 300;
         }
         
         .product-gallery {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
         }
         
         .main-image {
             width: 100%;
-            height: 500px;
+            height: 480px;
             object-fit: contain;
             background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 4px;
+            padding: 16px;
+            border: 1px solid #dfe0e1ff;
+
         }
         
         .thumbnail-container {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
         }
         
         .thumbnail {
-            width: 80px;
-            height: 80px;
+            width: 64px;
+            height: 64px;
             object-fit: cover;
-            border-radius: 4px;
+            border-radius: 2px;
             cursor: pointer;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         
         .thumbnail:hover {
-            border-color: var(--primary);
-            transform: scale(1.05);
+            opacity: 0.8;
         }
         
         .product-details {
-            padding: 30px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
+            padding: 24px;
         }
         
         .price-section {
-            margin: 24px 0;
+            margin: 20px 0;
         }
         
         .discounted-price {
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--primary);
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--text-dark);
         }
         
         .retail-price {
-            font-size: 18px;
+            font-size: 16px;
             text-decoration: line-through;
             color: var(--text-light);
-            margin-left: 10px;
+            margin-left: 8px;
         }
         
         .feature-list {
@@ -120,86 +115,93 @@
         }
         
         .stock-status {
-            font-weight: 600;
-            color: var(--primary);
-            padding: 6px 12px;
-            background-color: rgba(59, 93, 80, 0.1);
-            border-radius: 20px;
-            display: inline-block;
+            font-weight: 400;
+            font-size: 14px;
+            color: var(--accent);
         }
         
         .out-of-stock {
             color: #e53e3e;
-            background-color: rgba(229, 62, 62, 0.1);
         }
         
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            padding: 12px 24px;
-            font-weight: 500;
+        .btn-minimal {
+            background-color: transparent;
+            color: var(--accent);
+            padding: 10px 20px;
+            font-weight: 400;
+            font-size: 14px;
             letter-spacing: 0.5px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            border: 1px solid var(--accent);
+            border-radius: 2px;
         }
         
-        .btn-primary:hover {
-            background-color: #2d473d;
-            border-color: #2d473d;
-            transform: translateY(-2px);
+        .btn-minimal:hover {
+            background-color: var(--accent);
+            color: white;
         }
         
         .breadcrumb-item a {
             color: var(--text-light);
             text-decoration: none;
+            font-size: 13px;
             transition: color 0.2s ease;
         }
         
         .breadcrumb-item a:hover {
-            color: var(--primary);
+            color: var(--accent);
         }
         
         .breadcrumb-item.active {
-            color: var(--primary);
-            font-weight: 500;
+            color: var(--accent);
+            font-weight: 400;
         }
         
         h1 {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 16px;
+            font-weight: 400;
+            font-size: 24px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
         }
         
         h5 {
-            font-weight: 500;
-            color: var(--primary);
-            margin-bottom: 12px;
+            font-weight: 400;
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .brand-tag {
             display: inline-block;
-            padding: 4px 12px;
-            background-color: rgba(249, 191, 41, 0.2);
-            color: #b7791f;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 16px;
+            padding: 2px 8px;
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
         }
         
         .divider {
             height: 1px;
             background-color: #edf2f7;
-            margin: 24px 0;
+            margin: 20px 0;
+            width: 100%;
         }
         
         .warranty-badge {
             display: inline-block;
-            padding: 6px 12px;
-            background-color: rgba(249, 191, 41, 0.2);
-            color: #b7791f;
-            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 400;
+        }
+        
+        .text-muted {
             font-size: 14px;
-            font-weight: 500;
+            color: var(--text-light);
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -220,7 +222,7 @@
     </div>
 
     <!-- Main Product Content -->
-    <div class="container py-5">
+    <div class="container py-4">
         <div class="row">
             <!-- Product Images Section -->
             <div class="col-lg-6">
@@ -254,11 +256,11 @@
                     
                     <div class="mb-4">
                         <span class="stock-status {{ $product['in_stock'] ? '' : 'out-of-stock' }}">
-                            <i class="fas {{ $product['in_stock'] ? 'fa-check-circle' : 'fa-times-circle' }} mr-2"></i>
+                            <i class="fas {{ $product['in_stock'] ? 'fa-check' : 'fa-times' }} mr-1"></i>
                             {{ $product['in_stock'] ? 'In Stock' : 'Out of Stock' }}
                         </span>
                         @if($product['warranty'])
-                            <span class="warranty-badge ml-3"><i class="fas fa-shield-alt mr-2"></i>{{ $product['warranty'] }}</span>
+                            <span class="warranty-badge ml-3"><i class="fas fa-shield-alt mr-1"></i>{{ $product['warranty'] }}</span>
                         @endif
                     </div>
                     
@@ -281,18 +283,21 @@
                     @endif
                     
                     <!-- Add to Cart Button -->
-                    <div class="mt-5">
-                        <button class="btn btn-primary btn-lg px-5 py-3" 									data-bs-toggle="modal" 
-									data-bs-target="#exampleModal-Cart" 
-									onclick="addToCart({{ $product['id'] }});" {{ $product['in_stock'] ? '' : 'disabled' }}>
-                            <i class="fas fa-shopping-cart mr-2"></i>
-                            {{ $product['in_stock'] ? 'Add to Cart' : 'Out of Stock' }}
+                    <div class="mt-4">
+                        <button class="btn btn-minimal" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#exampleModal-Cart" 
+                                onclick="addToCart({{ $product['id'] }});" 
+                                {{ $product['in_stock'] ? '' : 'disabled' }}>
+                            <i class="fas fa-shopping-bag mr-2"></i>
+                            {{ $product['in_stock'] ? 'Add to Bag' : 'Out of Stock' }}
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <br/><br/><br/><br/>
 
     @include('layouts.modals')
     @include('layouts.footer2')
@@ -304,13 +309,6 @@
     <script>
         function changeMainImage(newSrc) {
             document.getElementById('mainImage').src = newSrc;
-            
-            // Add animation effect
-            const mainImage = document.getElementById('mainImage');
-            mainImage.classList.add('animate__animated', 'animate__fadeIn');
-            setTimeout(() => {
-                mainImage.classList.remove('animate__animated', 'animate__fadeIn');
-            }, 500);
         }
     </script>
 </body>

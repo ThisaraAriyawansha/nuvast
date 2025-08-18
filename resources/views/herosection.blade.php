@@ -135,7 +135,7 @@
         bottom: -1rem;
         left: 0;
         width: 100px;
-        height: 2px;
+        height: 4px;
         background: #f9bf29;
     }
 
@@ -324,7 +324,7 @@
     }
 
     .scroll-line {
-        width: 1px;
+        width: 3px;
         height: 40px;
         background: #f9bf29;
         animation: scrollPulse 2s ease-in-out infinite;
