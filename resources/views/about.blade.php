@@ -255,7 +255,34 @@
 				.story-section { padding: 40px 25px; }
 				}
 
-			
+			  .shopbtn-inline, .explorebtn-inline {
+				padding: 0.6rem 1.2rem;
+				font-size: 0.9rem;
+				font-weight: 300;
+				letter-spacing: 1px;
+				text-decoration: none;
+				display: inline-block;
+				transition: transform 0.2s ease;
+				margin-right: 0.5rem;
+			}
+
+			.shopbtn-inline {
+				background-color: #f9bf29;
+				color: #3b5d50;
+				border: none;
+			}
+
+			.explorebtn-inline {
+				background-color: transparent;
+				color: white;
+				border: 1px solid white;
+			}
+
+			/* Hover bounce effect */
+			.shopbtn-inline:hover,
+			.explorebtn-inline:hover {
+				transform: translateY(-3px); /* small upward bounce */
+			}
         </style>
 
 	<body>
@@ -272,7 +299,17 @@
 							<div class="intro-excerpt">
                                 <h1 style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">About Us</h1>
 								<p class="mb-4">At NUVAST, we craft timeless designs that bring beauty, comfort, and lasting quality to your home.</p>
-								<p><a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-secondary me-2">Shop Now</a><a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-white-outline">Explore</a></p>
+								<p>
+								<a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" 
+									class="shopbtn-inline">
+									Shop Now
+								</a>
+
+								<a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" 
+									class="explorebtn-inline">
+									Explore
+								</a>
+								</p>
 							</div>
 						</div>
 						<div class="col-lg-7">

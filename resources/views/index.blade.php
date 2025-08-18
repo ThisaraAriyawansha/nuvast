@@ -27,55 +27,7 @@
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
         
-            /* Hero section animations */
 
-
-            .intro-excerpt {
-                opacity: 0;
-                transform: translateY(50px);
-                animation: fadeInUp 1s ease-out forwards;
-                animation-delay: 0.2s;
-            }
-
-            .hero-img-wrap img {
-                opacity: 0;
-                transform: translateX(50px);
-                animation: slideInRight 1s ease-out forwards;
-                animation-delay: 0.5s;
-            }
-
-            /* Keyframes for animations */
-            @keyframes fadeInUp {
-                0% {
-                    opacity: 0;
-                    transform: translateY(50px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            @keyframes slideInRight {
-                0% {
-                    opacity: 0;
-                    transform: translateX(50px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-
-            /* Button hover animations */
-            .btn-secondary, .btn-white-outline {
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-
-            .btn-secondary:hover, .btn-white-outline:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
 
         </style>
 
@@ -87,24 +39,9 @@
 		<!-- End Header/Navigation -->
 
 		<!-- Start Hero Section -->
-            <div class="hero">
-				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-                                <h1 style="font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">NUVAST</h1>
-								<p class="mb-4">Discover exquisite furniture crafted for elegance and comfort. Transform your space with our timeless designs and superior quality</p>
-								<p><a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-secondary me-2">Shop Now</a><a href="{{ route('product.category', ['sort' => 'name_asc', 'filter' => 'ALL']) }}" class="btn btn-white-outline">Explore</a></p>
-							</div>
-						</div>
-						<div class="col-lg-7">
-							<div class="hero-img-wrap">
-								<img src="publicsite/images/Generate a minimalis_re.png" class="img-fluid">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>   
+		         @include('herosection')
+
+
 		<!-- End Hero Section -->
 
 		<!-- Start Product Section -->
