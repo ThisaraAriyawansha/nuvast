@@ -114,7 +114,7 @@
 
 
 	<div class="product-area py-[150px] dark-blue-bg relative" 
-		style="background:url(assets/images/banner/armchair-furniture-on-spacey-living-room-23mx8kxyn2yo3a9v.jpg) no-repeat; background-position:center; background-size:cover; background-attachment: fixed; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
+		style="background:url(assets/images/banner/688490.jpg) no-repeat; background-position:center; background-size:cover; background-attachment: fixed; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
 		
 		<!-- Overlay -->
 		<div class="absolute inset-0 bg-black opacity-50 z-0" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;"></div>
