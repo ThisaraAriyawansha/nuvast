@@ -158,15 +158,15 @@
     <div id="mobile-menu-overlay" onclick="closeMobileMenu()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1500;"></div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" style="position: fixed; left: -320px; top: 0; width: 320px; height: 100%; background-color: #1a1a1a; z-index: 1600; transition: left 0.3s ease; overflow-y: auto;">
+    <div id="mobile-menu" style="position: fixed; left: -320px; top: 0; width: 320px; height: 100%; background-color: #3b5d50; z-index: 1600; transition: left 0.3s ease; overflow-y: auto;">
         
         <!-- Mobile Menu Header -->
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #333;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px; ">
             <div style="display: flex; align-items: center; gap: 12px;">
                 <div style=" padding: 8px; border-radius: 6px;">
-                    <img src="../assets/images/logo/N_white.png" alt="Admin Icon" style="width: 60px; height: 60px; object-fit: contain;">
+                    <img src="/n_logo_white.png" alt="Admin Icon" style="width: 60px; height: 60px; object-fit: contain;">
                 </div>
-                <span style="color: white; font-weight: bold; font-size: 18px; font-family: 'Orbitron', sans-serif; ">NovaLink</span>
+                <span style="color: white; font-weight: bold; font-size: 18px; font-family: 'Orbitron', sans-serif; ">NUVAST</span>
             </div>
             <button onclick="closeMobileMenu()" style="color: #ccc; background: none; border: none; cursor: pointer; font-size: 20px; padding: 8px;">
                 <i class="fas fa-times"></i>
@@ -175,7 +175,7 @@
 
         <!-- Mobile Menu Items -->
         <div style="padding: 20px;">
-            <a href="{{ route('dashboard') }}" style="display: flex; align-items: center; padding: 15px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #333; transition: color 0.2s ease;" 
+            <a href="{{ route('dashboard') }}" style="display: flex; align-items: center; padding: 15px 0; color: #ccc; text-decoration: none;  transition: color 0.2s ease;" 
                onmouseover="this.style.color='white';" onmouseout="this.style.color='#ccc';">
                 <i class="fas fa-home" style="margin-right: 15px; width: 20px; color: #667eea;"></i>
                 Dashboard
@@ -199,20 +199,20 @@
                     <i class="fas fa-star" style="margin-right: 15px; width: 20px; color: #4ecdc4;"></i>
                     Add Features
                 </a>
-                <a href="{{ route('manageProduct') }}" style="display: flex; align-items: center; padding: 12px 0 20px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #333; transition: color 0.2s ease;" 
+                <a href="{{ route('manageProduct') }}" style="display: flex; align-items: center; padding: 12px 0 20px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #3b5d50; transition: color 0.2s ease;" 
                    onmouseover="this.style.color='white';" onmouseout="this.style.color='#ccc';">
                     <i class="fas fa-cogs" style="margin-right: 15px; width: 20px; color: #4ecdc4;"></i>
                     Manage Product
                 </a>
             </div>
 
-            <a href="{{ route('manageCustomer') }}" style="display: flex; align-items: center; padding: 15px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #333; transition: color 0.2s ease;" 
+            <a href="{{ route('manageCustomer') }}" style="display: flex; align-items: center; padding: 15px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #3b5d50; transition: color 0.2s ease;" 
                onmouseover="this.style.color='white';" onmouseout="this.style.color='#ccc';">
                 <i class="fas fa-users" style="margin-right: 15px; width: 20px; color: #45b7d1;"></i>
                 Manage Customer
             </a>
             
-            <a href="{{ route('viewOrder') }}" style="display: flex; align-items: center; padding: 15px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #333; transition: color 0.2s ease;" 
+            <a href="{{ route('viewOrder') }}" style="display: flex; align-items: center; padding: 15px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #3b5d50; transition: color 0.2s ease;" 
                onmouseover="this.style.color='white';" onmouseout="this.style.color='#ccc';">
                 <i class="fas fa-shopping-cart" style="margin-right: 15px; width: 20px; color: #f39c12;"></i>
                 View Order
@@ -226,20 +226,20 @@
                     <i class="fas fa-plus" style="margin-right: 15px; width: 20px; color: #9b59b6;"></i>
                     Add Blog
                 </a>
-                <a href="{{ route('manageBlog') }}" style="display: flex; align-items: center; padding: 12px 0 20px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #333; transition: color 0.2s ease;" 
+                <a href="{{ route('manageBlog') }}" style="display: flex; align-items: center; padding: 12px 0 20px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #3b5d50; transition: color 0.2s ease;" 
                    onmouseover="this.style.color='white';" onmouseout="this.style.color='#ccc';">
                     <i class="fas fa-edit" style="margin-right: 15px; width: 20px; color: #9b59b6;"></i>
                     Manage Blog
                 </a>
             </div>
 
-            <a href="{{ route('manageReview') }}" style="display: flex; align-items: center; padding: 15px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #333; transition: color 0.2s ease;" 
+            <a href="{{ route('manageReview') }}" style="display: flex; align-items: center; padding: 15px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #3b5d50; transition: color 0.2s ease;" 
                onmouseover="this.style.color='white';" onmouseout="this.style.color='#ccc';">
                 <i class="fas fa-comments" style="margin-right: 15px; width: 20px; color: #e67e22;"></i>
                 Manage Review
             </a>
 
-            <a href="{{ route('manageProfile') }}" style="display: flex; align-items: center; padding: 15px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #333; transition: color 0.2s ease;" 
+            <a href="{{ route('manageProfile') }}" style="display: flex; align-items: center; padding: 15px 0; color: #ccc; text-decoration: none; border-bottom: 1px solid #3b5d50; transition: color 0.2s ease;" 
                onmouseover="this.style.color='white';" onmouseout="this.style.color='#ccc';">
                 <i class="fas fa-user-circle" style="margin-right: 15px; width: 20px; color: #2ecc71;"></i>
                 Manage Profile

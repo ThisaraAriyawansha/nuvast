@@ -11,9 +11,14 @@
             </div>
         </div>
 
+        <!-- Debug Section for Troubleshooting -->
+        <div class="data-card hidden">
+            <h4 class="data-title">Debug Information</h4>
+            <pre>{{ json_encode($debugData, JSON_PRETTY_PRINT) }}</pre>
+        </div>
+
         <!-- Stats Grid Container -->
         <div class="stats-grid">
-            
             <!-- Total Revenue Card -->
             <div class="stat-card">
                 <div class="stat-icon bg-light">
@@ -33,6 +38,39 @@
                 <div class="stat-content">
                     <div class="stat-label">Today's Revenue</div>
                     <h4 class="stat-value">Rs. {{ number_format($todayRevenue, 2) }}</h4>
+                </div>
+            </div>
+
+            <!-- Last Month's Revenue -->
+            <div class="stat-card">
+                <div class="stat-icon bg-light">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-label">Last Month's Revenue</div>
+                    <h4 class="stat-value">Rs. {{ number_format($lastMonthRevenue, 2) }}</h4>
+                </div>
+            </div>
+
+            <!-- Average Order Value -->
+            <div class="stat-card">
+                <div class="stat-icon bg-light">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-label">Average Order Value</div>
+                    <h4 class="stat-value">Rs. {{ number_format($averageOrderValue, 2) }}</h4>
+                </div>
+            </div>
+
+            <!-- Repeat Customers -->
+            <div class="stat-card">
+                <div class="stat-icon bg-dark">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-label">Repeat Customers</div>
+                    <h4 class="stat-value">{{ number_format($repeatCustomerCount) }}</h4>
                 </div>
             </div>
 
@@ -81,9 +119,32 @@
             </div>
         </div>
 
+        <!-- Revenue Forecast Chart -->
+        <div class="data-card">
+            <h4 class="data-title">Revenue Trend & Three-Month Forecast</h4>
+            <canvas id="revenueForecastChart" height="200"></canvas>
+        </div>
+
+        <!-- Daily Orders Chart -->
+        <div class="data-card">
+            <h4 class="data-title">Daily Orders (Last 7 Days)</h4>
+            <canvas id="dailyOrdersChart" height="200"></canvas>
+        </div>
+
+        <!-- Customer Growth Chart -->
+        <div class="data-card">
+            <h4 class="data-title">Customer Growth (Last 6 Months)</h4>
+            <canvas id="customerGrowthChart" height="200"></canvas>
+        </div>
+
+        <!-- Payment Status Pie Chart -->
+        <div class="data-card">
+            <h4 class="data-title">Payment Status Distribution</h4>
+            <canvas id="paymentStatusChart" height="200"></canvas>
+        </div>
+
         <!-- Data Tables Row -->
         <div class="data-grid">
-            
             <!-- Top Products -->
             <div class="data-card">
                 <h4 class="data-title">Top Selling Products</h4>
@@ -101,6 +162,57 @@
                 @endif
             </div>
 
+            <!-- AI-Powered Inventory Forecast (Next 3 Months) -->
+            <div class="data-card">
+                <h4 class="data-title">AI-Powered Inventory Forecast (Next 3 Months)</h4>
+                @if($forecastedProducts && count($forecastedProducts) > 0)
+                    @foreach($forecastedProducts as $product)
+                    <div class="data-item">
+                        <div class="data-main">{{ Str::limit($product->name, 30) }}</div>
+                        <div class="data-badge">
+                            {{ implode(', ', $product->forecasts) }} units
+                        </div>
+                    </div>
+                    @endforeach
+                @else
+                    <p class="data-empty">No forecast data available</p>
+                @endif
+            </div>
+
+            <!-- Top Customers -->
+            <div class="data-card">
+                <h4 class="data-title">Top Customers</h4>
+                @if($topCustomers && $topCustomers->count() > 0)
+                    @foreach($topCustomers as $customer)
+                    <div class="data-item">
+                        <div class="data-main">{{ Str::limit($customer->name, 30) }}</div>
+                        <div class="data-badge">
+                            Rs. {{ number_format($customer->total_spent, 2) }}
+                        </div>
+                    </div>
+                    @endforeach
+                @else
+                    <p class="data-empty">No customer data available</p>
+                @endif
+            </div>
+
+            <!-- AI-Powered Customer Spending Forecast (Next 3 Months) -->
+            <div class="data-card">
+                <h4 class="data-title">AI-Powered Customer Spending Forecast (Next 3 Months)</h4>
+                @if($forecastedCustomers && count($forecastedCustomers) > 0)
+                    @foreach($forecastedCustomers as $customer)
+                    <div class="data-item">
+                        <div class="data-main">{{ Str::limit($customer->name, 30) }}</div>
+                        <div class="data-badge">
+                            Rs. {{ implode(', ', array_map(fn($f) => number_format($f, 2), $customer->forecasts)) }}
+                        </div>
+                    </div>
+                    @endforeach
+                @else
+                    <p class="data-empty">No forecast data available</p>
+                @endif
+            </div>
+
             <!-- Recent Orders -->
             <div class="data-card">
                 <h4 class="data-title">Recent Orders</h4>
@@ -111,7 +223,7 @@
                             {{ $order->customer->fname ?? 'N/A' }} {{ $order->customer->lname ?? '' }}
                         </div>
                         <div class="data-sub">
-                            Rs. {{ number_format($order->total, 2) }}
+                            Rs. {{ number_format($order->total ?? 0, 2) }}
                         </div>
                         <div class="data-time">
                             {{ $order->created_at->diffForHumans() }}
@@ -120,6 +232,28 @@
                     @endforeach
                 @else
                     <p class="data-empty">No recent orders</p>
+                @endif
+            </div>
+
+            <!-- Suspicious Orders (Risk Detection) -->
+            <div class="data-card">
+                <h4 class="data-title">Suspicious Orders (Risk Detection)</h4>
+                @if($suspiciousOrders && $suspiciousOrders->count() > 0)
+                    @foreach($suspiciousOrders as $order)
+                    <div class="data-item">
+                        <div class="data-main">
+                            {{ $order->customer->fname ?? 'N/A' }} {{ $order->customer->lname ?? '' }}
+                        </div>
+                        <div class="data-sub">
+                            Rs. {{ number_format($order->total ?? 0, 2) }}
+                        </div>
+                        <div class="data-time">
+                            {{ $order->created_at->diffForHumans() }}
+                        </div>
+                    </div>
+                    @endforeach
+                @else
+                    <p class="data-empty">No suspicious orders detected</p>
                 @endif
             </div>
 
@@ -201,8 +335,9 @@ body {
     margin: 0;
     color: #3b5d50;
     font-family: 'Inter', sans-serif;
-     font-weight: 500;
-      letter-spacing: 1px;}
+    font-weight: 500;
+    letter-spacing: 1px;
+}
 
 .last-updated {
     background: var(--white);
@@ -364,6 +499,14 @@ body {
     margin-right: 0.75rem;
 }
 
+pre {
+    background: var(--gray-100);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
     .stats-grid {
@@ -404,5 +547,170 @@ body {
 
 <!-- Chart.js Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    try {
+        // Revenue Forecast Chart
+        const revenueCtx = document.getElementById('revenueForecastChart').getContext('2d');
+        const monthlyRevenueData = @json($monthlyRevenueData);
+        const threeMonthForecast = @json($threeMonthForecast);
+        
+        const revenueLabels = monthlyRevenueData.map(item => item.month);
+        const revenues = monthlyRevenueData.map(item => item.revenue);
+        
+        threeMonthForecast.forEach(forecast => {
+            revenueLabels.push(forecast.month);
+            revenues.push(forecast.revenue);
+        });
+
+        new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: revenueLabels,
+                datasets: [{
+                    label: 'Revenue (Rs.)',
+                    data: revenues,
+                    borderColor: '#3b5d50',
+                    backgroundColor: 'rgba(59, 93, 80, 0.2)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: revenues.map((_, index) => index >= monthlyRevenueData.length ? '#ff4444' : '#3b5d50'),
+                    pointBorderColor: revenues.map((_, index) => index >= monthlyRevenueData.length ? '#ff4444' : '#3b5d50'),
+                    pointRadius: revenues.map((_, index) => index >= monthlyRevenueData.length ? 6 : 4),
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += 'Rs. ' + context.parsed.y.toFixed(2);
+                                }
+                                if (context.dataIndex >= monthlyRevenueData.length) {
+                                    label += ' (Forecast)';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Revenue (Rs.)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Daily Orders Chart
+        const dailyOrdersData = @json($dailyOrdersData);
+        const dailyLabels = dailyOrdersData.map(item => item.date);
+        const dailyOrders = dailyOrdersData.map(item => item.orders);
+
+        new Chart(document.getElementById('dailyOrdersChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: dailyLabels,
+                datasets: [{
+                    label: 'Orders',
+                    data: dailyOrders,
+                    borderColor: '#3b5d50',
+                    backgroundColor: 'rgba(59, 93, 80, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Orders'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Customer Growth Chart
+        const customerGrowthData = @json($customerGrowthData);
+        const growthLabels = customerGrowthData.map(item => item.month);
+        const growthCustomers = customerGrowthData.map(item => item.customers);
+
+        new Chart(document.getElementById('customerGrowthChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: growthLabels,
+                datasets: [{
+                    label: 'New Customers',
+                    data: growthCustomers,
+                    backgroundColor: '#3b5d50'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Customers'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Payment Status Pie Chart
+        const paymentStatusData = @json($paymentStatusData);
+        const statusLabels = paymentStatusData.map(item => item.status);
+        const statusCounts = paymentStatusData.map(item => item.count);
+        const statusColors = ['#3b5d50', '#ffc107', '#ff4444'];
+
+        new Chart(document.getElementById('paymentStatusChart').getContext('2d'), {
+            type: 'pie',
+            data: {
+                labels: statusLabels,
+                datasets: [{
+                    data: statusCounts,
+                    backgroundColor: statusColors
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    } catch (e) {
+        console.error('Chart Rendering Error:', e);
+    }
+});
+</script>
 
 @include('layouts.footer')

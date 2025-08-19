@@ -23,4 +23,9 @@ class Customer extends Model
     protected $hidden = [
         'password',
     ];
+
+        public function payments()
+    {
+        return $this->hasMany(Payment::class, 'customer_id');
+    }
 }
