@@ -128,10 +128,10 @@
                         <div class="select flex-grow">
                             <select id="tags" name="tags" onchange="toggleDealDates()">
                                 <option value="">Select a Tags</option>
-                                <option value="New Arrivals">New Arrivals</option>
-                                <option value="Top Rated">Top Rated</option>
-                                <option value="Featured">Featured</option>
-                                <option value="DEAL OF THE DAYS">DEAL OF THE DAYS</option>
+                                <option value="minimalist">Minimalist</option>
+                                <option value="vintage">Vintage</option>
+                                <option value="modern">Modern</option>
+                                <option value="cozy">Cozy</option>
                                 <option value="None">None</option>
                             </select>
                         </div>

@@ -156,13 +156,14 @@
                         <div class="body-title">Select Tags Type</div>
                         <div class="select flex-grow">
                             <select id="tags" name="tags" onchange="toggleDealDates()">
-                                <option value="">Select a Tags</option>
-                                <option value="New Arrivals" {{ $product->tags == 'New Arrivals' ? 'selected' : '' }}>New Arrivals</option>
-                                <option value="Top Rated" {{ $product->tags == 'Top Rated' ? 'selected' : '' }}>Top Rated</option>
-                                <option value="Featured" {{ $product->tags == 'Featured' ? 'selected' : '' }}>Featured</option>
-                                <option value="DEAL OF THE DAYS" {{ $product->tags == 'DEAL OF THE DAYS' ? 'selected' : '' }}>DEAL OF THE DAYS</option>
+                                <option value="">Select a Tag</option>
+                                <option value="minimalist" {{ $product->tags == 'minimalist' ? 'selected' : '' }}>Minimalist</option>
+                                <option value="vintage" {{ $product->tags == 'vintage' ? 'selected' : '' }}>Vintage</option>
+                                <option value="modern" {{ $product->tags == 'modern' ? 'selected' : '' }}>Modern</option>
+                                <option value="cozy" {{ $product->tags == 'cozy' ? 'selected' : '' }}>Cozy</option>
                                 <option value="None" {{ $product->tags == 'None' ? 'selected' : '' }}>None</option>
                             </select>
+
                         </div>
                     </fieldset><br/>
 

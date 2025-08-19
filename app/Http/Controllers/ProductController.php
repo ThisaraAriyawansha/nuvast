@@ -52,6 +52,20 @@ class ProductController extends Controller
             $products = $products->where('name', 'like', '%' . $searchQuery . '%');
         }
 
+
+            // Apply style filter if provided
+            $style = $request->query('style');
+            if (!empty($style)) {
+                $keywords = $this->mapStyleToKeywords($style);
+                
+                $products = $products->where(function($query) use ($keywords) {
+                    foreach ($keywords as $keyword) {
+                        $query->orWhere('tags', 'like', '%'.$keyword.'%');
+                    }
+                });
+            }
+
+
         // Apply price range filter
         $priceMin = $request->query('price_min');
         $priceMax = $request->query('price_max');
@@ -118,7 +132,17 @@ class ProductController extends Controller
     
     
 
-
+    private function mapStyleToKeywords($style)
+    {
+        $mapping = [
+            'minimalist' => ['minimalist', 'simple', 'clean', 'scandinavian'],
+            'vintage' => ['vintage', 'retro', 'antique', 'classic'],
+            'modern' => ['modern', 'contemporary', 'sleek', 'minimal'],
+            'cozy' => ['cozy', 'comfortable', 'warm', 'rustic', 'farmhouse']
+        ];
+        
+        return $mapping[strtolower($style)] ?? [];
+    }
     
 
 

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
   <link rel="shortcut icon" href="green_n.png">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
     <script src="assets/js/tailwind-cdn.js"></script>
@@ -101,6 +101,153 @@
 				transform: translateY(-3px); /* small upward bounce */
 			}
 
+
+
+
+/* Style Recommender Modal - Fully Responsive */
+#styleRecommenderModal .modal-dialog {
+    max-width: 500px; /* Fixed max width for desktop */
+    margin: 1rem auto;
+}
+#styleRecommenderModal .modal-content {
+    background-color: #ffffff;
+    border: 1px solid #3b5d50;
+    border-radius: 12px;
+    overflow: hidden;
+}
+#styleRecommenderModal .modal-header {
+    border-bottom: none;
+    padding: 1.5rem 1.5rem 0;
+}
+#styleRecommenderModal .modal-body {
+    padding: 0 1.5rem 1.5rem;
+}
+.style-option {
+    transition: all 0.3s ease;
+    border: 1px solid #3b5d50;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: #3b5d50;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 0.5rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+.style-option:hover {
+    background-color: #3b5d50;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(59, 93, 80, 0.2);
+    border-color: #3b5d50;
+}
+.style-option i {
+    transition: all 0.3s ease;
+    color: #3b5d50;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+.style-option:hover i {
+    color: white;
+    transform: scale(1.15);
+}
+#styleRecommenderModal h3 {
+    color: #3b5d50;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+#styleRecommenderModal .btn-link {
+    color: #3b5d50;
+    text-decoration: none;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    padding: 0.75rem;
+    border-radius: 6px;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+    border: 1px solid transparent;
+}
+#styleRecommenderModal .btn-link:hover {
+    color: #2a453a;
+    background-color: rgba(59, 93, 80, 0.1);
+    border-color: #3b5d50;
+}
+.center-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 767.98px) {
+    #styleRecommenderModal .modal-dialog {
+        max-width: 100%;
+        margin: 0;
+        height: 100%;
+    }
+    #styleRecommenderModal .modal-content {
+        border-radius: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #styleRecommenderModal .modal-body {
+        padding: 1rem;
+    }
+    .style-option {
+        padding: 1.5rem 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+    #styleRecommenderModal h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1.25rem;
+    }
+    #styleRecommenderModal .btn-link {
+        margin-top: 0.75rem;
+        padding: 0.75rem;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 575.98px) {
+    #styleRecommenderModal .modal-body {
+        padding: 1rem 0.75rem;
+    }
+    .style-option {
+        padding: 1.25rem 0.5rem;
+    }
+    #styleRecommenderModal h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    .style-option i {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Extra small devices (phones, 360px and down) */
+@media (max-width: 360px) {
+    #styleRecommenderModal h3 {
+        font-size: 1.2rem;
+    }
+    .style-option {
+        padding: 1rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}
         </style>
 
 	<body>
@@ -141,6 +288,62 @@
 				</div>
 			</div>
 		<!-- End Hero Section -->
+
+<br/><br/><br/>
+    <div class="center-container">
+        <button class="chnagestylebtn" 
+                data-bs-toggle="modal" 
+                data-bs-target="#styleRecommenderModal">
+            <i class="fas fa-palette me-1"></i> Change Style
+        </button>
+    </div>
+
+<!-- Modal HTML (replace your existing modal with this) -->
+<div class="modal fade" id="styleRecommenderModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <h3>What's your vibe?</h3>
+                <div class="row g-3">
+                    <div class="col-6">
+                        <button class="style-option btn btn-outline-secondary w-100" 
+                                data-style="minimalist" 
+                                onclick="filterByStyle('minimalist')">
+                            <i class="fas fa-bars-staggered"></i> Minimalist
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button class="style-option btn btn-outline-secondary w-100" 
+                                data-style="vintage" 
+                                onclick="filterByStyle('vintage')">
+                            <i class="fas fa-clock-rotate-left"></i> Vintage
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button class="style-option btn btn-outline-secondary w-100" 
+                                data-style="modern" 
+                                onclick="filterByStyle('modern')">
+                            <i class="fas fa-cube"></i> Modern
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button class="style-option btn btn-outline-secondary w-100" 
+                                data-style="cozy" 
+                                onclick="filterByStyle('cozy')">
+                            <i class="fas fa-couch"></i> Cozy
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-link" onclick="clearStyleFilter()" style="background-color: #3b5d50; color: white; margin-top: 1rem;">
+                    Show me everything
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 		<div class="untree_co-section product-section before-footer-section">
 			<div class="container">
@@ -278,6 +481,7 @@
 </html>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 
@@ -340,4 +544,79 @@ function addToCartProduct(prodID) {
 }
 
 
+</script>
+
+
+
+<!-- Add this modal HTML right after your hero section -->
+
+
+<script>
+// Show style recommender modal on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Only show modal if:
+    // 1. No style filter is currently applied
+    // 2. The page wasn't loaded from "Show me everything" click
+    // 3. The modal hasn't been shown in this session
+    if(!urlParams.has('style') && 
+       !urlParams.has('skip_modal') &&
+       sessionStorage.getItem('modalShown') !== 'true') {
+        
+        var styleModal = new bootstrap.Modal(document.getElementById('styleRecommenderModal'));
+        styleModal.show();
+        
+        // Remember we've shown the modal in this session
+        sessionStorage.setItem('modalShown', 'true');
+    }
+    
+    // Clean up the URL if skip_modal is present
+    if(urlParams.has('skip_modal')) {
+        const cleanUrl = new URL(window.location.href);
+        cleanUrl.searchParams.delete('skip_modal');
+        window.history.replaceState({}, '', cleanUrl.toString());
+    }
+});
+
+// Filter products by selected style
+function filterByStyle(style) {
+    // Close the modal
+    var styleModal = bootstrap.Modal.getInstance(document.getElementById('styleRecommenderModal'));
+    styleModal.hide();
+    
+    // Get current URL parameters
+    const url = new URL(window.location.href);
+    
+    // Add or update style parameter
+    url.searchParams.set('style', style);
+    
+    // Remove skip_modal flag if present
+    url.searchParams.delete('skip_modal');
+    
+    // Reload the page with new filter
+    window.location.href = url.toString();
+}
+
+// Clear style filter and show all products
+function clearStyleFilter() {
+    // Close the modal
+    var styleModal = bootstrap.Modal.getInstance(document.getElementById('styleRecommenderModal'));
+    styleModal.hide();
+    
+    // Get current URL
+    const url = new URL(window.location.href);
+    
+    // Remove the style parameter
+    url.searchParams.delete('style');
+    
+    // Add temporary flag to prevent modal from showing again
+    url.searchParams.set('skip_modal', 'true');
+    
+    // Reload the page without the style filter
+    window.location.href = url.toString();
+    
+    // Reset modal shown flag for next session
+    sessionStorage.removeItem('modalShown');
+}
 </script>
