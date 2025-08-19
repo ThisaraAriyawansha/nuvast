@@ -119,30 +119,32 @@
             </div>
         </div>
 
-        <!-- Revenue Forecast Chart -->
-        <div class="data-card">
-            <h4 class="data-title">Revenue Trend & Three-Month Forecast</h4>
-            <canvas id="revenueForecastChart" height="200"></canvas>
-        </div>
+<!-- Charts Row -->
+<div class="charts-grid">
+    <!-- Revenue Forecast Chart -->
+    <div class="data-card chart-card">
+        <h4 class="data-title">Revenue Trend & Three-Month Forecast</h4>
+        <canvas id="revenueForecastChart" height="150"></canvas>
+    </div>
 
-        <!-- Daily Orders Chart -->
-        <div class="data-card">
-            <h4 class="data-title">Daily Orders (Last 7 Days)</h4>
-            <canvas id="dailyOrdersChart" height="200"></canvas>
-        </div>
+    <!-- Daily Orders Chart -->
+    <div class="data-card chart-card">
+        <h4 class="data-title">Daily Orders (Last 7 Days)</h4>
+        <canvas id="dailyOrdersChart" height="150"></canvas>
+    </div>
 
-        <!-- Customer Growth Chart -->
-        <div class="data-card">
-            <h4 class="data-title">Customer Growth (Last 6 Months)</h4>
-            <canvas id="customerGrowthChart" height="200"></canvas>
-        </div>
+    <!-- Customer Growth Chart -->
+    <div class="data-card chart-card">
+        <h4 class="data-title">Customer Growth (Last 6 Months)</h4>
+        <canvas id="customerGrowthChart" height="150"></canvas>
+    </div>
 
-        <!-- Payment Status Pie Chart -->
-        <div class="data-card">
-            <h4 class="data-title">Payment Status Distribution</h4>
-            <canvas id="paymentStatusChart" height="200"></canvas>
-        </div>
-
+    <!-- Payment Status Pie Chart -->
+    <div class="data-card chart-card">
+        <h4 class="data-title">Payment Status Distribution</h4>
+        <canvas id="paymentStatusChart" height="150"></canvas>
+    </div>
+</div>
         <!-- Data Tables Row -->
         <div class="data-grid">
             <!-- Top Products -->
@@ -541,6 +543,43 @@ pre {
     
     .stat-icon {
         margin-bottom: 0.75rem;
+    }
+}
+
+
+/* Charts Grid */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.chart-card {
+    background: var(--white);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--gray-200);
+    max-height: 300px; /* Constrain chart card height */
+}
+
+.chart-card canvas {
+    max-height: 150px !important; /* Ensure canvas respects reduced height */
+    width: 100% !important; /* Maintain full width */
+}
+
+/* Desktop Layout (Two Charts per Row) */
+@media (min-width: 1024px) {
+    .charts-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for charts */
+    }
+}
+
+/* Responsive Adjustments for Smaller Screens */
+@media (max-width: 1023px) {
+    .charts-grid {
+        grid-template-columns: 1fr; /* Stack charts vertically on smaller screens */
     }
 }
 </style>
