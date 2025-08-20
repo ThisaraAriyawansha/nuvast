@@ -204,3 +204,7 @@ Route::patch('/admin/review/{id}/toggle', [ReviewController::class, 'toggleRevie
 
 //Contact Us
 Route::post('/contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
+
+
+
+Route::post('/analyze-image', [ProductController::class, 'analyzeImage']);
