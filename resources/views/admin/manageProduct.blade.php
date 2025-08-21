@@ -1,318 +1,515 @@
 @include('layouts.header')
 <style>
-/* Modal Styles */
+:root {
+    --primary-color: #3b5d50;
+    --secondary-color: #9ca3af;
+    --background: #fafafa;
+    --surface: #ffffff;
+    --text-primary: #3b5d50;
+    --text-secondary: #6b7280;
+    --border-light: #e5e7eb;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --radius: 8px;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+}
+
+/* Modal Styles - Minimalistic */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); /* Centering */
-    width: 60%; /* Default width */
-    max-width: 600px; /* Ensures it doesn't get too wide on large screens */
-    height: 60%; /* Default height */
-    max-height: 90vh; /* Prevents modal from exceeding viewport height */
-    background-color: rgba(0, 0, 0, 0.9); /* Black with opacity */
-    padding: 20px;
-    border-radius: 10px; /* Optional: Add rounded corners */
-    overflow: auto; /* Enables scrolling if needed */
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
 }
 
-/* Modal Content */
 .modal-content {
-    margin: auto;
-    display: block;
-    max-width: 90%;
-    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
 }
 
-/* Close Button */
 .close {
     position: absolute;
-    top: 10px;
-    right: 15px;
-    color: #fff;
-    font-size: 30px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 24px;
+    font-weight: 300;
     cursor: pointer;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    .modal {
-        width: 90%; /* Increase width for small screens */
-        height: auto; /* Auto height for content flexibility */
-        max-width: 90%; /* Keep it within the screen limits */
-    }
-
-    .modal-content {
-        max-width: 90%;
-    }
-
-    .close {
-        font-size: 25px; /* Reduce close button size */
-        top: 5px;
-        right: 10px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .modal {
-        width: 95%; /* Almost full width for small phones */
-        height: auto; /* Allow content to dictate height */
-        padding: 15px;
-    }
-
-    .modal-content {
-        max-width: 90%;
-    }
-
-    .close {
-        font-size: 22px; /* Smaller close button */
-        top: 5px;
-        right: 8px;
-    }
-}
-
-
-.button-container {
+    transition: opacity 0.2s ease;
+    background: none;
+    border: none;
+    width: 32px;
+    height: 32px;
     display: flex;
-    gap: 10px; /* Adjust spacing between buttons */
-    justify-content: center; /* Center buttons horizontally */
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-
-
-.status-btn{
-    background-color: #e74c3c; /* Red color */
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+.close:hover {
+    opacity: 0.7;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-.delete-btn {
-    background-color: #e74c3c; /* Red color */
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}/* View More Button Styles */
-
-.view-more-btn,
-.view-btn,
-.update-btn {
-    background-color: white;   /* White background */
-    color: #3b5d50;              /* Black text */
-    padding: 8px 12px;
-    border: 1px solid #3b5d50;   /* Black border */
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+/* Main Content */
+.main-content {
+    padding: 0;
+    background-color: var(--background);
+    min-height: 100vh;
 }
 
-/* Hover: Black background, white text */
-.view-more-btn:hover,
-.view-btn:hover,
-.update-btn:hover {
-    background-color: #3b5d50;
-    color: white;
-    opacity: 1;
+.main-content-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
+.wg-box {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    margin: 0;
+    padding: 2rem;
+}
 
-.wg-table {
-        width: 100%;
-        overflow-x: auto;
-    }
+/* Header */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+}
 
-    .table-container {
-        width: 100%;
-        overflow-x: auto;
-    }
+.admin-header h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+    margin: 0;
+}
 
-    .wg-table .table-title, .wg-table .product-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
+.last-updated {
+    background: var(--background);
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+    font-size: 0.875rem;
+    font-weight: 400;
+}
 
-    .wg-table .table-title li, .wg-table .product-item > div {
-        flex: 1;
-        text-align: left;
-        min-width: 120px;
-    }
-
-    .wg-table .button-container {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-    }
-
-    .wg-table .body-text {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .image {
-        width: 80px;
-        height: auto;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .wg-table .table-title {
-            display: none; /* Hide table headers on small screens */
-        }
-
-        .wg-table .product-item {
-            display: flex;
-            flex-wrap: wrap;
-            border-bottom: 1px solid #ddd;
-            padding: 10px;
-        }
-
-        .wg-table .product-item > div {
-            flex: 100%;
-            text-align: left;
-        }
-
-        .wg-table .image {
-            width: 100%;
-            max-width: 100px;
-        }
-
-        .wg-table .button-container {
-            flex: 100%;
-            display: flex;
-            justify-content: flex-start;
-            gap: 5px;
-        }
-    }
-    
-
+/* Search Form */
 .search-form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: flex-start; /* Aligns items to the left */
+    gap: 0.75rem;
+    margin-bottom: 2rem;
     align-items: center;
-    width: 100%;
-    max-width: 800px; /* Increased width */
-    margin: 0; /* Remove auto-centering */
-    padding: 10px;
-    background: transparent;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .search-input {
     flex: 1;
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
+    max-width: 320px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    background-color: var(--surface);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
     outline: none;
-    transition: all 0.3s ease-in-out;
 }
 
 .search-input:focus {
-    border-color: #3b5d50;
-    box-shadow: 0 0 5px #3b5d50;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.1);
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
 }
 
 .search-button {
-    padding: 10px 15px;
-    background: #3b5d50;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--text-primary);
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    transition: all 0.2s ease;
 }
 
 .search-button:hover {
-    background: #3c5e51ff;
+    background-color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+/* Table Styles */
+.wg-table {
+    width: 100%;
+}
+
+.table-title {
+    display: grid;
+    grid-template-columns: 80px 1fr 120px 120px 80px 100px 200px;
+    gap: 1rem;
+    padding: 1rem 0;
+    margin: 0;
+    border-bottom: 1px solid var(--border-light);
+    align-items: center;
+}
+
+.table-title li {
+    list-style: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.product-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 120px 120px 80px 100px 200px;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    margin: 0;
+    border-bottom: 1px solid var(--border-light);
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.product-item:hover {
+    background-color: rgba(107, 114, 128, 0.02);
+}
+
+.product-item:last-child {
+    border-bottom: none;
+}
+
+.body-text {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.image {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius);
+    object-fit: cover;
+    border: 1px solid var(--border-light);
+}
+
+/* Button Styles */
+.button-container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.view-btn, .view-more-btn, .update-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+}
+
+.view-btn:hover, .view-more-btn:hover, .update-btn:hover {
+    background-color: var(--text-primary);
+    color: white;
+    border-color: var(--text-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.status-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid red;
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    color: red;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 32px;
+}
+
+.status-btn:hover {
+    background-color: red;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.delete-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid var(--danger);
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    color: var(--danger);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 32px;
+}
+
+.delete-btn:hover {
+    background-color: var(--danger);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Pagination */
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.text-tiny {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.wg-pagination {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wg-pagination li {
+    display: flex;
+}
+
+.wg-pagination li a,
+.wg-pagination li span {
+    padding: 0.5rem 0.75rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+}
+
+.wg-pagination li a:hover {
+    background-color: var(--background);
+    color: var(--text-primary);
+}
+
+.wg-pagination li.active a {
+    background-color: var(--text-primary);
+    color: white;
+}
+
+.wg-pagination li.disabled span {
+    color: var(--border-light);
+    cursor: not-allowed;
+}
+
+/* Toast Alert */
+.toast-alert {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background-color: var(--success);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    z-index: 9999;
+    display: none;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0; 
+        transform: translateX(100%);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0);
+    }
+}
+
+/* Alert Styles */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    border: 1px solid transparent;
+}
+
+.alert-success {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #065f46;
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+.alert-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #991b1b;
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: inherit;
+    opacity: 0.5;
+    cursor: pointer;
+    float: right;
+}
+
+.btn-close:hover {
+    opacity: 0.75;
 }
 
 /* Responsive Design */
-@media (max-width: 480px) {
-    .search-form {
-        flex-direction: column;
-        max-width: 100%; /* Full width on mobile */
+@media (max-width: 1024px) {
+    .table-title, .product-item {
+        grid-template-columns: 60px 1fr 100px 100px 60px 80px 180px;
     }
     
-    .search-input, 
-    .search-button {
-        width: 100%;
+    .main-content-inner {
+        padding: 1.5rem;
     }
 }
 
-
-
-    .wg-box {
-        margin-left: 20px;
-        margin-right: 20px;
+@media (max-width: 768px) {
+    .table-title {
+        display: none;
     }
-
-    .last-updated {
-        background: var(--white);
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        border: 1px solid var(--gray-200);
-        font-size: 1.3rem;
-        color: var(--gray-600);
+    
+    .product-item {
+        display: block;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius);
+        background-color: var(--surface);
     }
-    .admin-header {
+    
+    .product-item > div {
+        margin-bottom: 0.75rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 2rem;
+    }
+    
+    .product-item > div:before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-secondary);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    
+    .button-container {
+        justify-content: flex-start;
         flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+    
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 1rem;
     }
-
-    .wg-pagination li a:hover {
-        background-color: #333;    /* Darker shade on hover */
+    
+    .search-form {
+        flex-direction: column;
+        align-items: stretch;
     }
-    .wg-pagination li.active a {
-        background-color: #000000ff; /* Highlighted page */
-        color: black;
+    
+    .search-input {
+        max-width: none;
     }
+}
 
-    .toast-alert {
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        background-color: #336824ff; /* Highlighted page */
-        color: white;
-        padding: 12px 20px;
-        border-radius: 6px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        font-size: 14px;
-        z-index: 9999;
-        display: none;
-        animation: slideIn 0.3s ease-out;
+@media (max-width: 480px) {
+    .main-content-inner {
+        padding: 1rem;
     }
-
-    @keyframes slideIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
+    
+    .wg-box {
+        padding: 1.5rem;
     }
+    
+    .button-container {
+        gap: 0.375rem;
+    }
+    
+    .view-btn, .view-more-btn, .update-btn, .status-btn, .delete-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.6875rem;
+    }
+}
 
+/* Hidden utility */
+.hidden {
+    display: none !important;
+}
+
+/* Smooth transitions */
+* {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
 </style>
+
 <!-- main-content -->
 <div class="main-content">
     <!-- main-content-wrap -->
@@ -324,170 +521,161 @@
             <div class="wg-box">
                 @if ($errors->any())
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Oops! There were some errors with your submission:</strong>
-                        <ul class="mt-2">
+                        <strong>There were some errors with your submission:</strong>
+                        <ul class="mt-2" style="margin: 0.5rem 0 0 1.25rem;">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
                     </div>
                 @endif
 
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Success! </strong> {{ session('success') }}
+                        <strong>Success!</strong> {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
                     </div>
                 @endif
 
                 @if (session('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Error! </strong> {{ session('error') }}
+                        <strong>Error!</strong> {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
                     </div>
                 @endif
+
                 <div class="admin-header">
-                <h3 class="text-xl font-semibold" style=" font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Manage Products</h3>
+                    <h3>Manage Products</h3>
                     <div class="last-updated">
                         Last updated: {{ now()->format('M j, Y g:i A') }}
                     </div>
                 </div>
 
-
                 <form method="GET" action="{{ route('manageProduct') }}" class="search-form">
-                    <input type="text" name="search" value="{{ request('search') }}" class="search-input" placeholder="Search product name...">
+                    <input type="text" name="search" value="{{ request('search') }}" class="search-input" placeholder="Search products...">
                     <button type="submit" class="search-button">Search</button>
                 </form>
 
-
-
-
                 <div class="wg-table">
-                <ul class="table-title flex gap-4 mb-4 px-4 py-3">
-                    <li><div class="body-title">Image</div></li>
-                    <li><div class="body-title">Product Name</div></li>
-                    <li><div class="body-title">Type</div></li>
-                    <li><div class="body-title">Brand</div></li>
-                    <li><div class="body-title">QTY</div></li>
-                    <li><div class="body-title">Status</div></li>
-                    <li><div class="body-title">Action</div></li>
-                </ul>
-                <div class="table-container">
-            <ul class="flex flex-column">
-            @foreach($product as $item)
-        <li class="product-item flex items-center gap-4 px-4 py-3 hover:bg-gray-50">
-            <!-- Image -->
-            <div class="body-text flex-shrink-0">
-                <img src="{{ asset(''.$item->image) }}" alt="Image" class="image">
-            </div>
-            
-            <!-- Product Name -->
-            <div class="body-text flex-grow">{{ $item->name }}</div>
+                    <ul class="table-title">
+                        <li><div class="body-title">Image</div></li>
+                        <li><div class="body-title">Product Name</div></li>
+                        <li><div class="body-title">Type</div></li>
+                        <li><div class="body-title">Brand</div></li>
+                        <li><div class="body-title">QTY</div></li>
+                        <li><div class="body-title">Status</div></li>
+                        <li><div class="body-title">Actions</div></li>
+                    </ul>
+                    
+                    <div class="table-container">
+                        <ul>
+                            @foreach($product as $item)
+                            <li class="product-item">
+                                <!-- Image -->
+                                <div class="body-text" data-label="Image">
+                                    <img src="{{ asset(''.$item->image) }}" alt="Product Image" class="image">
+                                </div>
+                                
+                                <!-- Product Name -->
+                                <div class="body-text" data-label="Product Name">{{ $item->name }}</div>
 
-            <!-- Product Type -->
-            <div class="body-text flex-grow">{{ $item->type }}</div>
+                                <!-- Product Type -->
+                                <div class="body-text" data-label="Type">{{ $item->type }}</div>
 
-            <!-- Product Brand -->
-            <div class="body-text flex-grow">{{ $item->brand }}</div>
+                                <!-- Product Brand -->
+                                <div class="body-text" data-label="Brand">{{ $item->brand }}</div>
 
-            <div class="body-text flex-grow">{{ $item->qty }}</div>
+                                <!-- Quantity -->
+                                <div class="body-text" data-label="QTY">{{ $item->qty }}</div>
 
+                                <!-- Product Status -->
+                                <div class="body-text" data-label="Status">
+                                    <span id="status-{{ $item->id }}">{{ $item->status->status_name ?? 'N/A' }}</span>
+                                </div>
 
-            <!-- Product Status -->
-            <div class="body-text flex-grow">
-                <span id="status-{{ $item->id }}">{{ $item->status->status_name ?? 'N/A' }}</span>
-            </div>
+                                <!-- Action Buttons -->
+                                <div class="button-container" data-label="Actions">
+                                    <button class="view-btn" data-image="{{ asset(''.$item->image) }}">View</button>
+                                    <button class="view-more-btn" data-id="{{ $item->id }}">Details</button> 
+                                    <button class="update-btn" data-id="{{ $item->id }}">Edit</button> 
+                                    <button class="status-btn" data-id="{{ $item->id }}">Status</button>
+                                    <button class="delete-btn hidden" data-id="{{ $item->id }}">Delete</button>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
 
+                <div class="pagination-container">
+                    <div class="text-tiny">Showing {{ $product->firstItem() }} to {{ $product->lastItem() }} of {{ $product->total() }} entries</div>
+                    <ul class="wg-pagination">
+                        <!-- Pagination Controls -->
+                        @if ($product->onFirstPage())
+                            <li class="disabled">
+                                <span><i class="icon-chevron-left"></i></span>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ $product->previousPageUrl() }}"><i class="icon-chevron-left"></i></a>
+                            </li>
+                        @endif
 
-            <!-- Action Buttons -->
-            <div class="button-container flex-shrink-0">
-                <button class="view-btn" data-image="{{ asset(''.$item->image) }}">View Image</button>
-                <button class="view-more-btn" data-id="{{ $item->id }}">View More</button> 
-                <button class="update-btn" data-id="{{ $item->id }}">Update</button> 
-                <button class="status-btn" data-id="{{ $item->id }}">Change Status</button>
+                        @foreach ($product->getUrlRange(1, $product->lastPage()) as $page => $url)
+                            <li class="{{ $page == $product->currentPage() ? 'active' : '' }}">
+                                <a href="{{ $url }}">{{ $page }}</a>
+                            </li>
+                        @endforeach
 
-                <button class="delete-btn hidden" data-id="{{ $item->id }}">Delete</button>
-            </div>
-        </li>
-        @endforeach
-    </ul>
-</div>
-
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="flex items-center justify-between flex-wrap gap10">
-                <div class="text-tiny">Showing {{ $product->firstItem() }} to {{ $product->lastItem() }} of {{ $product->total() }} entries</div>
-                <ul class="wg-pagination">
-                    <!-- Pagination Controls -->
-                    @if ($product->onFirstPage())
-                        <li class="disabled">
-                            <span><i class="icon-chevron-left"></i></span>
-                        </li>
-                    @else
-                        <li>
-                            <a href="{{ $product->previousPageUrl() }}"><i class="icon-chevron-left"></i></a>
-                        </li>
-                    @endif
-
-                    @foreach ($product->getUrlRange(1, $product->lastPage()) as $page => $url)
-                        <li class="{{ $page == $product->currentPage() ? 'active' : '' }}">
-                            <a href="{{ $url }}">{{ $page }}</a>
-                        </li>
-                    @endforeach
-
-                    @if ($product->hasMorePages())
-                        <li>
-                            <a href="{{ $product->nextPageUrl() }}"><i class="icon-chevron-right"></i></a>
-                        </li>
-                    @else
-                        <li class="disabled">
-                            <span><i class="icon-chevron-right"></i></span>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-
-
-                <div class="divider"></div>
-
-                
+                        @if ($product->hasMorePages())
+                            <li>
+                                <a href="{{ $product->nextPageUrl() }}"><i class="icon-chevron-right"></i></a>
+                            </li>
+                        @else
+                            <li class="disabled">
+                                <span><i class="icon-chevron-right"></i></span>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
             </div>
             <!-- /product-list -->
         </div>
         <!-- /main-content-wrap -->
     </div>
+    
     <!-- Modal Structure -->
-<div id="imageModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImage">
-</div>
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    
     @include('layouts.footer')
 </div>
 <!-- /main-content -->
+
 <!-- Custom Alert -->
 <div id="toast-alert" class="toast-alert"></div>
 
 <script>
     function showEntries() {
-        const rows = document.querySelectorAll('#ListingsTable tbody tr'); // Target the ListingsTable
+        const rows = document.querySelectorAll('#ListingsTable tbody tr');
         let entries = document.getElementById('col_num').value;
 
-        // Set default value of 30 if input is empty or invalid
         if (!entries || entries <= 0) {
             entries = 30;
         }
 
         rows.forEach((row, index) => {
             if (index < entries) {
-                row.style.display = ''; // Show row
+                row.style.display = '';
             } else {
-                row.style.display = 'none'; // Hide row
+                row.style.display = 'none';
             }
         });
     }
 </script>
-
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -497,7 +685,7 @@
 
                 if (confirm("Are you sure you want to delete this image?")) {
                     fetch(`/admin/deleteImage/${imageId}`, {
-                        method: "POST", // Using POST because DELETE might not work without a form
+                        method: "POST",
                         headers: {
                             "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
                             "Content-Type": "application/json"
@@ -506,16 +694,15 @@
                     })
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data); // Debugging
+                        console.log(data);
                         if (data.success) {
-                            alert("Image deleted successfully!");
+                            showToast("Image deleted successfully!");
                             location.reload();
                         } else {
-                            alert("Error: " + data.error);
+                            showToast("Error: " + data.error);
                         }
                     })
                     .catch(error => console.error("Error:", error));
-
                 }
             });
         });
@@ -524,23 +711,19 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Get the modal
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
         const span = document.getElementsByClassName("close")[0];
 
-        // Function to open the modal with the image
         function openModal(imageSrc) {
             modal.style.display = "block";
             modalImg.src = imageSrc;
         }
 
-        // Function to close the modal
         function closeModal() {
             modal.style.display = "none";
         }
 
-        // Add event listeners to all "View" buttons
         document.querySelectorAll(".view-btn").forEach(button => {
             button.addEventListener("click", function () {
                 const imageSrc = this.getAttribute("data-image");
@@ -548,10 +731,8 @@
             });
         });
 
-        // Close the modal when the close button is clicked
         span.addEventListener("click", closeModal);
 
-        // Close the modal when clicking outside the image
         window.addEventListener("click", function (event) {
             if (event.target === modal) {
                 closeModal();
@@ -559,73 +740,57 @@
         });
     });
 
-
     document.addEventListener("DOMContentLoaded", function () {
-    // Add event listener to the "View More" button
-    document.querySelectorAll(".view-more-btn").forEach(button => {
-        button.addEventListener("click", function () {
-            let projectId = this.getAttribute("data-id");
-
-            // Redirect to project details page or handle as needed
-            window.location.href = `/product/view/${projectId}`; // You can replace this URL with the desired view page URL
+        document.querySelectorAll(".view-more-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                let projectId = this.getAttribute("data-id");
+                window.location.href = `/product/view/${projectId}`;
+            });
         });
-    });
 
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const span = document.getElementsByClassName("close")[0];
 
-    
-
-    // Modal related functionality
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImage");
-    const span = document.getElementsByClassName("close")[0];
-
-    function openModal(imageSrc) {
-        modal.style.display = "block";
-        modalImg.src = imageSrc;
-    }
-
-    function closeModal() {
-        modal.style.display = "none";
-    }
-
-    document.querySelectorAll(".view-btn").forEach(button => {
-        button.addEventListener("click", function () {
-            const imageSrc = this.getAttribute("data-image");
-            openModal(imageSrc);
-        });
-    });
-
-    span.addEventListener("click", closeModal);
-
-    window.addEventListener("click", function (event) {
-        if (event.target === modal) {
-            closeModal();
+        function openModal(imageSrc) {
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
         }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        document.querySelectorAll(".view-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const imageSrc = this.getAttribute("data-image");
+                openModal(imageSrc);
+            });
+        });
+
+        span.addEventListener("click", closeModal);
+
+        window.addEventListener("click", function (event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
     });
-});
-
-
 </script>
-
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Add event listener to the "View More" button
         document.querySelectorAll(".update-btn").forEach(button => {
             button.addEventListener("click", function () {
                 let projectId = this.getAttribute("data-id");
-
                 window.location.href = `/product/update/${projectId}`; 
             });
         });
     });
 </script>
 
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
-
 $(document).ready(function() {
     $(".status-btn").click(function() {
         let productId = $(this).data("id");
@@ -640,7 +805,7 @@ $(document).ready(function() {
             success: function(response) {
                 if (response.success) {
                     $("#status-" + productId).text(response.new_status);
-                    showToast("Status Updated Successfully!");
+                    showToast("Status updated successfully!");
                 } else {
                     showToast("Error updating status!");
                 }
@@ -652,17 +817,12 @@ $(document).ready(function() {
     });
 });
 
+function showToast(message) {
+    let toast = $("#toast-alert");
+    toast.text(message).fadeIn(200);
 
-
-
-
-    function showToast(message) {
-        let toast = $("#toast-alert");
-        toast.text(message).fadeIn(200);
-
-        setTimeout(() => {
-            toast.fadeOut(200);
-        }, 2500); // hides after 2.5 seconds
-    }
-
+    setTimeout(() => {
+        toast.fadeOut(200);
+    }, 2500);
+}
 </script>
