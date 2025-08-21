@@ -80,7 +80,7 @@ body {
 }
 
 .main-content-inner {
-    max-width: 1400px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 2rem;
 }
@@ -195,7 +195,7 @@ body {
 
 .product-item {
     display: grid;
-    grid-template-columns: 80px 1fr 120px 120px 80px 100px 200px;
+    grid-template-columns: 80px 1fr 115px 115px 80px 100px 210px;
     gap: 1rem;
     padding: 1.5rem 0;
     margin: 0;
@@ -233,7 +233,7 @@ body {
     align-items: center;
 }
 
-.view-btn, .view-more-btn, .update-btn {
+.view-btn, .view-more-btn, .update-btn, .feature-btn {
     padding: 0.5rem 1rem;
     font-size: 0.75rem;
     font-weight: 500;
@@ -250,7 +250,7 @@ body {
     min-height: 32px;
 }
 
-.view-btn:hover, .view-more-btn:hover, .update-btn:hover {
+.view-btn:hover, .view-more-btn:hover, .update-btn:hover, .feature-btn:hover {
     background-color: var(--text-primary);
     color: white;
     border-color: var(--text-primary);
@@ -493,7 +493,7 @@ body {
         gap: 0.375rem;
     }
     
-    .view-btn, .view-more-btn, .update-btn, .status-btn, .delete-btn {
+    .view-btn, .view-more-btn, .update-btn, .status-btn, .delete-btn,.feature-btn {
         padding: 0.5rem 0.75rem;
         font-size: 0.6875rem;
     }
@@ -599,6 +599,7 @@ body {
                                     <button class="view-btn" data-image="{{ asset(''.$item->image) }}">View</button>
                                     <button class="view-more-btn" data-id="{{ $item->id }}">Details</button> 
                                     <button class="update-btn" data-id="{{ $item->id }}">Edit</button> 
+                                    <button class="feature-btn" data-id="{{ $item->id }}">Feature</button>
                                     <button class="status-btn" data-id="{{ $item->id }}">Status</button>
                                     <button class="delete-btn hidden" data-id="{{ $item->id }}">Delete</button>
                                 </div>
@@ -784,6 +785,18 @@ body {
             button.addEventListener("click", function () {
                 let projectId = this.getAttribute("data-id");
                 window.location.href = `/product/update/${projectId}`; 
+            });
+        });
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".feature-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                let projectId = this.getAttribute("data-id");
+                window.location.href = `/product/${projectId}/features`; 
             });
         });
     });

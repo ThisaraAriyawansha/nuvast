@@ -493,25 +493,18 @@ body {
                 @endif
 
                 <!-- Product Information Card -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">Product Information</h2>
-                    </div>
-                    <div class="card-body">
+
                         <div class="product-display">
-                            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="product-image">
                             <div>
                                 <div class="product-name">{{ $product->name }}</div>
                                 <p style="color: var(--text-secondary);">Manage product features and specifications</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-
                 <!-- Add New Feature Card -->
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">Add New Feature</h2>
+                        
                     </div>
                     <div class="card-body">
                         <form class="add-feature-form" method="POST" action="{{ route('storeFeature') }}">
