@@ -663,8 +663,11 @@
                     
                     <div class="mb-4">
                         <h5>Description</h5>
-                        <p class="text-muted">{{ $product['desc'] }}</p>
+                        <div class="text-muted">
+                            {!! $product['desc'] !!}
+                        </div>
                     </div>
+
                     
                     @if(count($product['features']) > 0)
                         <div class="mb-4">

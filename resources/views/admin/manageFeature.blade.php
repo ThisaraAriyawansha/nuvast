@@ -1,515 +1,792 @@
 @include('layouts.header')
+
 <style>
-
-
-.delete-btn {
-    background-color: #e74c3c; /* Red color */
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}/* View More Button Styles */
-
-.wg-table {
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    .table-container {
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    .wg-table .table-title, .wg-table .product-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-
-    .wg-table .table-title li, .wg-table .product-item > div {
-        flex: 1;
-        text-align: left;
-        min-width: 120px;
-    }
-
-    .wg-table .button-container {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-    }
-
-    .wg-table .body-text {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .image {
-        width: 80px;
-        height: auto;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .wg-table .table-title {
-            display: none; /* Hide table headers on small screens */
-        }
-
-        .wg-table .product-item {
-            display: flex;
-            flex-wrap: wrap;
-            border-bottom: 1px solid #ddd;
-            padding: 10px;
-        }
-
-        .wg-table .product-item > div {
-            flex: 100%;
-            text-align: left;
-        }
-
-        .wg-table .image {
-            width: 100%;
-            max-width: 100px;
-        }
-
-        .wg-table .button-container {
-            flex: 100%;
-            display: flex;
-            justify-content: flex-start;
-            gap: 5px;
-        }
-    }
-
-
-    /* Style for the edit button */
-.edit-btn {
-    background-color: #3b5d50; /* Green background */
-    color: white; /* White text */
-    border: none;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.edit-btn:hover {
-    background-color: #3b5d50; /* Darker green on hover */
+:root {
+    --primary: #3b5d50;
+    --primary-light: #4a6b5f;
+    --primary-dark: #2d4740;
+    --secondary: #64748b;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --background: #fefefe;
+    --surface: #ffffff;
+    --surface-soft: #f8faf9;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border: #e2e8f0;
+    --border-light: #f1f5f9;
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Style for the save button */
-.save-btn {
-    background-color: #3c853eff; /* Blue background */
-    color: white; /* White text */
-    border: none;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: none; /* Hide by default */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
 }
 
-.save-btn:hover {
-    background-color: #45a049; /* Darker blue on hover */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
-/* Style for the delete button */
-.delete-btn {
-    background-color: #f44336; /* Red background */
-    color: white; /* White text */
-    border: none;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* Header Section */
+.page-header {
+    margin-bottom: 3rem;
 }
 
-.delete-btn:hover {
-    background-color: #d32f2f; /* Darker red on hover */
+.page-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.025em;
 }
 
-/* Optional: Style for the input fields */
-.edit-feature-name, .edit-feature-value {
-    padding: 6px 12px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Alert Messages */
+.alert {
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid;
+    font-size: 0.875rem;
+}
+
+.alert-success {
+    background: #f0fdf4;
+    border-color: var(--success);
+    color: #166534;
+}
+
+.alert-error {
+    background: #fef2f2;
+    border-color: var(--danger);
+    color: #991b1b;
+}
+
+.alert-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Card Component */
+.card {
+    background: var(--surface);
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.card-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-light);
+    background: var(--surface-soft);
+}
+
+.card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* Product Display */
+.product-display {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--surface-soft);
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.product-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 0.75rem;
+    object-fit: cover;
+    border: 2px solid var(--border);
+}
+
+.product-name {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Add Feature Form */
+.add-feature-form {
+    display: flex;
+    gap: 1rem;
+    align-items: end;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
     width: 100%;
-    max-width: 200px;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: 0.5rem;
+    background: var(--surface);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
 }
 
-.edit-feature-name:disabled, .edit-feature-value:disabled {
-    background-color: #f0f0f0; /* Gray background when disabled */
+.form-input:hover {
+    border-color: var(--primary-light);
 }
 
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 93, 80, 0.1);
+}
 
-/* Form Container */
-.form-new-product {
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background: var(--surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background: var(--surface-soft);
+    border-color: var(--text-secondary);
+}
+
+.btn-success {
+    background: var(--success);
+    color: white;
+}
+
+.btn-success:hover {
+    background: #059669;
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+}
+
+/* Features Table */
+.features-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background: transparent;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px #e5ebe8ff;
+    gap: 1rem;
 }
 
-/* Input and Button in One Row */
-.input-container {
-    display: flex;
-    justify-content: space-between;
+.feature-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
     align-items: center;
-    gap: 10px;
+    transition: all 0.2s ease;
+}
+
+.feature-item:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
+}
+
+.feature-input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background: var(--surface-soft);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.feature-input:disabled {
+    background: transparent;
+    border-color: transparent;
+    cursor: default;
+}
+
+.feature-input:not(:disabled) {
+    background: var(--surface);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 93, 80, 0.1);
+}
+
+.feature-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Custom Modal for Confirmations */
+.custom-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
 }
 
-/* Input Fields */
-.input-container .input-label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-    margin-right: 5px;
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--surface);
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: var(--shadow-lg);
 }
 
-.input-container .input-field {
-    padding: 12px;
-    font-size: 14px;
-    outline: none;
-    width: 30%; /* Adjust width as needed */
-    transition: border-color 0.3s;
+.modal-header {
+    margin-bottom: 1rem;
 }
 
-.input-container .input-field:focus {
-    border-color: #3b5d50;
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
 }
 
-/* Submit Button */
-.submit-btn {
-    padding: 12px 15px;
-    background: #3b5d50;
+.modal-message {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+/* Custom Toast Notifications */
+.toast {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    min-width: 300px;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast-success {
+    border-left: 4px solid var(--success);
+}
+
+.toast-error {
+    border-left: 4px solid var(--danger);
+}
+
+.toast-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.toast-message {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.pagination a,
+.pagination span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.pagination a:hover {
+    background: var(--primary);
     color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background 0.3s;
+    border-color: var(--primary);
 }
 
-.submit-btn:hover {
-    background: #272727ff;
+.pagination .active a {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
 }
 
-/* Responsive Adjustments */
+/* Responsive */
 @media (max-width: 768px) {
-    .input-container {
-        flex-direction: column;
-        align-items: stretch;
+    .container {
+        padding: 1rem;
     }
 
-    .input-container .input-field,
-    .submit-btn {
-        width: 100%;
+    .add-feature-form {
+        flex-direction: column;
+    }
+
+    .form-group {
+        min-width: 100%;
+    }
+
+    .feature-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .product-display {
+        flex-direction: column;
+        text-align: center;
     }
 }
 
-
-    .wg-box {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    .last-updated {
-        background: var(--white);
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        border: 1px solid var(--gray-200);
-        font-size: 1.3rem;
-        color: var(--gray-600);
-    }
-    .admin-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .wg-pagination li a:hover {
-        background-color: #3b5d50;    /* Darker shade on hover */
-    }
-    .wg-pagination li.active a {
-        background-color: #3b5d50; /* Highlighted page */
-        color: black;
-    }
-    
+/* Legacy support */
+.wg-box { padding: 0; }
+.main-content { padding: 0; }
+.main-content-inner { padding: 0; }
+.main-content-wrap { padding: 0; }
 </style>
-<!-- main-content -->
 
 <div class="main-content">
     <div class="main-content-inner">
         <div class="main-content-wrap">
-
-
-            <div class="wg-box">
-                <div class="admin-header">
-                    <h3 class="text-xl font-semibold" style="font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 1px;">Product Features</h3>
-                        <div class="last-updated">
-                            Last updated: {{ now()->format('M j, Y g:i A') }}
-                        </div>
+            <div class="container">
+                <!-- Header -->
+                <div class="page-header">
+                    <h1 class="page-title">Product Features</h1>
+                    <p class="page-subtitle">Last updated: {{ now()->format('M j, Y g:i A') }}</p>
                 </div>
 
-                    @if ($errors->any())
-                        <div style="background-color: #fff5f5; border-left: 4px solid #ff3b3b; color: #ff3b3b; padding: 16px; margin-bottom: 20px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                            <strong style="font-size: 16px; display: block; margin-bottom: 8px;">⚠️ Oops! There were some errors:</strong>
-                            <ul style="margin: 0; padding-left: 20px; list-style-type: none;">
-                                @foreach ($errors->all() as $error)
-                                    <li style="padding: 4px 0; display: flex; align-items: center;">
-                                        <span style="display: inline-block; width: 6px; height: 6px; background-color: #ff3b3b; border-radius: 50%; margin-right: 8px;"></span>
-                                        {{ $error }}
-                                    </li>
-                                @endforeach
-                            </ul>
+                <!-- Error Messages -->
+                @if ($errors->any())
+                    <div class="alert alert-error">
+                        <div class="alert-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Oops! There were some errors:
                         </div>
-                    @endif
+                        <ul style="margin: 0; padding-left: 20px; list-style-type: none;">
+                            @foreach ($errors->all() as $error)
+                                <li style="padding: 4px 0; display: flex; align-items: center;">
+                                    <span style="display: inline-block; width: 6px; height: 6px; background-color: #ef4444; border-radius: 50%; margin-right: 8px;"></span>
+                                    {{ $error }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-                    @if (session('success'))
-                        <div style="background-color: #f0fff4; border-left: 4px solid #38a169; color: #38a169; padding: 16px; margin-bottom: 20px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                            <div style="font-size: 16px; display: flex; align-items: center; gap: 8px;">
-                                <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <strong>Success!</strong>
+                <!-- Success Messages -->
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        <div class="alert-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Success!
+                        </div>
+                        <p>{{ session('success') }}</p>
+                    </div>
+                @endif
+
+                <!-- Product Information Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Product Information</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-display">
+                            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="product-image">
+                            <div>
+                                <div class="product-name">{{ $product->name }}</div>
+                                <p style="color: var(--text-secondary);">Manage product features and specifications</p>
                             </div>
-                            <p style="margin: 8px 0 0 28px;">{{ session('success') }}</p>
                         </div>
-                    @endif                                
-
-                                <form id="addItemForm" class="form-new-product form-style-1" method="POST" enctype="multipart/form-data" action="{{ route('storeFeature') }}">
-                                    @csrf
-                                    <input type="hidden" name="productid" id="productid" value="{{ $product->id }}">
-
-                                    <!-- Feature Name & Value in One Line -->
-                                    <div class="input-container">
-                                        <input type="text" id="featureName" name="name" class="input-field" placeholder="Feature Name" required>
-                                        <input type="text" id="featureValue" name="value" class="input-field" placeholder="Feature Value" required>
-                                        <button type="submit" class="submit-btn">Submit</button>
-                                    </div>
-                                </form>
-
-                                <div class="wg-table">
-                                    <ul class="table-title flex gap-4 mb-4 px-4 py-3">
-                                        <li><div class="body-title">Product Name</div></li>
-                                    </ul>
-                                    <div class="table-container">
-                                        <ul class="flex flex-column">
-                                            <li class="product-item flex items-center gap-4 px-4 py-3 hover:bg-gray-50">
-                                                <div class="body-text">{{ $product->name }}</div>
-                                                <img src="{{ asset($product->image) }}" alt="Product Image" class="img-thumbnail" width="100">
-
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
-                <div class="title-box mt-5">
-                    <div class="body-text">Product Feature</div>
+                    </div>
                 </div>
 
-                <div class="wg-table">
-    <ul class="table-title flex gap-4 mb-4 px-4 py-3">
-        <li><div class="body-title">Name</div></li>
-        <li><div class="body-title">Value</div></li>
-        <li><div class="body-title">Action</div></li> <!-- Added Action column title -->
-    </ul>
-    <div class="table-container">
-        <ul class="flex flex-column">
-        @foreach($features as $feature)
-        <li class="product-item flex items-center gap-4 px-4 py-3 hover:bg-gray-50">
-            <div class="body-text flex-grow">
-                <input type="text" class="edit-feature-name" value="{{ $feature->feature_name }}" data-id="{{ $feature->id }}" disabled />
+                <!-- Add New Feature Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Add New Feature</h2>
+                    </div>
+                    <div class="card-body">
+                        <form class="add-feature-form" method="POST" action="{{ route('storeFeature') }}">
+                            @csrf
+                            <input type="hidden" name="productid" value="{{ $product->id }}">
+                            
+                            <div class="form-group">
+                                <label class="form-label">Feature Name</label>
+                                <input type="text" class="form-input" name="name" placeholder="Enter feature name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Feature Value</label>
+                                <input type="text" class="form-input" name="value" placeholder="Enter feature value" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg>
+                                Add Feature
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Features List Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Product Features</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="features-list">
+                            @foreach($features as $feature)
+                            <div class="feature-item">
+                                <input type="text" 
+                                       class="feature-input edit-feature-name" 
+                                       value="{{ $feature->feature_name }}" 
+                                       data-id="{{ $feature->id }}" 
+                                       disabled>
+                                
+                                <input type="text" 
+                                       class="feature-input edit-feature-value" 
+                                       value="{{ $feature->feature_value }}" 
+                                       data-id="{{ $feature->id }}" 
+                                       disabled>
+                                
+                                <div class="feature-actions">
+                                    <button class="btn btn-sm btn-secondary edit-btn" data-id="{{ $feature->id }}">
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                        </svg>
+                                        Edit
+                                    </button>
+                                    <button class="btn btn-sm btn-success save-btn" data-id="{{ $feature->id }}" style="display: none;">
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        Save
+                                    </button>
+                                    <button class="btn btn-sm btn-danger delete-btn" data-id="{{ $feature->id }}">
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            @if ($features->onFirstPage())
+                                <span>‹</span>
+                            @else
+                                <a href="{{ $features->previousPageUrl() }}">‹</a>
+                            @endif
+
+                            @foreach ($features->getUrlRange(1, $features->lastPage()) as $page => $url)
+                                @if ($page == $features->currentPage())
+                                    <span class="active"><a href="{{ $url }}">{{ $page }}</a></span>
+                                @else
+                                    <a href="{{ $url }}">{{ $page }}</a>
+                                @endif
+                            @endforeach
+
+                            @if ($features->hasMorePages())
+                                <a href="{{ $features->nextPageUrl() }}">›</a>
+                            @else
+                                <span>›</span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="body-text flex-grow">
-                <input type="text" class="edit-feature-value" value="{{ $feature->feature_value }}" data-id="{{ $feature->id }}" disabled />
-            </div>
-
-            <div class="body-text">
-                <!-- Edit and Save buttons -->
-                <button class="edit-btn" data-id="{{ $feature->id }}">Edit</button>
-                <button class="save-btn" data-id="{{ $feature->id }}" style="display: none;">Save</button>
-                <button class="delete-btn" data-id="{{ $feature->id }}">Delete</button>
-            </div>
-        </li>
-        @endforeach
-        </ul>
-    </div>
-</div>
-
-
-
-
-            <div class="divider"></div>
-
-            <div class="flex items-center justify-between flex-wrap gap-10">
-        <div class="text-tiny">
-            Showing {{ $features->firstItem() }} to {{ $features->lastItem() }} of {{ $features->total() }} entries
         </div>
-        <ul class="wg-pagination">
-            <!-- Pagination Controls -->
-            @if ($features->onFirstPage())
-                <li class="disabled">
-                    <span><i class="icon-chevron-left"></i></span>
-                </li>
-            @else
-                <li>
-                    <a href="{{ $features->previousPageUrl() }}"><i class="icon-chevron-left"></i></a>
-                </li>
-            @endif
-
-            @foreach ($features->getUrlRange(1, $features->lastPage()) as $page => $url)
-                <li class="{{ $page == $features->currentPage() ? 'active' : '' }}">
-                    <a href="{{ $url }}">{{ $page }}</a>
-                </li>
-            @endforeach
-
-            @if ($features->hasMorePages())
-                <li>
-                    <a href="{{ $features->nextPageUrl() }}"><i class="icon-chevron-right"></i></a>
-                </li>
-            @else
-                <li class="disabled">
-                    <span><i class="icon-chevron-right"></i></span>
-                </li>
-            @endif
-        </ul>
     </div>
-</div>
 
-
-                <div class="divider"></div>
-
-                
+    <!-- Custom Confirmation Modal -->
+    <div id="confirmModal" class="custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirm Action</h3>
+                <p class="modal-message" id="modalMessage">Are you sure you want to perform this action?</p>
             </div>
-            <!-- /product-list -->
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                <button class="btn btn-danger" id="confirmBtn">Delete</button>
+            </div>
         </div>
-        <!-- /main-content-wrap -->
     </div>
-    <!-- Modal Structure -->
-<div id="imageModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImage">
-</div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
     @include('layouts.footer')
 </div>
-<!-- /main-content -->
-
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".delete-btn").forEach(button => {
-            button.addEventListener("click", function () {
-                let imageId = this.getAttribute("data-id");
+document.addEventListener("DOMContentLoaded", function () {
+    let currentDeleteId = null;
+    
+    // Custom toast notification function
+    function showToast(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        
+        const icon = type === 'success' 
+            ? '<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>'
+            : '<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+        
+        toast.innerHTML = `
+            <div class="toast-header" style="color: var(--${type === 'success' ? 'success' : 'danger'})">
+                ${icon}
+                ${type === 'success' ? 'Success!' : 'Error!'}
+            </div>
+            <div class="toast-message">${message}</div>
+        `;
+        
+        document.getElementById('toastContainer').appendChild(toast);
+        
+        // Show toast
+        setTimeout(() => toast.classList.add('show'), 100);
+        
+        // Hide and remove toast
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
 
-                if (confirm("Are you sure you want to delete this Feature?")) {
-                    fetch(`/admin/deleteFeature/${imageId}`, {
-                        method: "POST", // Using POST because DELETE might not work without a form
-                        headers: {
-                            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({ _method: "DELETE" }) 
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data); // Debugging
-                        if (data.success) {
-                            alert("Feature deleted successfully!");
-                            location.reload();
-                        } else {
-                            alert("Error: " + data.error);
-                        }
-                    })
-                    .catch(error => console.error("Error:", error));
+    // Custom confirmation modal
+    function showConfirmModal(message, onConfirm) {
+        const modal = document.getElementById('confirmModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const confirmBtn = document.getElementById('confirmBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        
+        modalMessage.textContent = message;
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        confirmBtn.onclick = () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            onConfirm();
+        };
+        
+        cancelBtn.onclick = () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+        
+        // Close on outside click
+        modal.onclick = (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        };
+    }
 
-                }
+    // Delete functionality with custom modal
+    document.querySelectorAll(".delete-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const featureId = this.getAttribute("data-id");
+            
+            showConfirmModal("Are you sure you want to delete this feature? This action cannot be undone.", () => {
+                fetch(`/admin/deleteFeature/${featureId}`, {
+                    method: "POST",
+                    headers: {
+                        "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ _method: "DELETE" }) 
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast("Feature deleted successfully!");
+                        setTimeout(() => location.reload(), 1000);
+                    } else {
+                        showToast("Error: " + data.error, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    showToast("An error occurred while deleting the feature", 'error');
+                });
             });
         });
     });
-</script>
 
-<script>
+    // Edit functionality
     document.querySelectorAll('.edit-btn').forEach(button => {
-    button.addEventListener('click', function() {
-        const featureId = this.getAttribute('data-id');
-        const nameInput = document.querySelector(`.edit-feature-name[data-id='${featureId}']`);
-        const valueInput = document.querySelector(`.edit-feature-value[data-id='${featureId}']`);
-        const saveButton = document.querySelector(`.save-btn[data-id='${featureId}']`);
-        
-        // Enable inputs and show the save button
-        nameInput.disabled = false;
-        valueInput.disabled = false;
-        saveButton.style.display = 'inline-block';
-        this.style.display = 'none'; // Hide edit button
+        button.addEventListener('click', function() {
+            const featureId = this.getAttribute('data-id');
+            const nameInput = document.querySelector(`.edit-feature-name[data-id='${featureId}']`);
+            const valueInput = document.querySelector(`.edit-feature-value[data-id='${featureId}']`);
+            const saveButton = document.querySelector(`.save-btn[data-id='${featureId}']`);
+            
+            // Enable inputs and show the save button
+            nameInput.disabled = false;
+            valueInput.disabled = false;
+            saveButton.style.display = 'inline-flex';
+            this.style.display = 'none';
+        });
     });
-});
 
-document.querySelectorAll('.save-btn').forEach(button => {
-    button.addEventListener('click', function() {
-        const featureId = this.getAttribute('data-id');
-        const nameInput = document.querySelector(`.edit-feature-name[data-id='${featureId}']`);
-        const valueInput = document.querySelector(`.edit-feature-value[data-id='${featureId}']`);
-        
-        const updatedName = nameInput.value;
-        const updatedValue = valueInput.value;
-        
-        // Send an AJAX request to update the feature
-        fetch(`/features/${featureId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-            body: JSON.stringify({
-                feature_name: updatedName,
-                feature_value: updatedValue
+    // Save functionality
+    document.querySelectorAll('.save-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const featureId = this.getAttribute('data-id');
+            const nameInput = document.querySelector(`.edit-feature-name[data-id='${featureId}']`);
+            const valueInput = document.querySelector(`.edit-feature-value[data-id='${featureId}']`);
+            
+            const updatedName = nameInput.value;
+            const updatedValue = valueInput.value;
+            
+            // Disable button during request
+            this.disabled = true;
+            this.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> Saving...';
+            
+            fetch(`/features/${featureId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({
+                    feature_name: updatedName,
+                    feature_value: updatedValue
+                })
             })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Update the UI and show a success message
-                nameInput.disabled = true;
-                valueInput.disabled = true;
-                this.style.display = 'none'; // Hide save button
-                document.querySelector(`.edit-btn[data-id='${featureId}']`).style.display = 'inline-block'; // Show edit button
-            } else {
-                // Handle error
-                alert('Failed to update feature');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred');
+            .then(response => response.json())
+            .then(data => {
+                this.disabled = false;
+                this.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Save';
+                
+                if (data.success) {
+                    nameInput.disabled = true;
+                    valueInput.disabled = true;
+                    this.style.display = 'none';
+                    document.querySelector(`.edit-btn[data-id='${featureId}']`).style.display = 'inline-flex';
+                    showToast("Feature updated successfully!");
+                } else {
+                    showToast("Failed to update feature", 'error');
+                }
+            })
+            .catch(error => {
+                this.disabled = false;
+                this.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Save';
+                console.error('Error:', error);
+                showToast("An error occurred while updating the feature", 'error');
+            });
         });
     });
 });
-
 </script>
