@@ -28,8 +28,7 @@
     <!-- Tailwind CSS -->
     
 
-
-    		<link href="publicsite/css/bootstrap.min.css" rel="stylesheet">
+		<link href="publicsite/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="publicsite/css/tiny-slider.css" rel="stylesheet">
 		<link href="publicsite/css/style.css" rel="stylesheet">
@@ -38,7 +37,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- Custom Styles -->
     <style>
-
         
         .cart-container {
             max-width: 1200px;
@@ -193,6 +191,126 @@
             padding: 60px 0;
             color: #64748b;
         }
+
+        /* Custom Minimalist Alert Styles */
+        .custom-alert-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .custom-alert-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .custom-alert {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: scale(0.95) translateY(20px);
+            transition: all 0.3s ease;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .custom-alert-overlay.show .custom-alert {
+            transform: scale(1) translateY(0);
+        }
+
+        .custom-alert-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+
+        .custom-alert-icon.warning {
+            background-color: #fef3c7;
+            color: #f59e0b;
+        }
+
+        .custom-alert-icon.error {
+            background-color: #fee2e2;
+            color: #ef4444;
+        }
+
+        .custom-alert-icon.success {
+            background-color: #d1fae5;
+            color: #10b981;
+        }
+
+        .custom-alert-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .custom-alert-message {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .custom-alert-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .custom-alert-btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .custom-alert-btn.primary {
+            background-color: #3b5d50;
+            color: white;
+        }
+
+        .custom-alert-btn.primary:hover {
+            background-color: #2d4a3f;
+            transform: translateY(-1px);
+        }
+
+        .custom-alert-btn.secondary {
+            background-color: white;
+            color: #3b5d50;
+            border: 1px solid #3b5d50;
+        }
+
+        .custom-alert-btn.secondary:hover {
+            background-color: #f9fafb;
+            transform: translateY(-1px);
+        }
         
         @media (max-width: 768px) {
             .cart-table thead {
@@ -222,6 +340,15 @@
             
             .total-box {
                 width: 100%;
+            }
+
+            .custom-alert {
+                padding: 24px;
+                margin: 16px;
+            }
+
+            .custom-alert-buttons {
+                flex-direction: column;
             }
         }
     </style>
@@ -311,6 +438,20 @@
             </form>
         </div>
 
+        <!-- Custom Alert Modal -->
+        <div class="custom-alert-overlay" id="customAlertOverlay">
+            <div class="custom-alert">
+                <div class="custom-alert-icon" id="customAlertIcon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
+                <p class="custom-alert-message" id="customAlertMessage">This is a custom alert message.</p>
+                <div class="custom-alert-buttons" id="customAlertButtons">
+                    <button class="custom-alert-btn primary" onclick="closeCustomAlert()">OK</button>
+                </div>
+            </div>
+        </div>
+
         <br/><br/><br/><br/>
         @include('layouts.footer2')
     </div>
@@ -330,9 +471,100 @@
     <!--Main JS (Common Activation Codes)-->
     <script src="assets/js/main.js"></script>
 
-        <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
     <!-- Scripts -->
     <script>
+        // Custom Alert Functions
+        function showCustomAlert(message, type = 'warning', title = 'Alert') {
+            const overlay = document.getElementById('customAlertOverlay');
+            const icon = document.getElementById('customAlertIcon');
+            const titleEl = document.getElementById('customAlertTitle');
+            const messageEl = document.getElementById('customAlertMessage');
+            
+            // Set content
+            titleEl.textContent = title;
+            messageEl.textContent = message;
+            
+            // Set icon and style based on type
+            icon.className = `custom-alert-icon ${type}`;
+            
+            let iconHtml = '';
+            switch(type) {
+                case 'warning':
+                    iconHtml = '<i class="fas fa-exclamation-triangle"></i>';
+                    break;
+                case 'error':
+                    iconHtml = '<i class="fas fa-times-circle"></i>';
+                    break;
+                case 'success':
+                    iconHtml = '<i class="fas fa-check-circle"></i>';
+                    break;
+                default:
+                    iconHtml = '<i class="fas fa-info-circle"></i>';
+            }
+            icon.innerHTML = iconHtml;
+            
+            // Show the alert
+            overlay.classList.add('show');
+            
+            return new Promise((resolve) => {
+                window.customAlertResolve = resolve;
+            });
+        }
+
+        function showCustomConfirm(message, title = 'Confirm') {
+            const overlay = document.getElementById('customAlertOverlay');
+            const icon = document.getElementById('customAlertIcon');
+            const titleEl = document.getElementById('customAlertTitle');
+            const messageEl = document.getElementById('customAlertMessage');
+            const buttonsEl = document.getElementById('customAlertButtons');
+            
+            // Set content
+            titleEl.textContent = title;
+            messageEl.textContent = message;
+            
+            // Set icon
+            icon.className = 'custom-alert-icon warning';
+            icon.innerHTML = '<i class="fas fa-question-circle"></i>';
+            
+            // Set buttons for confirmation
+            buttonsEl.innerHTML = `
+                <button class="custom-alert-btn secondary" onclick="closeCustomAlert(false)">Cancel</button>
+                <button class="custom-alert-btn primary" onclick="closeCustomAlert(true)">Confirm</button>
+            `;
+            
+            // Show the alert
+            overlay.classList.add('show');
+            
+            return new Promise((resolve) => {
+                window.customAlertResolve = resolve;
+            });
+        }
+
+        function closeCustomAlert(result = true) {
+            const overlay = document.getElementById('customAlertOverlay');
+            const buttonsEl = document.getElementById('customAlertButtons');
+            
+            overlay.classList.remove('show');
+            
+            // Reset buttons to default
+            setTimeout(() => {
+                buttonsEl.innerHTML = '<button class="custom-alert-btn primary" onclick="closeCustomAlert()">OK</button>';
+            }, 300);
+            
+            if (window.customAlertResolve) {
+                window.customAlertResolve(result);
+                window.customAlertResolve = null;
+            }
+        }
+
+        // Close alert when clicking outside
+        document.getElementById('customAlertOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCustomAlert(false);
+            }
+        });
+
         // Function to populate the cart table from localStorage
         function populateCartTable() {
             const tableBody = document.querySelector('table tbody');
@@ -406,7 +638,7 @@
 
                 // Check if the new quantity exceeds available stock
                 if (newQuantity > availableQty) {
-                    alert(`Only ${availableQty} items are available in stock.`);
+                    await showCustomAlert(`Only ${availableQty} items are available in stock.`, 'warning', 'Stock Limit');
                     return;
                 }
 
@@ -421,15 +653,21 @@
                 }
             } catch (error) {
                 console.error('Error fetching product quantity:', error);
+                await showCustomAlert('Error updating quantity. Please try again.', 'error', 'Error');
             }
         }
 
         // Function to remove item from cart
-        function removeCartItem(productId) {
-            let cart = JSON.parse(localStorage.getItem('shopping-cart')) || [];
-            cart = cart.filter(item => parseInt(item.id) !== parseInt(productId));
-            localStorage.setItem('shopping-cart', JSON.stringify(cart));
-            populateCartTable(); // Refresh the table
+        async function removeCartItem(productId) {
+            const confirmed = await showCustomConfirm('Are you sure you want to remove this item from your cart?', 'Remove Item');
+            
+            if (confirmed) {
+                let cart = JSON.parse(localStorage.getItem('shopping-cart')) || [];
+                cart = cart.filter(item => parseInt(item.id) !== parseInt(productId));
+                localStorage.setItem('shopping-cart', JSON.stringify(cart));
+                populateCartTable(); // Refresh the table
+                await showCustomAlert('Item removed from cart successfully!', 'success', 'Success');
+            }
         }
 
         // Function to add quantity control listeners
@@ -471,9 +709,7 @@
             document.querySelectorAll('.remove-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const productId = this.getAttribute('data-product-id');
-                    if (confirm('Are you sure you want to remove this item from your cart?')) {
-                        removeCartItem(productId);
-                    }
+                    removeCartItem(productId);
                 });
             });
         }
