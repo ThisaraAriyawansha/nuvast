@@ -172,10 +172,10 @@
 }
 
     .wg-pagination li a:hover {
-        background-color: #333;    /* Darker shade on hover */
+        background-color: #3b5d50;    /* Darker shade on hover */
     }
     .wg-pagination li.active a {
-        background-color: #000000ff; /* Highlighted page */
+        background-color: #3b5d50; /* Highlighted page */
         color: black;
     }
 </style>
